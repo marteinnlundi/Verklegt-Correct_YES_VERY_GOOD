@@ -1,0 +1,188 @@
+html, body {
+    overflow: visible;
+    line-height: 1.15;
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
+    border-width: 0;
+    border-style: solid;
+    }
+
+html {
+    height: 100%;
+}
+  
+body {
+    position: relative;
+    min-height: 100%;
+    background-color: black;
+}
+
+.banner-container {
+    width: 100%;
+    display: flex;
+    margin-top: 10px;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.banner-container > div {
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+    flex-grow: 1;
+    min-width: 150px; /* adjust as needed */
+}
+
+.pizza-lairtext {
+    color: rgba(255, 255, 255, 1);
+    font-size: 90px;
+    font-family: Ink Free;
+    font-weight: 400;
+    white-space: nowrap;
+}
+
+.text {
+    color: rgba(23, 189, 49, 0.699999988079071);
+    font-size: 50px;
+    font-family: Ink Free;
+    font-weight: 400;
+    white-space: nowrap;
+    text-decoration: none;
+}
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #f2f2f2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.home{
+    color: rgba(23, 189, 49, 0.699999988079071);
+    font-size: 50px;
+    font-family: Ink Free;
+    font-weight: 400;
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+.offers {
+    color: rgba(23, 189, 49, 0.699999988079071);
+    font-size: 50px;
+    font-family: Ink Free;
+    font-weight: 400;
+    white-space: nowrap;
+    text-decoration: none;	
+    text-align: center;
+}
+
+
+.offer-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+    width: 700px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    
+}
+
+ 
+.orderbutton { 
+    width: 300px;
+    height: 59px;
+    border-color: rgba(23, 189, 49, 0.699999988079071);
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 50px;
+    color:white;  
+    background-color: black;
+    justify-content: center;
+    margin-top: 20px;
+
+
+}
+
+.orderbutton:hover {
+    border-style: solid;
+    border-color: rgba(23, 189, 49, 0.699999988079071);
+    border-width: 1px;
+    background-color: rgba(23, 189, 49, 0.75);
+
+}
+
+.offerclass {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    border-style: solid;
+    border-color:white; 
+    border-width: 1px;
+    padding: 20px;
+    box-shadow: 10px 10px 5px 0px rgba(87, 85, 85, 0.75);
+}
+
+
+.offerdescr {
+    color:white;
+    font-size: 24px;
+    margin-bottom: 20%;
+}
+
+.offerprice {
+    color:white;
+    font-size: 24px;   
+    margin-bottom:10%;
+}
+
+
+
+
+.menu {
+    color: rgba(23, 189, 49, 0.699999988079071);
+    font-size: 50px;
+    font-family: Ink Free;
+    font-weight: 400;
+    white-space: nowrap;
+    text-decoration: none;  
+}
+
+.about {
+    color: rgba(23, 189, 49, 0.699999988079071);
+    font-size: 50px;
+    font-family: Ink Free;
+    font-weight: 400;
+    white-space: nowrap;
+    text-decoration: none;  
+}
+
+.profiles {
+    color: rgba(23, 189, 49, 0.699999988079071);
+    font-size: 50px;
+    font-family: Ink Free;
+    font-weight: 400;
+    white-space: nowrap;
+    text-decoration: none;  
+}
+
+.cart {
+    color: rgba(23, 189, 49, 0.699999988079071);
+    font-size: 50px;
+    font-family: Ink Free;
+    font-weight: 400;
+    white-space: nowrap;
+    text-decoration: none;  
+}

@@ -1,0 +1,213 @@
+**Dagbók verklegt vor 2023**
+
+Hópmeðlimir:
+Ágústa Björk
+Guðbörg Elísabet
+Marteinn Lundi
+
+**Vika 1**
+Mánudagurinn 24.apríl 2023
+
+Ritari: Marteinn Lundi 
+Mæting: Ágústa, Guðbjörg og Marteinn
+
+Fundurinn: 
+Allir mættir í skólan kl.08:00
+Ætlum að lesa yfir báðar verkefnalýsingarnar og gera todo lista yfir hvað þarf að gera.
+Planið er að reyna klára upp að 40% af því sem þarfagreiningin biður um.
+Marteinn ætlar að gera innganginn og Lista af þörfum
+Ágústa ætlar að greina notendahópinn og gera notendahópagreinigu
+Guðbjörg ætlar að búa til prototype og wireframe með figma til að nota í viðtölum og sem viðmót af hönnun.
+
+To-Do dagsins:
+Lesa verkefnalýsinguna
+Gera prototype/wireframe
+Gera inngang
+Gera lista af kröfum
+Gera notendahóp og greiningu hans.
+
+Markmið morgundagsins:
+Markmið morgundagsins er að vera kominn með að minnsta kosti 40% af kröfum þarfnagreiningunnar.
+Á morgun væri þá hægt að gera use cases, viðtöl, og aðrar kröfur.
+
+Fundur í lok dags(recap):
+Í dag var gert:
+Introduction
+List of requirements
+Describe user groups and analysis
+Wireframe
+Use case Diagram
+Usability goals
+Compare your application with other simiar applications.
+Big Picture Map
+
+Það var mikið gert í dag mun meira en við gerðum ráð fyrir.
+Það á samt eftir að beturbæta:
+Use case diagram
+Klára skrifa Compare your application textan
+
+Guðbjörg var byrjuð á Use Cases en þurfti að fara fyrr heim en stefnir á það að klára þau fyrir morgundaginn.
+Marteinn og Ágústa stefna á að setja upp Reportið og gera það fínt fyrir morgundaginn.
+
+Nýtt markmið morgundagsins:
+Framkvæma viðtöl/testing á wireframe týpunni okkar
+Fara fyrir og greina niðurstöður á prófunum
+Gera statistics á niðurstöðum prófanna.
+Klára fínpússun á Use case Diagram
+Klára Compare Textan sem er í section 4
+
+###############################################################################
+
+Þriðjudagurinn 25.apríl 2023
+
+Ritari: Marteinn Lundi 
+Mæting: Ágústa, Guðbjörg og Marteinn
+
+Fundurinn: 
+Allir mættir kl.09:00
+Í dag ætlum við að búa til templete fyrir viðtölin
+Einnig ætlum við að framkvæma 3 viðtöl/test
+Ætlum að greina niðurstöður og gera staticstcs
+Klára textan í section 4 um comparison on other applications 
+
+To-Do dagsins:
+Gera viðtala templete
+Framkvæma viðtöl
+Greina niðurstöður 
+Klára ókláraða texta í skýrslunni.
+
+Markmið morgundagsins:
+Vera búinn með allt til að nýta morgundaginn til að fínpússa. 
+
+Fundur í lok dags(recap):
+Við kláruðum allt sem við vorum búinn að plana að gera í dag.
+Við skoðuðum hvað var í grading í Desgin Reportinu og byrjuðum að gera lista yfir hluti til að kynna okkur.
+Það var einnig gerð figma prototypa í dag fyrir design reportið.
+
+###############################################################################
+Miðvikudagurinn 26.apríl 2023
+
+Ritari: Marteinn Lundi 
+Mæting: Ágústa, Guðbjörg og Marteinn
+
+Fundurinn: 
+Allir mættir kl.09:00
+Allt requirement analysis er tilbúið og núna erum við bara að bíða eftir að byrja á design report
+Marteinn gerði intro fyrir myndbandið bara til að drepa tímann í gær.
+Það er búið að búa til figma prototypu og Guðbjörg er að fínpússa hana.
+Marteinn skissaði upp ER diagram fyrir hönnun á gagnagrunni til að drepa tímann.
+Ágústa byrjaði að gera klasarit.
+
+To-Do dagsins:
+Reyna að gera 40% af design report þegar við fáum verkefnalýsinguna.
+
+Markmið morgundagsins:
+Reyna fullklára verkefnið og fínpússa á föstudaginn.
+ 
+
+Fundur í lok dags(recap):
+í dag var lagfært allt sem þurfti að lagfæra í fyrra reportinu og því skilað inn.
+Það var klárað figma prototypan
+Það var klárað að skrifa programming rules
+Klárað að skrifa databbase design
+Klárað að skrifa interview og testin
+Klárað að skrifa happy path
+Skrifað alla digram textanna
+Teiknað öll flowchart
+Teiknað navigation chart
+
+###############################################################################
+Fimmtudagurinn 27.apríl 2023
+
+Ritari: Marteinn Lundi 
+Mæting: Ágústa, Guðbjörg og Marteinn
+
+Fundurinn: 
+Allir mættir kl.09:00
+Við náum að gera mjög mikið af design reportinu í gær svo eina sem er eftir er class diagram, database diagram, next steps og lokaorð.
+Guðbjörg ætlar að gera class diagram
+Marteinn database diagram
+Ágústa byrjaði að fínpússa skýrsluna og geta upp database.
+
+To-Do dagsins:
+Class diagram
+Database diagram
+Next steps 
+Lokaorð
+
+Markmið morgundagsins:
+Klára verkefnið og fínpússa á föstudaginn.
+ 
+
+Fundur í lok dags(recap):
+Allt klárað í design report.
+Förum í dæmatíma á morgun og spyrjum út í 
+Database design
+Class diagram
+Programming rules 
+Láta líka renna yfir skýrsluna okkar 
+Eftir það ætlum við að lagfæra það sem þarf og helst að skila fyrir klukkan 16.
+
+###############################################################################
+Föstudagurinn 28.apríl 2023
+
+Ritari: Marteinn Lundi 
+Mæting: Ágústa, Guðbjörg og Marteinn
+
+Fundurinn: 
+Allir mættir kl.09:00
+Fínpússað verkefnið og farið síðan í dæmatíma til að fá yfirferð.
+Planið að fara snemma heim
+
+To-Do dagsins:
+Fínpússa verkefnið
+Skila
+
+Markmið morgundagsins:
+Klára verkefnið og skila
+ 
+
+Fundur í lok dags(recap):
+Kl12 var búið að laga klasarit, gera nýtt navigation diagram, uppfært programming rules og gert error handeling 
+Finpússað og skilað inn snemma heim í bjór
+###############################################################################
+
+**Vika 2**
+Mánudagurinn 1.maí 2023
+
+Ritari: Marteinn Lundi 
+Mæting: Ágústa, Guðbjörg og Marteinn
+
+Fundurinn: 
+Frídagur verkalýðsins er ekki frídagur námsmanna og allir mættu kl.09:00 í dag
+Planið er að skipuleggja hvað þarf að forrita og hversu margar möppur og files þarf að hafa.
+Ætlum að setja allt upp með commenti hvað á að vera hvar. 
+
+To-Do dagsins:
+Setja upp öll env, setja upp allar möppur, setja upp django
+Vinna í HTML og CSS
+
+Markmið morgundagsins:
+Vera orðinn familiar við django vera langt kominn með HTML og CSS
+
+
+###############################################################################
+Þriðjudagurinn 2.maí 2023
+
+Ritari: Marteinn Lundi 
+Mæting: Ágústa, Guðbjörg og Marteinn
+
+Fundurinn: 
+Föttuðum að við settum upp gitið vitlaust í gær þannig byrjuðum aftur á 0 með uppsetningu.
+HTML kóðin er farin að sýna á sig góða mynd og CSS líka.
+Í dag verður ennþá reynt að klára HTML og jafnvel URL líka
+
+To-Do dagsins:
+Setja upp öll env, setja upp allar möppur, setja upp django
+Vinna í HTML og CSS og setja upp URL
+
+Markmið morgundagsins:
+
+
+
+###############################################################################
