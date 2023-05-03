@@ -26,10 +26,6 @@ def product_detail(request, product_id):
     pass
 
 
-# TODO: Show all offer items
-def offer(request):
-    pass
-
 # TODO: Add item to shopping cart from menu or offer
 def add_to_cart(request, product_id):
     pass
