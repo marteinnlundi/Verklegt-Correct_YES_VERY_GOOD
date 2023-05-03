@@ -1,7 +1,106 @@
-{% extends 'base.html' %}
-{% block content %}
-<div class="home">
-    <h2>Welcome to The Home Page</h2>
+{% extends 'base.html' %} {% block content %}
+<div class="home-screen-img">
+  <img
+    alt="pizzaneon"
+    src="https://aheioqhobo.cloudimg.io/v7/_playground-bucket-v2.teleporthq.io_/afb08ec6-7501-4143-b01d-8284720e4506/5e717bc6-1664-4af2-b60e-4fe1ff78932e?org_if_sml=1882371"
+    class="homepage1-pizza1"
+  />
+  <div class="order-now-container">
+    <a href="#" class="order-now">Order Now</a>
+  </div>
 </div>
-{% endblock %}
+<div class="best-offers">
+  <div class="best-offers-title">
+    <h1>Best Offers</h1>
+    </div>
+    <p class="best-offers-description">Check out our best offers</p>
+    <span class="best-offers-title"><span>Two for one</span></span>
+    <span class="best-offers-description"><span>Get two pizzas from the menu at the price of one</span></span>
+    <span class="best-offers-title"><span>Family style</span></span>
+    <span class="best-offers-description"><span>Two large pizzas of your choice</span>
+    <br>
+    <span class="best-offers-description">2L soda and a side of Garlic knots</span>
+  </div>
+</div>
+<img alt="pizza-icon" src="https://aheioqhobo.cloudimg.io/v7/_playground-bucket-v2.teleporthq.io_/afb08ec6-7501-4143-b01d-8284720e4506/5700d754-1833-48f0-aad4-6bd6246d4579?org_if_sml=128358" class="pizza-icon">
+<style>
+  .home-screen-img {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%%;
+    width: 100%:
+  }
 
+  .homepage1-pizza1 {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  .order-now-container {
+    position: absolute;
+    top: 418px;
+    left: 818px;
+    background-color: rgba(128, 128, 128, 0.5);
+    padding: 10px;
+  }
+
+  .order-now {
+    color: rgba(23, 189, 49, 0.699999988079071);
+    width: 279px;
+    height: auto;
+    font-size: 50px;
+    font-style: Regular;
+    text-align: left;
+    font-family: Ink Free;
+    font-weight: 400;
+    line-height: normal;
+    font-stretch: normal;
+    text-decoration: none;
+    border: rgba(23, 189, 49, 0.699999988079071);
+  }
+
+  .best-offers {
+      top: 228px;
+      left: 84px;
+      width: 473px;
+      height: 457px;
+      display: flex;
+      position: absolute;
+      align-items: flex-start;
+      flex-shrink: 1;
+      background-color: rgba(28, 29, 32, 0.800000011920929);
+  }
+
+  .best-offers-title {
+      color: rgba(23, 189, 49, 0.699999988079071);
+      font-size: 30px;
+      font-style: Regular;
+      text-align: left;
+      font-family: Ink Free;
+      font-weight: 400;
+      line-height: normal;
+      font-stretch: normal;
+  }
+
+  .best-offer-description {
+    color: rgba(255, 255, 255, 1);
+    font-size: 30px;
+    font-style: Regular;
+    text-align: center;
+    font-family: Ink Free;
+    font-weight: 400;
+    line-height: normal;
+    font-stretch: normal;
+  }
+
+  .pizza-icon {
+    top: 507px;
+    left: 1315.330078125px;
+    width: 249px;
+    height: 262px;
+    position: absolute;
+  }
+</style>
+{% endblock %}
