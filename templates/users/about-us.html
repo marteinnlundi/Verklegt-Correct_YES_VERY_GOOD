@@ -1,6 +1,33 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base.html' %} {% block content %} {% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/about-us.css' %}" />
+<script src="{% static 'js/about-us.js' %}"></script>
 <div class="about">
-    <h2>About Us Page</h2>
+  <h2 class="thelair">About The Lair</h2>
+  <div class="about-us">
+    <p class="about-ustxt">
+      Welcome to Pizza Lair where everyone is welcome! We are a family run
+      business who are passionate about creating a welcoming atmosphere where
+      all dietary preferences and restrictions are accommodated. At our pizza
+      place, we offer a variety of options for everyone, including those who
+      follow a vegan, gluten-free, or organic diet. Our pizzas are made from
+      scratch using only the freshest, highest quality ingredients.
+    </p>
+    <p class="about-ustxt">
+      We believe that pizza should be enjoyed by everyone, regardless of dietary
+      restrictions. That's why we have taken great care to create a menu that
+      caters to all tastes and preferences. Whether you are looking for a
+      classic margherita pizza or a vegan option with plant-based cheese, we've
+      got you covered. We also understand the importance of sustainability and
+      environmental responsibility, which is why we use eco-friendly packaging
+      and strive to source our ingredients locally whenever possible.
+    </p>
+  </div>
 </div>
+<img
+  alt="pizzaaa13851"
+  src="https://images.unsplash.com/photo-1558138838-76294be30005?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+  class="pizza-pic"
+/>
+
 {% endblock %}
