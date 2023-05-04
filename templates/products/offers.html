@@ -1,34 +1,31 @@
-{% extends 'base.html' %}
-{% block content %}
-{% load static %}
+{% extends 'base.html' %} {% block content %} {% load static %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'css/offers.css' %}" />
 <script src="{% static 'js/offers.js' %}"></script>
 
 <div class="offers">
-    <h2>The Pizza Lair offers</h2>
-    <div class="offer-container">
-    <div id="offer1" class ="offerclass"> 
-        <h3>Two for one</h3>
-        <span class="offerdescr"> Buy one get one free</span>
-        <span class="offerprice">£10.99</span>
-        <button id="order1" class="orderbutton">Order Now</button>
+  <h2>The Pizza Lair offers</h2>
+  <div class="offer-container">
+    <div id="offer1" class="offerclass">
+      <h3>Two for one</h3>
+      <span class="offerdescr"> Buy one get one free</span>
+      <span class="offerprice">£10.99</span>
+      <button id="order1" class="orderbutton">Order Now</button>
     </div>
-    <div id="offer2" class ="offerclass"> 
-        <h3>Family offer </h3>
-        <span class="offerdescr"> Buy one get one free</span>
-        <span class="offerprice">£10.99</span>
+    <div id="offer2" class="offerclass">
+      <h3>Family offer</h3>
+      <span class="offerdescr"> Buy one get one free</span>
+      <span class="offerprice">£10.99</span>
 
-        <button id ="order2" class="orderbutton">Order Now</button>
+      <button id="order2" class="orderbutton">Order Now</button>
     </div>
-    <div id="offer3" class ="offerclass"> 
-        <h3>Offer 3 </h3>
-        <span class="offerdescr"> Buy one get one free</span>
-        <span class="offerprice">£10.99</span>
+    <div id="offer3" class="offerclass">
+      <h3>Offer 3</h3>
+      <span class="offerdescr"> Buy one get one free</span>
+      <span class="offerprice">£10.99</span>
 
-        <button id="order3" class="orderbutton">Order Now</button>
+      <button id="order3" class="orderbutton">Order Now</button>
     </div>
-</div>
-
+  </div>
 </div>
 {% endblock %}
