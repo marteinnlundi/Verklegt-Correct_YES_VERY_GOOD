@@ -1,7 +1,6 @@
 from django.shortcuts import render
 
 
-# TODO: Show all menu items
 def menu(request):
     return render(request, 'products/menu.html')
 
@@ -11,28 +10,28 @@ def offers(request):
 
 
 
-# Create your views here.
+# # Create your views here.
 
-# TODO: Filter items on menu by type
-def filter_by_type(request):
-    pass
+# # TODO: Filter items on menu by type
+# def filter_by_type(request):
+#     pass
 
-# TODO: Search for item by name
-def search_by_name(request):
-    pass
+# # TODO: Search for item by name
+# def search_by_name(request):
+#     pass
 
-# TODO: Open detailed product display
-def product_detail(request, product_id):
-    pass
+# # TODO: Open detailed product display
+# def product_detail(request, product_id):
+#     pass
 
 
-# TODO: Add item to shopping cart from menu or offer
-def add_to_cart(request, product_id):
-    pass
+# # TODO: Add item to shopping cart from menu or offer
+# def add_to_cart(request, product_id):
+#     pass
 
-# TODO: Add menu items to offer
-def add_menu_to_offer(request):
-    pass
+# # TODO: Add menu items to offer
+# def add_menu_to_offer(request):
+#     pass
 
 
 # Filter Items on Menu by Type

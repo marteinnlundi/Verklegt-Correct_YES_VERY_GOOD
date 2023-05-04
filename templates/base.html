@@ -2,24 +2,18 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pizza Liar</title>
     <link rel="stylesheet" href="{% static 'css/main.css' %}" />
-</head>
-<body>
-    <div class="base-container">
-        {% include 'banner_container.html' %}
-    </div>
-        {% block content %}
-        {% endblock %}
+    <script defer src="{% static 'js/main.js' %}"></script>
+  </head>
+  <body>
+    <div>{% include 'banner_container.html' %}</div>
+    <div class="body-container">{% block content %} {% endblock %}</div>
 
-
-    <div class="footer">
-        {% include 'footer.html' %}
-    </div>
-
-</body>
+    <div class="footer">{% include 'footer.html' %}</div>
+  </body>
 </html>

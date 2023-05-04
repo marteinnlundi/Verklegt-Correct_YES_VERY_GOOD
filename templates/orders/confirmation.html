@@ -1,0 +1,34 @@
+{% extends 'base.html' %} {% block content %} {% load static %}
+
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/confiramtion-cart.css' %}"
+/>
+<body>
+  <div class="confirmation-container">
+    <div class="order-summary-box">
+      <span class="order-summary"><span>Order summary</span></span>
+    </div>
+
+    <div class="order-text-box">
+      <span class="order-text">
+        <span>
+          <span>1x medium Green Monster .......40,0$</span>
+          <br />
+          <span>1x 2L coca-cola ..................................8,00$</span>
+          <br />
+          <span></span>
+          <br />
+          <span>total: 48.00$</span>
+        </span>
+      </span>
+    </div>
+
+    <div class="food-ready-box">
+      <span class="food-ready"><span>Food Ready at: 12:00 PM</span></span>
+    </div>
+  </div>
+</body>
+
+{% endblock %}

@@ -1,4 +1,13 @@
 asgiref==3.6.0
+autopep8==2.0.2
+colorama==0.4.6
 Django==4.2
+numpy==1.24.2
+Pillow==9.5.0
+psycopg2-binary==2.9.6
+pycodestyle==2.10.0
+pyfiglet==0.8.post1
 sqlparse==0.4.4
+tomli==2.0.1
 tzdata==2023.3
+windows-curses==2.3.1

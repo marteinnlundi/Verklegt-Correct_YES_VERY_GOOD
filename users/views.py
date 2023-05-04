@@ -9,3 +9,4 @@ def about(request):
 
 def profiles(request):
     return render(request, 'users/profiles.html')
+

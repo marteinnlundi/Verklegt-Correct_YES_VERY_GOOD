@@ -1,6 +1,33 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base.html' %} {% block content %} {% load static %}
+
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/shopping-cart.css' %}"
+/>
 <div class="cart">
-    <h2>Shopping cart</h2>
+  <div class="my-cart">My Cart</div>
+  <div class="cart-border" <div class="cart-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Item Name</th>
+          <th>Price</th>
+          <th>Quantity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Cart items go here -->
+      </tbody>
+    </table>
+  </div>
+  <div class="cart-summary">
+    <p>Total: <span id="cart-total">$0.00</span></p>
+    <button id="clear-cart-btn">Clear cart</button>
+    <div class="checkout-btn">
+      <button class="checkout-btn-text">Go to Checkout</button>
+    </div>
+  </div>
 </div>
+
 {% endblock %}

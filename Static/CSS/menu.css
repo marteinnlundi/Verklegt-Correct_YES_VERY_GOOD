@@ -1,0 +1,94 @@
+body {
+  background-color: rgb(0, 0, 0);
+}
+
+#menuHeading {
+color: rgba(23, 189, 49, 0.699999988079071);
+font-family: Ink Free;
+font-size: 70px;
+font-weight: bold;
+display: flex;
+justify-content: center;
+padding-top: 50px;
+padding-bottom: 50px;
+}
+
+.heading {
+color: rgba(23, 189, 49, 0.699999988079071);
+font-family: Ink Free;
+font-size: 60px;
+font-weight: bold;
+padding-left: 70px;
+border-bottom: #17bd30 solid 2px;
+}
+
+.Item {
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+border: 1px solid black;
+color: white;
+padding-left: 80px;
+padding-right: 80px;
+}
+
+.Item .item {
+width: calc(33.33% - 10px);
+padding: 30px;
+}
+
+.Item .name {
+font-weight: bold;
+font-family: Ink Free;
+font-size: 40px;
+padding-bottom: 20px;
+}
+
+.Item .description {
+text-align: justify;
+font-family: Ink Free;
+font-size: 25px;
+}
+
+form {
+margin-left: 110px;
+width: 600px;
+height: 60x;
+border: solid 2px #17bd31;
+border-radius: 10px;
+display:flex;
+flex-direction:row;
+align-items:center;
+}
+
+input {
+all: unset;
+font-family: Ink Free;
+font-size: 35px;
+color: white;
+height: 100%;
+width: 100%;
+padding: 6px 10px;
+}
+
+::placeholder {
+color: #fff;
+opacity: 0.7; 
+}
+
+svg {
+color: #fff;
+fill: currentColor;
+width: 40px;
+height: 40px;
+padding-right: 10px;
+
+box-sizing: content-box;
+}
+
+button {
+all: unset;
+cursor: pointer;
+width: 44px;
+height: 50px;
+}

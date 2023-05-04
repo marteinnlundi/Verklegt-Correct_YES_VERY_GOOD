@@ -1,6 +1,22 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base.html' %} {% block content %} {% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/profiles.css' %}" />
 <div class="profiles">
-    <h2>Profile Page</h2>
+  <div class="profile-container">
+    <img
+      alt="profilepicture"
+      src="https://images.unsplash.com/photo-1517849845537-4d257902454a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+      class="profile-pic"
+    />
+    <p class="name">name</p>
+    <button class="edit-profile">Edit Profile</button>
+  </div>
+
+  <div class="my-orders">
+    <h2>My Orders</h2>
+    <p>some data</p>
+    <p>moredata</p>
+  </div>
 </div>
+
 {% endblock %}

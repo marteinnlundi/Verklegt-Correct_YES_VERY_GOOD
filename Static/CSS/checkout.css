@@ -1,0 +1,97 @@
+
+  .checkout-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 60px;
+  }
+
+  .left-box {
+    width: 40%;
+  }
+
+  .right-box {
+    width: 50%;
+    border: 2px solid green;
+    border-radius: 10px;
+    padding: 20px;
+  }
+
+  h2 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: rgba(23, 189, 49, 0.7);
+    font-family: "Ink Free", sans-serif;
+    font-weight: normal;
+    text-align: center;
+  }
+
+  h1 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: rgba(23, 189, 49, 0.7);
+    font-family: "Ink Free", sans-serif;
+    font-weight: normal;
+    text-align: center;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  input {
+    margin-bottom: 10px;
+    padding: 5px;
+    border-radius: 50px;
+    border: 1px solid white;
+    background: black;
+    height: 25px; /* Reduce the height */
+    width: 100%;
+    color: white;
+  }
+
+  label {
+    font-weight: bold;
+    font-size: 1.2rem; /* Increase the font size */
+    color: rgba(23, 189, 49, 0.7);
+    margin-bottom: 5px;
+    font-family: "Ink Free", sans-serif;
+  }
+
+  .pay-at-pickup {
+    margin-top: 10px;
+  }
+
+  .confirm-button {
+    border: 2px solid green;
+    border-radius: 20px;
+    padding: 10px 20px;
+    background-color: white;
+    font-weight: bold;
+    margin-top: 20px;
+    cursor: pointer;
+  }
+
+  .confirm-button:hover {
+    background-color: green;
+    color: white;
+  }
+
+  /* Additional styles for improved layout */
+
+  form > * {
+    margin-bottom: 15px;
+  }
+
+  .left-box form label,
+  .right-box form label {
+    display: inline-block;
+    width: 40%; /* Set label width to 40% */
+    text-align: right;
+    margin-right: 20px;
+  }
+
+  .left-box form input,
+  .right-box form input {
+    width: 60%; /* Set input field width to 60% */
+  }

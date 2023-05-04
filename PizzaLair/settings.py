@@ -61,6 +61,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'templates'),]
+        
         ,
         'APP_DIRS': True,
         'OPTIONS': {
@@ -82,8 +83,12 @@ WSGI_APPLICATION = 'PizzaLair.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycop2',
+        'NAME': 'pizzalair-db',
+        'USER': 'pizzalair-db-user',
+        'PASSWORD': 'Abc-12345',
+        'HOST': '35.224.157.67',
+        'PORT': '5432'
     }
 }
 
