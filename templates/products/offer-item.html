@@ -1,11 +1,14 @@
-{% extends 'base.html' %}
-{% block content %}
-<div class="offeritem">
-    <h1 id="name-offer">{ offer.name }</h1>
+{% extends 'base.html' %} {% block content %} {% load static %}
 
-    <button id="small" class="orderbutton">Small</button>
-    <button id="medium" class="orderbutton">Medium</button>
-    <button id="large" class="orderbutton">Large</button>
-    
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/offer_item.css' %}"
+/>
+<div class="offeritem">
+  <h1 class="name-offer" id="name-offer">{ offer.name }</h1>
+
+  <button class="orderbutton" id="orderbutton">Order Now</button>
 </div>
+
 {% endblock %}

@@ -1,39 +1,37 @@
-html, body {
-  overflow: visible;
-  line-height: 1.15;
-  margin: 0;
+html {
+  height: 100%;
+  background-color: transparent;
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: solid;
 }
 
 * {
   box-sizing: border-box;
   border-width: 0;
   border-style: solid;
-  }
-
-html {
-  height: 100%;
 }
 
 body {
   position: relative;
   min-height: 100%;
-  background-color: black;
+  margin: 0;
+  padding: 0; 
 }
 
 .banner-container {
   position: fixed;
   width: 100%;
+  top: 0;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   flex-wrap: wrap;
-  top: 0px;
-  padding-top: 10px;
+  padding-top: 3px;
   padding-bottom: 10px;
-  background-color: black;
-  z-index: 1; /* Make sure the banner container stays on top of other elements */
-  border-bottom: rgba(23, 189, 49, 0.699999988079071) solid 2px; /* Add a border to the bottom of the banner container */
-
+  z-index: 1; 
+  background-color: #000000;
+  border-bottom: rgba(23, 189, 49, 0.699999988079071) solid 2px; 
 }
 
 .banner-container > div {
@@ -45,11 +43,10 @@ body {
 }
 
 .body-container {
-  background-color: black;
+  background-color: transparent;
   padding-top: 140px; /* Set the top margin of the body content to be equal to the height of the banner container */
   padding-bottom: 140px;
 }
-
 
 .footer {
   position: absolute;
@@ -62,7 +59,6 @@ body {
   align-items: center;
 }
 
-
 .pizza-lairtext {
   color: rgba(255, 255, 255, 1);
   font-size: 90px;
@@ -70,7 +66,6 @@ body {
   font-weight: 400;
   white-space: nowrap;
 }
-
 
 .bannerText {
   color: rgba(23, 189, 49, 0.699999988079071);

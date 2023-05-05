@@ -3,9 +3,10 @@
 <link
   rel="stylesheet"
   type="text/css"
-  href="{% static 'css/shopping-cart.css' %}"
+  href="{% static 'css/cart.css' %}"
 />
-<div class="cart">
+
+  <div class="cart">
   <div class="my-cart">My Cart</div>
   <div class="cart-border"  class="cart-container">
     <table>
@@ -24,10 +25,15 @@
   <div class="cart-summary">
     <p>Total: <span id="cart-total">$0.00</span></p>
     <button id="clear-cart-btn">Clear cart</button>
-    <div class="checkout-btn">
-      <button class="checkout-btn-text">Go to Checkout</button>
+    
     </div>
+  
+      <a href="{% url 'checkout' %}" >
+        <button id="checkout-btn" class="checkout-btn">Checkout</button>
+      </a>
+    
   </div>
 </div>
+
 
 {% endblock %}

@@ -1,21 +1,19 @@
+html {
+  background-color: black;
+}
 
-  .checkout-container {
+.checkout-container {
     display: flex;
-    justify-content: space-between;
-    margin-top: 60px;
+    background-color: black;
+    margin: 60px auto;
+    width: 800px;
+    background-color: black;
+    margin:50px auto;
+    justify-content: center;
+    align-items: center;
+    top:50%;
   }
-
-  .left-box {
-    width: 40%;
-  }
-
-  .right-box {
-    width: 50%;
-    border: 2px solid green;
-    border-radius: 10px;
-    padding: 20px;
-  }
-
+ 
   h2 {
     margin-bottom: 20px;
     font-size: 2rem;
@@ -37,17 +35,24 @@
   form {
     display: flex;
     flex-direction: column;
+    
   }
 
-  input {
+  input{
     margin-bottom: 10px;
     padding: 5px;
     border-radius: 50px;
     border: 1px solid white;
     background: black;
-    height: 25px; /* Reduce the height */
+    height: 25px; 
     width: 100%;
     color: white;
+    transition: background-color 0.3s ease;
+    margin-bottom:20px;
+  }
+
+  #pay-at-pickup {
+    margin-top: 10px;
   }
 
   label {
@@ -56,6 +61,7 @@
     color: rgba(23, 189, 49, 0.7);
     margin-bottom: 5px;
     font-family: "Ink Free", sans-serif;
+    margin-bottom:20px;
   }
 
   .pay-at-pickup {
@@ -66,32 +72,27 @@
     border: 2px solid green;
     border-radius: 20px;
     padding: 10px 20px;
-    background-color: white;
+    background-color: black;
+    color: green;
     font-weight: bold;
-    margin-top: 20px;
+    bottom:10px;
     cursor: pointer;
   }
 
+
   .confirm-button:hover {
-    background-color: green;
     color: white;
+    background-color: green;
   }
 
-  /* Additional styles for improved layout */
 
-  form > * {
-    margin-bottom: 15px;
+  .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 100px;
   }
-
-  .left-box form label,
-  .right-box form label {
-    display: inline-block;
-    width: 40%; /* Set label width to 40% */
-    text-align: right;
-    margin-right: 20px;
-  }
-
-  .left-box form input,
-  .right-box form input {
-    width: 60%; /* Set input field width to 60% */
+  
+  .col {
+    flex: 1;
   }

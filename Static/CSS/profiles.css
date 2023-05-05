@@ -1,4 +1,10 @@
 
+html {
+    background-color: black;
+}
+.profiles {
+    background-color: black;
+}
 .profile-pic {
     width: 250px;
     height: 250px;
