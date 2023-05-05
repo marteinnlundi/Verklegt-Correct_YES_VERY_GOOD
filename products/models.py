@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 class Products(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
-    images = models.ImageField(upload_to='product_images')
+    images = models.ImageField(upload_to='product_images', max_length=999)
     price = models.DecimalField(max_digits=6, decimal_places=2)
 
 class Offer(models.Model):

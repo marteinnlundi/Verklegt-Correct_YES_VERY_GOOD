@@ -1,6 +1,6 @@
 from django.db import models
 
-class User(models.Model):
+class Profile(models.Model):
     name = models.CharField(max_length=100)
     img = models.ImageField(upload_to='user_images')
     email = models.EmailField()
