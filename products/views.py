@@ -1,11 +1,19 @@
 from django.shortcuts import render
 
+def menu_view(request):
+    return render(request, 'menu.html')
 
-def menu(request):
-    return render(request, 'products/menu.html')
+def menu_item_view(request):
+    return render(request, 'menu-item.html')
 
-def offers(request):
-    return render(request, 'products/offers.html')
+def offer_view(request):
+    return render(request, 'offers.html')
+
+def offer_item_view(request):
+    return render(request, 'offer-item.html')
+
+
+
 
 
 

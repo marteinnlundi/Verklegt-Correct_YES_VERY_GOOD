@@ -1,11 +1,12 @@
 from django.urls import path
 from . import views
 
-# admin localhost:8000/admin
-
 urlpatterns = [
-    path('', views.home, name="home"),
-    path('home/', views.home, name="home"),
-    path('about/', views.about, name="about"),
-    path('profiles/', views.profiles, name="profiles"),
+    
+    path('', views.home_view, name='home'),
+    path('about', views.about_view, name='about'),
+    path('myprofile', views.myprofile_view, name='myprofile'),
+    path('edit_profile', views.edit_profile_view, name='edit_profile'),
+    path('login', views.login_view, name='login'),
+    path('signin', views.signin_view, name='signin'),
 ]

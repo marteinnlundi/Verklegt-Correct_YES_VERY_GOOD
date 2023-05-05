@@ -1,12 +1,23 @@
 from django.shortcuts import render
 
-# Create your views here.
-def home(request):
-    return render(request, 'users/home.html')
 
-def about(request):
-    return render(request, 'users/about-us.html')
+def index_view(request):
+    return render(request, 'index.html')
 
-def profiles(request):
-    return render(request, 'users/profiles.html')
+def home_view(request):
+    return render(request, 'home.html')
 
+def about_view(request):
+    return render(request, 'about.html')
+
+def myprofile_view(request):
+    return render(request, 'myprofile.html')
+
+def edit_profile_view(request):
+    return render(request, 'edit_profile.html')
+
+def login_view(request):
+    return render(request, 'login.html')
+
+def signin_view(request):
+    return render(request, 'signin.html')

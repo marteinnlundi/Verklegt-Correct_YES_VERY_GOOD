@@ -1,0 +1,33 @@
+{% extends 'base.html' %} 
+{% block content %} 
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/menu_item.css' %}" />
+<script defer src="{% static 'js/menu_item.js' %}"></script>
+
+<div class="pizza-container">
+    <div class="pizza-image"></div>
+    <div class="pizza-details">
+      <h1 class="pizza-name">Margherita</h1>
+      <div class="pizza-description">A classic pizza topped with fresh tomato sauce, mozzarella cheese, and basil leaves.</div>
+      <div class="pizza-options">
+        <div class="pizza-size">
+          <button class="size-btn">Small</button>
+          <button class="size-btn">Medium</button>
+          <button class="size-btn">Large</button>
+        </div>
+        <div class="pizza-quantity">
+          <input type="number" class="quantity-input" value="1">
+          <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+
+
+
+{% endblock %}

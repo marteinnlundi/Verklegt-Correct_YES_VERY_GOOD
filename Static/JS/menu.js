@@ -1,10 +1,10 @@
 let dataPizzaItems = [
-  {name: "The Green Monster", description: " Spinach, roasted garlic, artichoke hearts, sliced mushrooms, sliced red onion, and mozzarella cheese on a whole wheat crust. (Vegetarian, Vegan, Gluten-Free)"},
-  {name: "The Big Kahuna", description: "Grilled pineapple, smoked ham, red onion, and mozzarella cheese on a tomato sauce base. (Vegetarian option: substitute ham with grilled tofu) (Vegan option: substitute cheese with vegan cheese) (Gluten-Free)"},
-  {name: "The Garden of Eden", description: "Roasted red pepper, sliced zucchini, caramelized onion, black olives, fresh basil, and mozzarella cheese on a tomato sauce base. (Vegetarian, Vegan option: substitute cheese with vegan cheese) (Gluten-Free)"},
-  {name: "The Meat Lovers", description: "Pepperoni, Italian sausage, bacon, ground beef, and mozzarella cheese on a tomato sauce base. (Vegetarian option: substitute meat with Impossible Meat) (Vegan option: substitute meat with vegan meat, substitute cheese with vegan cheese) (Gluten-Free)"},
-  {name: "The Margherita", description: "Fresh mozzarella cheese, sliced roma tomatoes, and fresh basil on a tomato sauce base. (Vegetarian, Vegan option: substitute cheese with vegan cheese) (Gluten-Free)"},
-  {name: "The BBQ Chicken", description: "Grilled chicken, red onion, and mozzarella cheese on a BBQ sauce base. (Vegetarian option: substitute chicken with grilled tofu) (Vegan option: substitute chicken with vegan chicken, substitute cheese with vegan cheese) (Gluten-Free)"},
+  {name: "The Green Monster", description: " Spinach, roasted garlic, artichoke hearts, sliced mushrooms, sliced red onion, and mozzarella cheese on a whole wheat crust.", diatery: " (Vegetarian, Vegan, Gluten-Free)"},
+  {name: "The Big Kahuna", description: "Grilled pineapple, smoked ham, red onion, and mozzarella cheese on a tomato sauce base.", diatery: " (Vegetarian option: substitute ham with grilled tofu) (Vegan option: substitute cheese with vegan cheese) (Gluten-Free)"},
+  {name: "The Garden of Eden", description: "Roasted red pepper, sliced zucchini, caramelized onion, black olives, fresh basil, and mozzarella cheese on a tomato sauce base.", diatery: "(Vegetarian, Vegan option: substitute cheese with vegan cheese) (Gluten-Free)"},
+  {name: "The Meat Lovers", description: "Pepperoni, Italian sausage, bacon, ground beef, and mozzarella cheese on a tomato sauce base.", diatery: "(Vegetarian option: substitute meat with Impossible Meat) (Vegan option: substitute meat with vegan meat, substitute cheese with vegan cheese) (Gluten-Free)"},
+  {name: "The Margherita", description: "Fresh mozzarella cheese, sliced roma tomatoes, and fresh basil on a tomato sauce base.", diatery: "diatery:(Vegetarian, Vegan option: substitute cheese with vegan cheese) (Gluten-Free)"},
+  {name: "The BBQ Chicken", description: "Grilled chicken, red onion, and mozzarella cheese on a BBQ sauce base.", diatery: "(Vegetarian option: substitute chicken with grilled tofu) (Vegan option: substitute chicken with vegan chicken, substitute cheese with vegan cheese) (Gluten-Free)"},
 ];
 
 let dataKidsPizzaItems = [
@@ -72,4 +72,6 @@ win.focus();
 }
 
 f.addEventListener('submit', submitted);
+
+
 

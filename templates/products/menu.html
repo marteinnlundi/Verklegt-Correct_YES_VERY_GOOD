@@ -1,4 +1,6 @@
-{% extends 'base.html' %} {% block content %} {% load static %}
+{% extends 'base.html' %} 
+{% block content %} 
+{% load static %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'css/menu.css' %}" />
 <script defer src="{% static 'js/menu.js' %}"></script>
@@ -25,7 +27,7 @@
 <div class="filter">filter</div>
 <div class="crust">sizes / prices</div>
 
-<div class="bla">
+<div>
   <div class="heading">Pizza</div>
   <div id="pizzaItems" class="Item"></div>
   <div class="heading">Kids Pizza</div>
@@ -34,6 +36,10 @@
   <div id="sidesItems" class="Item"></div>
   <div class="heading">Drinks</div>
   <div id="drinksItems" class="Item"></div>
+</div>
+
+<div>
+  <a href="{% url 'menuItem' %}" >Menu Item</a>
 </div>
 
 {% endblock %}

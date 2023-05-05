@@ -1,12 +1,10 @@
 from django.shortcuts import render
 
-# orders = [
-#     { 'id': 1, 'name': 'Pepperoni Pizza', 'price': 10.99 },
-#     { 'id': 2, 'name': 'Cheese Pizza', 'price': 9.99 },
-#     { 'id': 3, 'name': 'Veggie Pizza', 'price': 11.99 },
-# ]
+def cart_view(request):
+    return render(request, 'cart.html')
 
-# Create your views here.
+def checkout_view(request):
+    return render(request, 'checkout.html')
 
-def cart(request):
-    return render(request, 'orders/cart.html')
+def confirmation_view(request):
+    return render(request, 'confirmation.html')

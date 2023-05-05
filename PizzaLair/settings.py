@@ -60,8 +60,10 @@ ROOT_URLCONF = 'PizzaLair.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates'),]
-        
+        'DIRS': [os.path.join(BASE_DIR, 'templates'),
+                os.path.join(BASE_DIR, 'templates/users'),
+                os.path.join(BASE_DIR, 'templates/products'),
+                os.path.join(BASE_DIR, 'templates/orders'),] 
         ,
         'APP_DIRS': True,
         'OPTIONS': {
@@ -74,6 +76,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'PizzaLair.wsgi.application'
 
