@@ -1,8 +1,8 @@
-from django.db import models
+from django.db import models 
 
 from django.contrib.auth.models import User
-from django.contrib.auth.models import Products
-
+#from django.contrib.auth.models import Products 
+from products.models import Products
 class BillingInfo(models.Model):
     full_name = models.CharField(max_length=100)
     address = models.CharField(max_length=100)
@@ -19,5 +19,5 @@ class PaymentInfo(models.Model):
 
 class UserOrder(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    product = models.ForeignKey(Products, on_delete=models.CASCADE)
     order_id = models.CharField(max_length=100)
