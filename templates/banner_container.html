@@ -22,9 +22,14 @@
     <div>
       <a href="{% url 'myprofile' %}" class="bannerText">My Profile</a>
     </div>
+  
   {% else %}
     <div>
-      <a href="{% url 'signin' %}" class="bannerText">Signup</a>
+      <a href="{% url 'signin' %}" class="bannerText">Register</a>
+    </div>
+
+    <div>
+      <a href="{% url 'login' %}" class="bannerText">Login</a>
     </div>
   {% endif %}
 

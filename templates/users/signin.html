@@ -4,6 +4,7 @@
 
 <link rel="stylesheet" type="text/css" href="{% static 'css/signin.css' %}" />
 <script defer src="{% static 'js/users.js' %}"></script>
+
 <div class ="signup">
 <form method="POST">
   {% csrf_token %}
@@ -13,8 +14,16 @@
   <div class ="signup-signup">
   <button type="submit">Sign Up</button>
   </div>
+  
 </form>
+<div class="login-redirect">
+  <p class="sub-login">Already have an account?</p>
+<a href="/users/login">
+  <button class="login-redirect-btn" id="login-redirect">Log In</button>
+</a>
 </div>
+</div>
+
 
 
 {% endblock %}

@@ -12,8 +12,16 @@
     />
     <h2 class="name">{{ user.username}}</h2>
     
-    <a href="{% url 'edit_profile' %}" class="edit-profile">Edit Profile</a>
-    <a href ="{% url 'logout' %}" class="logout">Logout</a>
+    
+    <a href="{% url 'edit_profile' %}" >
+      <button class="edit-profile-btn">Edit Profile</button>
+    </a>
+  
+
+
+    <a href ="{% url 'logout' %}" class="logout">
+      <button class="logout-btn">Log Out</button>
+    </a>
   </div>
 
   <div class="my-orders">

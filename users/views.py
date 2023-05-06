@@ -5,7 +5,8 @@ from django.contrib.auth.forms import UserCreationForm
 
 #  register form 
 def signin_view(request):
-       
+    if request.user.id:
+        return redirect('/')
     if request.method == 'POST':
         form = UserCreationForm(data=request.POST)
         if form.is_valid():
@@ -14,6 +15,8 @@ def signin_view(request):
     return render(request, 'users/signin.html', {
         'form': UserCreationForm(),   
     })
+
+
 
 
 def login_view(request):
@@ -37,14 +40,18 @@ from django.contrib import messages
 from .models import Profile
 from .form.profile_form import UserProfileForm
 
+
+#  skoða betur 
 def edit_profile_view(request):
     if request.method == 'POST':
         form = UserProfileForm(request.POST, request.FILES, instance=request.user.profile)
         if form.is_valid():
-            form.save()
+            profile = form.save(commit=False)
+            if 'img' in request.FILES:
+                profile.img = request.FILES['img']
+            profile.save()
             messages.success(request, f'Your account has been updated!')
             return redirect('/users/myprofile')
     else:
         form = UserProfileForm(instance=request.user.profile)
     return render(request, 'users/edit_profile.html', {'form': form})
-

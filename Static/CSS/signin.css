@@ -23,14 +23,18 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center;
+    border: solid;
+    padding:40px;
+     box-shadow: 10px 10px 5px 0px rgba(87, 85, 85, 0.75);
     
 }
 
 label {
     margin-top: 10px;
-    font-size: 18px;
-    
+    font-size: 24px;
+    font-family: ink free;
     text-align: right;
+    color:green;
 }
 
 input, select {
@@ -72,13 +76,51 @@ button[type="submit"] {
     background-position: center;
     background-size: 50%;
     background-repeat: no-repeat;
-    position: absolute;
     bottom: 20px;
     right: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
+.login-redirect {
+    font-size: 24px;
+    font-family: "ink free";
+    color: white;
+    margin-top: 20px;
+    
+}
+
+.helptext {
+    font-size: 18px;
+    font-family: "ink free";
+    color: white;
+    margin-top: 20px;
+    text-align: left;
+}
+.login-redirect-btn{
+    background: none;
+    border: solid;
+    border-color: rgba(23, 189, 49, 0.7);
+    border-radius: 50px;
+    color: white;
+    font-size: 24px;
+    font-family: "ink free";
+    opacity: 0.8;
+    width: 200px;
+
+}
+
+.login-redirect-btn:hover {
+    background-color: #3e8e41;
+}
+
+p.sub-login {
+    font-size: 24px;
+    font-family: "ink free";
+    color: white;
+}
+
 
 .signup-signup button {
     background: none;
