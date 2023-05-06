@@ -5,6 +5,7 @@ html {
 .profiles {
     background-color: black;
 }
+
 .profile-pic {
     width: 250px;
     height: 250px;
@@ -16,14 +17,15 @@ html {
     
 }
 
-.name {
+h2.name {
     color:white;
-    font-size: 24px;
+    font-size: 50px;
     margin-bottom: 100px;
     font-family: Ink Free;
-    font-size: 35px;
-   
+
 }
+
+
 
 .edit-profile {
     width: 200px;
@@ -38,6 +40,14 @@ html {
 
 }
 
+.edit-profile:hover {
+    border-style: solid;
+    border-color: rgba(23, 189, 49, 0.699999988079071);
+    border-width: 1px;
+    background-color: rgba(23, 189, 49, 0.75);
+    color: white;
+}
+
 .profiles {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -50,6 +60,7 @@ html {
     display: flex;
     flex-direction: column;
     align-items: center;
+    
 }
 
 .my-orders {

@@ -1,20 +1,20 @@
-{% extends 'base.html' %} {% block content %} {% load static %}
+{% extends 'base.html' %}
+ {% block content %}
+  {% load static %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}" />
-
 <div class="login">
-  <div class="login-input-wrapper">
-    <h2 class="login-info">Name:</h2>
-    <input type="text" class="login-input" />
+  <div class="login-input-wrapper"></div>
+<form method = "POST" class="form-form-horizontal">
+{% csrf_token %}
+{{ form}}
 
-    <h2 class="login-info">Password:</h2>
-    <input type="password" class="login-input" />
-  </div>
-
-  <div class="login-sigup">
-    <button class="login-button">Log In</button>
-    <p>or</p>
-    <button class="login-button">Sign Up</button>
-  </div>
+<input type="submit" value="Log In" class="form-button" />
+</form>
 </div>
+</div>
+
 {% endblock content %}
+
+
+
