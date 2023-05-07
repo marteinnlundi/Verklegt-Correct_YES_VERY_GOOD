@@ -1,10 +1,13 @@
 
 html {
     background-color: black;
+    
 }
+
 .profiles {
     background-color: black;
 }
+
 .profile-pic {
     width: 250px;
     height: 250px;
@@ -16,16 +19,16 @@ html {
     
 }
 
-.name {
+h2.name {
     color:white;
-    font-size: 24px;
+    font-size: 50px;
     margin-bottom: 100px;
     font-family: Ink Free;
-    font-size: 35px;
-   
+
 }
 
-.edit-profile {
+
+.edit-profile-btn {
     width: 200px;
     height: 59px;
     border-color: rgba(23, 189, 49, 0.699999988079071);
@@ -36,6 +39,27 @@ html {
     background-color: black;
     justify-content: center;
 
+}
+
+.edit-profile-btn:hover {
+    border-style: solid;
+    border-color: rgba(23, 189, 49, 0.699999988079071);
+    border-width: 1px;
+    background-color: rgba(23, 189, 49, 0.75);
+    color: white;
+}
+
+.logout-btn {
+    margin-top : 20px;
+    width: 200px;
+    height: 59px;
+    border-color: red;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 50px;
+    color:white;  
+    background-color: black;
+    justify-content: center;
 }
 
 .profiles {
@@ -50,6 +74,7 @@ html {
     display: flex;
     flex-direction: column;
     align-items: center;
+    
 }
 
 .my-orders {
@@ -61,4 +86,6 @@ html {
     border-width: 1px;
     color:white;
     text-align: center;
+    box-shadow: 10px 10px 5px 0px rgba(16, 163, 48, 0.75);
+
 }
