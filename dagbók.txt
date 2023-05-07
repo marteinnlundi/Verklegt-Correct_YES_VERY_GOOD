@@ -189,9 +189,8 @@ Vinna í HTML og CSS
 
 Markmið morgundagsins:
 Vera orðinn familiar við django vera langt kominn með HTML og CSS
-
-
 ###############################################################################
+
 Þriðjudagurinn 2.maí 2023
 
 Ritari: Marteinn Lundi 
@@ -207,7 +206,152 @@ Setja upp öll env, setja upp allar möppur, setja upp django
 Vinna í HTML og CSS og setja upp URL
 
 Markmið morgundagsins:
+Vera kominn með flest allt HTML og css looking sexy
+###############################################################################
+
+Miðvikudagruinn 3.maí 2023
+
+Ritari: Marteinn Lundi 
+Mæting: Ágústa, Guðbjörg og Marteinn
+
+Fundurinn: 
+Annað git vesen og enduðum á því að eyða deginum að bera saman allt sem var á tölvunum okkar og sammeina það.
+Búið til nýtt git og náðum að keyra því gang.
+Allar url tengingar komnar á morgun verða þær yfirfarðar.
+
+To-Do dagsins:
+Laga Git
+Laga URl
+
+Markmið morgundagsins:
+Setja upp database og tengja hann
+###############################################################################
+
+Fimmtudagurinn 4.maí 2023
+
+Ritari: Marteinn Lundi 
+Mæting: Ágústa, Guðbjörg og Marteinn
+
+Fundurinn: 
+Dag var ekki náð að tengja databse en margt annað sem var gert sem tengist úrliti og virkni, notuðum bara dummy data því það var vesen að keyra databse í gang.
+
+To-Do dagsins:
+lagað útlit
+Bætt við virkni
+
+Markmið morgundagsins:
+Setja upp database og tengja hann
+###############################################################################
+
+Föstudagurinn 5.maí 2023
+
+Ritari: Marteinn Lundi 
+Mæting: Ágústa, Guðbjörg og Marteinn
+
+Fundurinn: 
+Allur dagurinn fór í að tengja database við verkefnið og það kom í lag seinni partinn.
+Búið til models og migrations
+
+To-Do dagsins:
+Græja gagnagrunn og það sem tengist honum.
+
+Markmið morgundagsins:
+Mæta um helgina og spíta í hann.
+###############################################################################
+
+Laugardagurinn 6.maí 2023
+
+Ritari: Marteinn Lundi 
+Mæting: Ágústa, Guðbjörg og Marteinn
+
+Fundurinn: 
+Núna verður breytt smá útliti til að þóknast databaseinu
+Tekið út dummy data og tengja gangagrunn.
+Checkout validation komið
+Log in komið
+Sign up komið
+
+To-Do dagsins:
+Kóða öll flæði í forritinu sem við komust í
+
+Markmið morgundagsins:
+Kóða öll flæði sem við komust í
+###############################################################################
+
+Sunnudagurinn 7.maí 2023
+
+Ritari: Marteinn Lundi 
+Mæting: Ágústa, Guðbjörg og Marteinn
+
+Fundurinn: 
+Unnið var áfram í því að tengja öll flæði og lagfæra útlit miðað við gögn.
+menu catalog komið
+menu item komið
+edit profile komið
 
 
+To-Do dagsins:
+Kóða öll flæði í forritinu sem við komust í
+
+
+Markmið morgundagsins:
+Offer item og offer þarf að klára 
+Add to cart og modify item 
+Search og filter
+###############################################################################
+
+**Vika 3**
+Mánudagurinn 8.maí 2023
+
+Ritari: Marteinn Lundi 
+Mæting: Ágústa, Guðbjörg og Marteinn
+
+Fundurinn: 
+To-Do dagsins:
+Markmið morgundagsins:
+###############################################################################
+
+
+Þriðjudagurinn 9.maí 2023
+
+Ritari: Marteinn Lundi 
+Mæting: Ágústa, Guðbjörg og Marteinn
+
+Fundurinn: 
+To-Do dagsins:
+Markmið morgundagsins:
+###############################################################################
+
+
+Miðvikudagurinn 10.maí 2023
+
+Ritari: Marteinn Lundi 
+Mæting: Ágústa, Guðbjörg og Marteinn
+
+Fundurinn: 
+To-Do dagsins:
+Markmið morgundagsins:
+###############################################################################
+
+
+Fimmtudagurinn 11.maí 2023
+
+Ritari: Marteinn Lundi 
+Mæting: Ágústa, Guðbjörg og Marteinn
+
+Fundurinn: 
+To-Do dagsins:
+Markmið morgundagsins:
+###############################################################################
+
+
+Föstudagurinn 12.maí 2023
+
+Ritari: Marteinn Lundi 
+Mæting: Ágústa, Guðbjörg og Marteinn
+
+Fundurinn: 
+To-Do dagsins:
+Markmið morgundagsins:
 
 ###############################################################################
