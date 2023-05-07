@@ -1,10 +1,17 @@
 from django.shortcuts import render
+from .models import Products
 
 def menu_view(request):
-    return render(request, 'menu.html')
+    products = Products.objects.all()
+    context = {'products': products}
+    return render(request, 'menu.html', context)
 
 def menu_item_view(request):
-    return render(request, 'menu-item.html')
+    product_id = request.GET.get('id')
+    product = Products.objects.get(id=product_id)
+    context = {'product': product}
+    return render(request, 'menu-item.html', context)
+
 
 def offer_view(request):
     return render(request, 'offers.html')
