@@ -21,9 +21,7 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
-
-    
+    text-align: center;   
 }
 
  
@@ -38,7 +36,6 @@ html {
     background-color: black;
     justify-content: center;
     margin-top: 20px;
-
 }
 
 .orderbutton:hover {
@@ -46,7 +43,6 @@ html {
     border-color: rgba(23, 189, 49, 0.699999988079071);
     border-width: 1px;
     background-color: rgba(23, 189, 49, 0.75);
-
 }
 
 .offerclass {
