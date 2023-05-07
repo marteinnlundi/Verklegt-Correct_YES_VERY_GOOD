@@ -4,31 +4,27 @@
 
 <link rel="stylesheet" type="text/css" href="{% static 'css/profiles.css' %}" />
 <div class="profiles">
-  <div class="profile-container">
-    <img
-      alt="profilepicture"
-      src="{{ user_profile.profile_picture.url }}"
-      class="profile-pic"
-    />
-    <h2 class="name">{{ user.username}}</h2>
-    
-    
-    <a href="{% url 'edit_profile' %}" >
-      <button class="edit-profile-btn">Edit Profile</button>
-    </a>
-  
-
-
-    <a href ="{% url 'logout' %}" class="logout">
-      <button class="logout-btn">Log Out</button>
-    </a>
-  </div>
+  <form method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <div class="profile-container">
+      <img alt="profilepicture" src="{{ user_profile.profile_picture.url }}" class="profile-pic" />
+      <h2 class="name">{{ user.username }}</h2>
+      <button type="submit" class="edit-btn">Edit Profile</button>
+     
+    </div>
+  </form>
 
   <div class="my-orders">
+
     <h2>My Orders</h2>
     <p>some data</p>
     <p>moredata</p>
   </div>
-</div>
 
+  <a href="{% url 'logout' %}?next={% url 'home' %}" class="logout">
+    <button type="submit" class="logout-btn">Logout</button>
+  </a>
+</div>
+</div>
 {% endblock %}

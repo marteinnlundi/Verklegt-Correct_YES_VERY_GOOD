@@ -63,9 +63,7 @@ input, select {
     border: 1px solid #ccc;
     border-radius: 50px;
     box-sizing: border-box;
-    background-color: black;
     transition: background-color 0.3s ease;
-    color:white;
 }
 
 .form-button {

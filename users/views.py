@@ -3,6 +3,10 @@ from django.shortcuts import render,redirect
 from django.shortcuts import render
 from django.contrib.auth.forms import UserCreationForm
 
+import logging
+logger = logging.getLogger(__name__)
+
+
 #  register form 
 def signin_view(request):
     if request.user.id:
@@ -12,6 +16,7 @@ def signin_view(request):
         if form.is_valid():
             form.save()
             return redirect('/users/login/')
+        logger.info('UserCreationForm is not valid')
     return render(request, 'users/signin.html', {
         'form': UserCreationForm(),   
     })
@@ -52,6 +57,10 @@ def edit_profile_view(request):
             profile.save()
             messages.success(request, f'Your account has been updated!')
             return redirect('/users/myprofile')
+        
     else:
         form = UserProfileForm(instance=request.user.profile)
     return render(request, 'users/edit_profile.html', {'form': form})
+
+
+

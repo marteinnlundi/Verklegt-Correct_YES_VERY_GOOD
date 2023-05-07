@@ -14,7 +14,18 @@
   <div class ="signup-signup">
   <button type="submit">Sign Up</button>
   </div>
-  
+  {% if form.errors %}
+    <div class="error-message">
+        <ul>
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
+
 </form>
 <div class="login-redirect">
   <p class="sub-login">Already have an account?</p>
