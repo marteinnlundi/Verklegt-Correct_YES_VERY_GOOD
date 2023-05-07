@@ -15,11 +15,11 @@ _How to Install and Run the Project:_
    cd pizza-lair
 3. Install the required dependencies:
    pip install -r requirements.txt
-4. Set up the database
+4. Set up the database:
    python manage.py migrate
-5. Run the server
+5. Run the server:
    python manage.py runserver
-6. Open the application in your browser at http://
+6. Open the application in your browser at: http://
 
 _How to Use the Project:_
 Pizza Lair is a user-friendly web application that can be used like any other website. Here are some basic instructions:
@@ -63,6 +63,7 @@ The project directory has the following structure:
     ├── manage.py
     └── requirements.txt
 ```
+*_Files:_* [...]
 
     pizza_lair/: the main project directory containing settings and configuration files.
     menu/: an app that handles pizza menu functionality, including displaying available pizzas and customizing orders.
@@ -81,7 +82,3 @@ Pizza Lair was created by:
     Marteinn Lundi Kjartansson - marteinnlundi
 
 Thank you for using Pizza Lair!
-
-```
-
-```
