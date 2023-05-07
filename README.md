@@ -30,40 +30,40 @@ Pizza Lair is a user-friendly web application that can be used like any other we
 _Project Structure:_
 The project directory has the following structure:
 
-    ```bash
+```bash
 
-pizza-lair/
-├── pizza_lair/
-│ ├── **init**.py
-│ ├── settings.py
-│ ├── urls.py
-│ └── wsgi.py
-├── menu/
-│ ├── migrations/
-│ ├── templates/
-│ ├── **init**.py
-│ ├── admin.py
-│ ├── apps.py
-│ ├── models.py
-│ ├── tests.py
-│ └── views.py
-├── orders/
-│ ├── migrations/
-│ ├── templates/
-│ ├── **init**.py
-│ ├── admin.py
-│ ├── apps.py
-│ ├── forms.py
-│ ├── models.py
-│ ├── tests.py
-│ └── views.py
-├── static/
-├── templates/
-├── db.sqlite3
-├── manage.py
-└── requirements.txt
-
+    pizza-lair/
+    ├── pizza_lair/
+    │ ├── **init**.py
+    │ ├── settings.py
+    │ ├── urls.py
+    │ └── wsgi.py
+    ├── menu/
+    │ ├── migrations/
+    │ ├── templates/
+    │ ├── **init**.py
+    │ ├── admin.py
+    │ ├── apps.py
+    │ ├── models.py
+    │ ├── tests.py
+    │ └── views.py
+    ├── orders/
+    │ ├── migrations/
+    │ ├── templates/
+    │ ├── **init**.py
+    │ ├── admin.py
+    │ ├── apps.py
+    │ ├── forms.py
+    │ ├── models.py
+    │ ├── tests.py
+    │ └── views.py
+    ├── static/
+    ├── templates/
+    ├── db.sqlite3
+    ├── manage.py
+    └── requirements.txt
 ```
+
     pizza_lair/: the main project directory containing settings and configuration files.
     menu/: an app that handles pizza menu functionality, including displaying available pizzas and customizing orders.
     orders/: an app that handles order processing, including submitting orders and displaying order history.
@@ -81,4 +81,7 @@ Pizza Lair was created by:
     Marteinn Lundi Kjartansson - marteinnlundi
 
 Thank you for using Pizza Lair!
+
+```
+
 ```
