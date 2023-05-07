@@ -1,41 +1,29 @@
-{% extends 'base.html' %} 
-{% block content %} 
-{% load static %}
+{% extends 'base.html' %} {% block content %} {% load static %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'css/menu_item.css' %}" />
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/menu_item.css' %}"
+/>
 <script defer src="{% static 'js/menu_item.js' %}"></script>
-
-<div class="body">
-    <div class="gridContainerMenuItem">
-        <div class="grid-child div1">
-            <div class="innerContainer">
-                <p class="itemName text">The Green Monster</p>
-                <p class="text">Our signature pizza, with a pesto base, topped with spinach, broccoli, and green peppers.</p>
-                <p class="text">Vegetarian, Vegan, Gluten-Free</p>
-            </div>
-
-            <div class="bottonContainer">
-                <button id="offer1" class="orderbutton">Small</button>
-                <button id="offer1" class="orderbutton">Medium</button>
-                <button id="offer1" class="orderbutton">Large</button> 
-            </div>
-            <div class="quantity orderbutton">
-                <input type="number" min="1" max="10" step="1" value="1">
-                <button class="add-to-cart orderbutton">Add to Cart</button>
-            </div>
-  
-        </div>
-    
-
-        <div class="grid-child div2">
-            <img
-            alt="pizzaaa13851"
-            src="https://images.unsplash.com/photo-1558138838-76294be30005?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
-            class="pizza-pic"/>
-        </div>
+<div class="pizza-container">
+  <div class="pizza-image">
+    <img src="{{ product.images.url }}" alt="{{ product.name }}" />
+  </div>
+  <div class="pizza-details">
+    <h1 class="pizza-name">{{ product.name }}</h1>
+    <div class="pizza-description">{{ product.description }}</div>
+    <div class="pizza-options">
+      <div class="pizza-size">
+        <button class="size-btn">Small</button>
+        <button class="size-btn">Medium</button>
+        <button class="size-btn">Large</button>
+      </div>
+      <div class="pizza-quantity">
+        <input type="number" class="quantity-input" value="1" />
+        <button class="add-to-cart-btn">Add to Cart</button>
+      </div>
     </div>
-
-
-    </div>
+  </div>
 </div>
 {% endblock %}
