@@ -17,12 +17,21 @@
       action="{% url 'add_to_cart' product.id %}?size=small"
     >
       {% csrf_token %}
-      <div class="pizza-options">
-        <div class="pizza-size">
-          <button class="size-btn" value="small">Small</button>
-          <button class="size-btn" value="medium">Medium</button>
-          <button class="size-btn" value="large">Large</button>
-        </div>
+      <div class="pizza-size">
+        <label>
+            <input type="radio" name="size" value="small" checked>
+            Small
+        </label>
+        <label>
+            <input type="radio" name="size" value="medium">
+            Medium (+500)
+        </label>
+        <label>
+            <input type="radio" name="size" value="large">
+            Large (+1000)
+        </label>
+    </div>
+    
         <div class="pizza-quantity">
           <input
             type="number"
