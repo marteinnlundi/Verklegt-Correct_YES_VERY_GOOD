@@ -24,9 +24,10 @@ body {
     background-position: center;
     background-size: 50%;
     background-repeat: no-repeat;
-    box-shadow: 10px 10px 5px 0px rgba(87, 85, 85, 0.75);
-    
+    box-shadow: 10px 10px 5px 0px rgba(87, 85, 85, 0.75);  
 }
+
+
 
 .login-input-wrapper {
     display: flex;
@@ -42,9 +43,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    
-
-    
 }
 
 label {
@@ -87,7 +85,8 @@ input, select {
     border-color: rgba(23, 189, 49, 0.699999988079071);
     border-width: 1px;
     background-color: rgba(23, 189, 49, 0.75);
-    color: green;
+    
+    cursor: pointer;
 }
 
 
