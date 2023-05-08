@@ -25,6 +25,7 @@ def signin_view(request):
             profile = Profile()
             profile.user = form.instance
             profile.name = form.cleaned_data['username']
+            profile.email = form.cleaned_data['email']
             profile.password = form.cleaned_data['password1']
             profile.save()
             logger.info('Profile saved')
@@ -62,7 +63,9 @@ def edit_profile_view(request):
 
 
 
-
+def myprofile_view(request):
+    user_profile = Profile.objects.get(user=request.user)
+    return render(request, 'users/myprofile.html', {'user_profile': user_profile})
 
 
 def index_view(request):
@@ -74,5 +77,4 @@ def home_view(request):
 def about_view(request):
     return render(request, 'about.html')
 
-def myprofile_view(request):
-    return render(request, 'myprofile.html')
+
