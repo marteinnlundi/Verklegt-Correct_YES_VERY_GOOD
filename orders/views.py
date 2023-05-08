@@ -3,9 +3,34 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import PaymentForm
 from products.models import Products
+from decimal import Decimal
 
 def cart_view(request):
-    return render(request, 'cart.html')
+    cart = request.session.get('cart', {})
+    cart_items = []
+    cart_total = 0
+
+    for item_id, item in cart.items():
+        product = Products.objects.get(id=item_id)
+        price = Decimal(item['price'])
+        quantity = item['quantity']
+        total_price = price * quantity
+        cart_total += total_price
+        cart_items.append({
+            'id': item_id,
+            'name': item['name'],
+            'price': price,
+            'quantity': quantity,
+            'total_price': total_price,
+        })
+
+    context = {
+        'cart_items': cart_items,
+        'cart_total': cart_total,
+    }
+
+    return render(request, 'cart.html', context=context)
+
 
 def checkout_view(request):
     if request.method == 'POST':
