@@ -19,10 +19,10 @@
         <p class="price text">{{ offer.price }}</p>
     
 
-        <form id="orderbutton" action="{% url 'offerItem' %}" method="get">
+        <form  action="{% url 'offerItem' %}" method="get">
             <input type="hidden" name="id" value="{{ offer.id }}">
-            <button type="submit">Order Now</button>
-          </form>
+            <button class="offerbutton text" type="submit">Order Now</button>
+        </form>
 
     </div>
         {% endfor %} 

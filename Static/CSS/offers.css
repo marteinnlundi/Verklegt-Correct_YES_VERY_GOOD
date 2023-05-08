@@ -33,7 +33,7 @@
 
 }
 .name {
-    font-size: 40px;
+    font-size: 35px;
     margin-bottom: 15px;
 }
 .description {
@@ -46,10 +46,8 @@
     margin-bottom: 30px;
 }
 
-.orderbutton {
-    display: inline-block;
-    width: 200%;
-    max-width: 300px;
+.offerbutton {
+    width: 200px;
     height: 59px;
     border-color: rgba(23, 189, 49, 0.699999988079071);
     border-style: solid;
@@ -57,16 +55,15 @@
     border-radius: 50px;
     color:white;  
     background-color: black;
-    text-align: center;
-    line-height: 59px;
-    margin: auto;
-    text-decoration: none;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    font-size: 30px;
     
-  }
-
-.orderbutton:hover {
-    border-style: solid;
-    border-color: rgba(23, 189, 49, 0.699999988079071);
-    border-width: 1px;
-    background-color: rgba(23, 189, 49, 0.75);
+    }
+    
+.offerbutton:hover {
+    background-color: green;
+    color: white;
+    cursor: pointer;
 }
+    
