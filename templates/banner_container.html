@@ -1,23 +1,19 @@
-<div class="banner-container">
+<div class="fixed-header">
+    <div>
+    <span class="pizza-lairtext">Pizza Lair</span>
+  </div>
   <div>
     <a href="{% url 'home' %}" class="bannerText">Home</a>.
   </div>
   <div>
-    <a href="{% url 'offers' %}" class="bannerText">Offers</a>
-  </div>
-
-  <div>
     <a href="{% url 'menu' %}" class="bannerText">Menu</a>
   </div>
-
   <div>
-    <span class="pizza-lairtext">Pizza Lair</span>
+    <a href="{% url 'offers' %}" class="bannerText">Offers</a>
   </div>
-
   <div>
     <a href="{% url 'about' %}" class="bannerText">About Us</a>
   </div>
-
   {% if user.is_authenticated %}
   <div class="dropdown">
     <button class="dropbtn">My Profile</button>

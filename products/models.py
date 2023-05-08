@@ -8,7 +8,17 @@ class Products(models.Model):
     images = models.ImageField(upload_to='product_images', max_length=999)
     price = models.DecimalField(max_digits=6, decimal_places=2)
 
-class Offer(models.Model):
-    product = models.ForeignKey(Products, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    price = models.DecimalField(max_digits=6, decimal_places=2)
+    def __str__(self):
+        return self.name
+
+class Offers(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField(max_length=100)
+    images = models.ImageField(upload_to='offer_images', max_length=999)
+    price = models.DecimalField(max_digits=6, decimal_places=0)
+
+    def __str__(self):
+        return self.name
+
+
+
