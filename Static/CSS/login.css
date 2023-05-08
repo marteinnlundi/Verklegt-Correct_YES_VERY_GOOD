@@ -24,9 +24,10 @@ body {
     background-position: center;
     background-size: 50%;
     background-repeat: no-repeat;
-    box-shadow: 10px 10px 5px 0px rgba(87, 85, 85, 0.75);
-    
+    box-shadow: 10px 10px 5px 0px rgba(87, 85, 85, 0.75);  
 }
+
+
 
 .login-input-wrapper {
     display: flex;

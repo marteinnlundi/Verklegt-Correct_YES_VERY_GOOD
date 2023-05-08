@@ -1,3 +1,4 @@
+
 .home-screen-img {
   position: relative;
   display: flex;
@@ -5,6 +6,7 @@
   align-items: center;
   height: 100%;
   width: 100%;
+
 }
 
 .best-offer-container {

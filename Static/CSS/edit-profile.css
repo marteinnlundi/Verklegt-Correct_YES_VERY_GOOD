@@ -2,22 +2,34 @@ html {
     background-color: black;
 }
 
-p {
-    color: white;
-}
 
 form {
-    padding-top: 80px;
-    padding-bottom: 150px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    text-align: center;
+    padding: 100px;
+    border: 2px solid white;
+    width: 50%;
+    height: 700px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 10px 10px 5px 0px rgba(87, 85, 85, 0.75);
 }
 
 
 h2 {
     color: rgba(23, 189, 49, 0.699999988079071);
     font-size: 50px;
+    font-family: Ink Free;
+    font-weight: 400;
+    text-align: center;
+    padding: 20px;
+}
+
+
+p {
+    color: white;
+    font-size: 24px;
     font-family: Ink Free;
     font-weight: 400;
     text-align: center;
@@ -31,6 +43,8 @@ label {
     font-family: ink free;
 }
 
+
+
 input,select {
     width: 400px;
     padding: 10px;
@@ -40,6 +54,14 @@ input,select {
     box-sizing: border-box;
     transition: background-color 0.3s ease;
 
+}
+
+#id_profile_picture {
+    border: none;
+}
+
+#profile_picture-clear_id {
+    width: auto;
 }
 
 .form-btn {
@@ -63,6 +85,6 @@ input,select {
     border-color: rgba(23, 189, 49, 0.699999988079071);
     border-width: 1px;
     background-color: rgba(23, 189, 49, 0.75);
-    color: green;
+    color: white;
     cursor: pointer;
 }
