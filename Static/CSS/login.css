@@ -13,7 +13,7 @@ body {
     margin: auto;
     border: 2px solid white;
     width: 50%;
-    height: 700px;
+    height: 500px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -29,20 +29,12 @@ body {
 
 
 
-.login-input-wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin-bottom:100px;
 
-  }
-
-  form {
+form {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 100px;
 }
 
 label {
@@ -62,6 +54,9 @@ input, select {
     border-radius: 50px;
     box-sizing: border-box;
     transition: background-color 0.3s ease;
+    background-color: black;
+    color:white;
+
 }
 
 .form-button {
