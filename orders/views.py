@@ -4,8 +4,12 @@ from django.contrib import messages
 from .forms import PaymentForm
 from products.models import Products
 from decimal import Decimal
+from users.models import Profile
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def cart_view(request):
+    user_profile = Profile.objects.get(user=request.user)
     cart = request.session.get('cart', {})
     cart_items = []
     cart_total = 0
@@ -27,9 +31,11 @@ def cart_view(request):
             'total_price': total_price,
         })
 
+        user = request.user
     context = {
         'cart_items': cart_items,
         'cart_total': cart_total,
+        'user_profile': user_profile,
     }
 
     return render(request, 'cart.html', context=context)

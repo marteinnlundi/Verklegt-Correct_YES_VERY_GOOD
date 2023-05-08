@@ -3,7 +3,7 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/cart.css' %}" />
 
 <div class="cart">
-  <div class="my-cart">My Cart</div>
+  <div class="my-cart">{{user_profile.name}}'s Cart</div>
   <div class="cart-border" class="cart-container">
     <table>
       <thead>
@@ -25,18 +25,19 @@
             >
               {% csrf_token %}
               <input
+                id="quantity-input"
                 type="number"
                 name="quantity"
                 value="{{ item.quantity }}"
                 min="1"
               />
-              <button type="submit">Update</button>
+              <button type="submit" class="submit-btn">Update</button>
             </form>
           </td>
           <td>
             <form method="post" action="{% url 'remove_item' item_id %}">
               {% csrf_token %}
-              <button type="submit">Remove</button>
+              <button type="submit"class ="submit-btn" id="remove">Remove</button>
             </form>
           </td>
         </tr>
