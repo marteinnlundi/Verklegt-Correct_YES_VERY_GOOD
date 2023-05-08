@@ -1,14 +1,10 @@
 {% extends 'base.html' %} {% block content %} {% load static %}
 
-<link
-  rel="stylesheet"
-  type="text/css"
-  href="{% static 'css/cart.css' %}"
-/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/cart.css' %}" />
 
-  <div class="cart">
+<div class="cart">
   <div class="my-cart">My Cart</div>
-  <div class="cart-border"  class="cart-container">
+  <div class="cart-border" class="cart-container">
     <table>
       <thead>
         <tr>
@@ -18,22 +14,48 @@
         </tr>
       </thead>
       <tbody>
-        <!-- Cart items go here -->
+        {% for item_id, item in request.session.cart.items %}
+        <tr>
+          <td>{{ item.name }}</td>
+          <td>{{ item.price }}</td>
+          <td>
+            <form
+              method="post"
+              action="{% url 'change_item_quantity' item_id %}"
+            >
+              {% csrf_token %}
+              <input
+                type="number"
+                name="quantity"
+                value="{{ item.quantity }}"
+                min="1"
+              />
+              <button type="submit">Update</button>
+            </form>
+          </td>
+          <td>
+            <form method="post" action="{% url 'remove_item' item_id %}">
+              {% csrf_token %}
+              <button type="submit">Remove</button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
       </tbody>
     </table>
   </div>
   <div class="cart-summary">
-    <p>Total: <span id="cart-total">$0.00</span></p>
-    <button id="clear-cart-btn">Clear cart</button>
-    
-    </div>
-  
-      <a href="{% url 'checkout' %}" >
-        <button id="checkout-btn" class="checkout-btn">Checkout</button>
-      </a>
-    
+    <p>Total: <span id="cart-total">{{ cart_total|default:"0" }}</span></p>
+    <form id="clear-cart-form" action="{% url 'clear_cart' %}" method="post">
+      {% csrf_token %}
+      <button id="clear-cart-btn" type="submit">Clear cart</button>
+    </form>
+    <a href="{% url 'review_order' %}">
+      <button id="review-order-btn" class="review-order-btn">
+        Review Order
+      </button>
+    </a>
   </div>
 </div>
-
 
 {% endblock %}
