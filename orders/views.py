@@ -109,3 +109,30 @@ def remove_item(request, item_id):
     del cart[str(item_id)]
     request.session['cart'] = cart
     return redirect('cart')
+
+def review_order(request):
+    cart = request.session.get('cart', {})
+    cart_items = []
+
+    size_prices = {'small': 0, 'medium': 500, 'large': 1000}
+
+    for item_id, item in cart.items():
+        product = Products.objects.get(id=item_id)
+        size = request.POST.get('size', 'small')
+        price = Decimal(item['price']) + size_prices[size]
+        quantity = item['quantity']
+        total_price = price * quantity
+        cart_items.append({
+            'id': item_id,
+            'name': item['name'],
+            'price': price,
+            'quantity': quantity,
+            'total_price': total_price,
+        })
+
+    context = {
+        'cart_items': cart_items,
+        'cart_total': sum(item['total_price'] for item in cart_items),
+    }
+
+    return render(request, 'review_order.html', context=context)

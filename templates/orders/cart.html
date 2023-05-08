@@ -50,8 +50,10 @@
       {% csrf_token %}
       <button id="clear-cart-btn" type="submit">Clear cart</button>
     </form>
-    <a href="{% url 'checkout' %}">
-      <button id="checkout-btn" class="checkout-btn">Checkout</button>
+    <a href="{% url 'review_order' %}">
+      <button id="review-order-btn" class="review-order-btn">
+        Review Order
+      </button>
     </a>
   </div>
 </div>
