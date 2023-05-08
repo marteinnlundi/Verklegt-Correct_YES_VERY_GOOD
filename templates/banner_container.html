@@ -15,10 +15,15 @@
     <a href="{% url 'about' %}" class="bannerText">About Us</a>
   </div>
   {% if user.is_authenticated %}
-    <div>
-      <a href="{% url 'myprofile' %}" class="bannerText">My Profile</a>
+  <div class="dropdown">
+    <button class="dropbtn">My Profile</button>
+    <div class="dropdown-content">
+      <a href="{% url 'myprofile' %}">View Profile</a>
+      <a href="{% url 'edit' %}">Edit Profile</a>
+      <a href="{% url 'logout' %}?next={% url 'home' %}">Logout</a>
     </div>
-  
+  </div>
+
   {% else %}
     <div>
       <a href="{% url 'signin' %}" class="bannerText">Register</a>
