@@ -1,14 +1,10 @@
 {% extends 'base.html' %} {% block content %} {% load static %}
 
-<link
-  rel="stylesheet"
-  type="text/css"
-  href="{% static 'css/cart.css' %}"
-/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/cart.css' %}" />
 
-  <div class="cart">
+<div class="cart">
   <div class="my-cart">My Cart</div>
-  <div class="cart-border"  class="cart-container">
+  <div class="cart-border" class="cart-container">
     <table>
       <thead>
         <tr>
@@ -18,33 +14,26 @@
         </tr>
       </thead>
       <tbody>
-        {% for product_id, cart_item in request.session.cart.items %}
-          <tr>
-            <td>{{ cart_item.name }}</td>
-            <td>{{ cart_item.price }}</td>
-            <td>{{ cart_item.quantity }}</td>
-          </tr>
+        {% for item_id, item in request.session.cart.items %}
+        <tr>
+          <td>{{ item.name }}</td>
+          <td>{{ item.price }}</td>
+          <td>{{ item.quantity }}</td>
+        </tr>
         {% endfor %}
       </tbody>
-      
     </table>
   </div>
   <div class="cart-summary">
     <p>Total: <span id="cart-total">{{ cart_total|default:"$0.00" }}</span></p>
-    <button id="clear-cart-btn" type="submit" form="clear-cart-form">Clear cart</button>
-</div>
-
-<form id="clear-cart-form" action="{% url 'clear_cart' %}" method="post">
-    {% csrf_token %}
-</form>
-
-  
-      <a href="{% url 'checkout' %}" >
-        <button id="checkout-btn" class="checkout-btn">Checkout</button>
-      </a>
-    
+    <form id="clear-cart-form" action="{% url 'clear_cart' %}" method="post">
+      {% csrf_token %}
+      <button id="clear-cart-btn" type="submit">Clear cart</button>
+    </form>
+    <a href="{% url 'checkout' %}">
+      <button id="checkout-btn" class="checkout-btn">Checkout</button>
+    </a>
   </div>
 </div>
-
 
 {% endblock %}

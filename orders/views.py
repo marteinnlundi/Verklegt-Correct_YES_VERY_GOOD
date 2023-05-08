@@ -1,4 +1,3 @@
-
 import logging
 from django.shortcuts import render, redirect
 from django.contrib import messages
@@ -36,26 +35,22 @@ def checkout_view(request):
         form = PaymentForm()
     return render(request, 'checkout.html', {'form': form})
 
-
 def add_to_cart(request, product_id):
-    print(product_id)
     product = Products.objects.get(id=product_id)
     cart = request.session.get('cart', {})
-    cart_item = cart.get(str(product_id), {'quantity': 0, 'price': str(product.price)})
-    cart_item['name'] = product.name # add product name to cart_item dictionary
-    cart_item['quantity'] += 1
-    cart_item['price'] = str(product.price * cart_item['quantity'])
-    cart[str(product_id)] = cart_item
+    quantity = int(request.POST.get('quantity', 1))
+    if product_id in cart:
+        cart[product_id]['quantity'] += quantity
+    else:
+        cart[product_id] = {'name': product.name, 'price': str(product.price), 'quantity': quantity}
     request.session['cart'] = cart
-    messages.success(request, f"{product.name} added to cart.")
     return redirect('cart')
 
+def clear_cart(request):
+    request.session['cart'] = {}
+    messages.success(request, 'Cart cleared successfully!')
+    return redirect('cart')
 
 def confirmation_view(request):
     logging.debug('Rendering confirmation page')
     return render(request, 'confirmation.html')
-
-def clear_cart(request):
-    request.session['cart'] = {}
-    messages.success(request, "Cart cleared.")
-    return redirect('cart')
