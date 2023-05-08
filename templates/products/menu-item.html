@@ -6,6 +6,7 @@
   href="{% static 'css/menu_item.css' %}"
 />
 <script defer src="{% static 'js/menu_item.js' %}"></script>
+
 <div class="pizza-container">
   <div class="pizza-image">
     <img src="{{ product.images.url }}" alt="{{ product.name }}" />
@@ -15,15 +16,96 @@
     <div class="pizza-description">{{ product.description }}</div>
     <div class="pizza-options">
       <div class="pizza-size">
-        <button class="size-btn">Small</button>
-        <button class="size-btn">Medium</button>
-        <button class="size-btn">Large</button>
+        <button class="size-btn" data-price="{{ product.price }}">Small</button>
+        <button class="size-btn" data-price="{{ product.price|add:500 }}">
+          Medium
+        </button>
+        <button class="size-btn" data-price="{{ product.price|add:1000 }}">
+          Large
+        </button>
       </div>
       <div class="pizza-quantity">
-        <input type="number" class="quantity-input" value="1" />
-        <button class="add-to-cart-btn">Add to Cart</button>
+        <input type="number" class="quantity-input" value="1" min="1" />
+        <a class="add-to-cart-btn" href="{% url 'add_to_cart' product.id %}"
+          >Add to Cart</a
+        >
       </div>
+    </div>
+    <div class="pizza-price">
+      <span class="price-label">Price:</span>
+      <span class="price-value">{{ product.price }}</span>
     </div>
   </div>
 </div>
+
+<script>
+  const sizeBtns = document.querySelectorAll(".size-btn");
+  const priceValue = document.querySelector(".price-value");
+  const addToCartBtn = document.querySelector(".add-to-cart-btn");
+  const quantityInput = document.querySelector(".quantity-input");
+
+  // Update the price when the size is changed
+  sizeBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const price = parseFloat(btn.dataset.price);
+      priceValue.textContent = price.toFixed(2);
+    });
+  });
+
+  // Update the price when the quantity is changed
+  quantityInput.addEventListener("input", () => {
+    const price = parseFloat(priceValue.textContent);
+    const quantity = parseInt(quantityInput.value);
+    const totalPrice = price * quantity;
+    priceValue.textContent = totalPrice.toFixed(2);
+  });
+
+  // Add the product to the cart when the button is clicked
+  addToCartBtn.addEventListener("click", () => {
+    const productId = "{{ product.id }}";
+    const price = parseFloat(priceValue.textContent);
+    const quantity = parseInt(quantityInput.value);
+    const data = { id: productId, price: price, quantity: quantity };
+    fetch(`/add-to-cart/${productId}/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRFToken": csrfToken,
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Something went wrong");
+        }
+      })
+      .then((data) => {
+        console.log(data);
+        // Display a success message to the user
+        const successMessage = document.createElement("p");
+        successMessage.textContent = "Product added to cart!";
+        successMessage.style.color = "green";
+        successMessage.style.fontWeight = "bold";
+        addToCartBtn.parentNode.insertBefore(
+          successMessage,
+          addToCartBtn.nextSibling
+        );
+      })
+      .catch((error) => {
+        console.error(error);
+        // Display an error message to the user
+        const errorMessage = document.createElement("p");
+        errorMessage.textContent = "Failed to add product to cart";
+        errorMessage.style.color = "red";
+        errorMessage.style.fontWeight = "bold";
+        addToCartBtn.parentNode.insertBefore(
+          errorMessage,
+          addToCartBtn.nextSibling
+        );
+      });
+  });
+</script>
+
 {% endblock %}

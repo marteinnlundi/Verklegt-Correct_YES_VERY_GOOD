@@ -18,15 +18,26 @@
         </tr>
       </thead>
       <tbody>
-        <!-- Cart items go here -->
+        {% for product_id, cart_item in request.session.cart.items %}
+          <tr>
+            <td>{{ cart_item.name }}</td>
+            <td>{{ cart_item.price }}</td>
+            <td>{{ cart_item.quantity }}</td>
+          </tr>
+        {% endfor %}
       </tbody>
+      
     </table>
   </div>
   <div class="cart-summary">
-    <p>Total: <span id="cart-total">$0.00</span></p>
-    <button id="clear-cart-btn">Clear cart</button>
-    
-    </div>
+    <p>Total: <span id="cart-total">{{ cart_total|default:"$0.00" }}</span></p>
+    <button id="clear-cart-btn" type="submit" form="clear-cart-form">Clear cart</button>
+</div>
+
+<form id="clear-cart-form" action="{% url 'clear_cart' %}" method="post">
+    {% csrf_token %}
+</form>
+
   
       <a href="{% url 'checkout' %}" >
         <button id="checkout-btn" class="checkout-btn">Checkout</button>
