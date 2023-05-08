@@ -1,32 +1,55 @@
-html {
-    background-color: #000000;
-}
-
-.offers {
+.title {
     color: rgba(23, 189, 49, 0.699999988079071);
     font-size: 50px;
     font-family: Ink Free;
     font-weight: 400;
-    white-space: nowrap;
-    text-decoration: none;  
     text-align: center;
 }
 
 .offer-container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 40px;
-    width: 700px;
+    width: 100%;
+    max-width: 1200px;
     margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;   
 }
 
- 
-.orderbutton { 
-    width: 300px;
+.offers {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center; 
+    height: 450px;
+    box-shadow: 10px 10px 5px 0px rgba(87, 85, 85, 0.75);
+    border: solid 1px rgb(135, 123, 123);
+    padding: 10px;
+}
+
+.text {
+    font-family: Ink Free;
+    color: white;
+
+}
+.name {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+.description {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.price {
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+.orderbutton {
+    display: inline-block;
+    width: 200%;
+    max-width: 300px;
     height: 59px;
     border-color: rgba(23, 189, 49, 0.699999988079071);
     border-style: solid;
@@ -34,37 +57,16 @@ html {
     border-radius: 50px;
     color:white;  
     background-color: black;
-    justify-content: center;
-    margin-top: 20px;
-}
+    text-align: center;
+    line-height: 59px;
+    margin: auto;
+    text-decoration: none;
+    
+  }
 
 .orderbutton:hover {
     border-style: solid;
     border-color: rgba(23, 189, 49, 0.699999988079071);
     border-width: 1px;
     background-color: rgba(23, 189, 49, 0.75);
-}
-
-.offerclass {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px;
-    border-style: solid;
-    border-color:white; 
-    border-width: 1px;
-    padding: 20px;
-    box-shadow: 10px 10px 5px 0px rgba(87, 85, 85, 0.75);
-}
-
-.offerdescr {
-    color:white;
-    font-size: 24px;
-    margin-bottom: 20%;
-}
-
-.offerprice {
-    color:white;
-    font-size: 24px;   
-    margin-bottom:10%;
 }

@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from .models import Products
+from. models import Offers
 
 def menu_view(request):
-    products = Products.objects.all()
-    context = {'products': products}
+    context = {'products': Products.objects.all()}
     return render(request, 'menu.html', context)
 
 def menu_item_view(request):
@@ -13,11 +13,19 @@ def menu_item_view(request):
     return render(request, 'menu-item.html', context)
 
 
-def offer_view(request):
-    return render(request, 'offers.html')
+def offers_view(request):
+    offers = Offers.objects.all()
+    for offer in offers:
+        offer.price = '{:,.0f}kr'.format(offer.price).replace(',', '.')
+    context = {'offers': offers}
+    return render(request, 'offers.html', context)
+
 
 def offer_item_view(request):
-    return render(request, 'offer-item.html')
+    offer_id = request.GET.get('id')
+    offer = Offers.objects.get(id=offer_id)
+    context = {'offer': offer}
+    return render(request, 'offer-item.html', context)
 
 
 

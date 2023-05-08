@@ -1,82 +1,74 @@
-html {
-  background-color: #000000;
-  margin-top: 110px;
-}
-
-.gridContainerMenuItem {
+.pizza-container {
   display: grid;
-  grid-template-columns: 5fr 0fr;
+  grid-template-columns: 55% 45%;
+  grid-gap: 20px;
+  width: 100%;
 }
-
-.div1 {
-  font-family: Ink Free;
+.text {
   font-size: 20px;
   color: white;
+  font-family: Ink Free;
+}
+
+/* Left side */
+.pizza-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
 }
 
-.innerContainer {
-  padding-left: 50px;
-  padding-right: 50px;
-}
-
-.itemName {
-  font-size: 50px;
-}
-.bottonContainer {
-  gap: 40px;
-}
-
-.orderbutton {
-  width: 200px;
-  height: 59px;  
-  border-color: rgba(23, 189, 49, 0.699999988079071);
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 50px;
-  color:white;  
-  background-color: black;
-  transition-duration: 0.4s;
-  cursor: pointer;
-  font-size: 20px;
-  font-family: Ink Free;
-}
-
-.orderbutton:hover {
-  background-color: rgba(23, 189, 49, 0.699999988079071);
-  color: black;
-}
-
-.bottomContainer {
-  padding-top: 40px;
-  padding-bottom: 40px;
+.size-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-weight: bold;
 }
 
 .quantity {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin-bottom: 10px;
 }
 
-.quantity input[type=number] {
-  width: 50px;
-  margin-right: 10px;
-  padding: 5px;
-  font-size: 16px;
+/* Right side */
+.pizza-image {
+  border-radius: 50%;
+  border-width: 1px;
+  margin: 0 auto;
+  display: block;
+}
+
+.title {
+  color: rgba(23, 189, 49, 0.699999988079071);
+  font-size: 40px;
+  font-family: Ink Free;
+  font-weight: 400;
   text-align: center;
 }
 
-.add-to-cart {
-  border: none;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
+.size-buttons button {
   display: inline-block;
-  font-size: 16px;
-  margin-left: 10px;
+  margin-right: 10px; /* adjust the gap between the buttons */
+
+  border: none;
+  border-radius: 10px;
   cursor: pointer;
+
 }
 
-.add-to-cart:hover {
-  width: 100px; ;
+button {
+  font-size: 20px;
+  color: black;
+  font-family: Ink Free;
+  font-weight: bold;
+}
+
+.size-buttons button:hover {
+  background-color: rgba(86, 221, 107, 0.7);
+}
+
+
+
+/* remove the right margin from the last button */
+.size-buttons button:last-child {
+  margin-right: 0;
 }

@@ -1,55 +1,47 @@
-html {
-    background-color: black;
-}
-#menuHeading {
-    color: rgba(189, 23, 106, 0.7);
-    font-family: Ink Free;
-    font-size: 70px;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    padding-top: 50px;
-    padding-bottom: 50px;
-}
-
-.heading {
+.title {
     color: rgba(23, 189, 49, 0.699999988079071);
+    font-size: 50px;
     font-family: Ink Free;
-    font-size: 60px;
-    font-weight: bold;
-    padding-left: 70px;
-    border-bottom: #17bd30 solid 2px;
+    font-weight: 400;
+    text-align: center;
 }
 
-.Item {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    border: 1px solid black;
+.crustSizes {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 200px;
+    margin-top: 160px;
+    align-items: center;
+    padding: 0px;
+}
+
+#productList {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+    padding-left: 50px;
+    padding-right: 50px;
+    column-gap: 8em;
+}
+
+.span {
+    padding-top: 50px;
+    padding-right: 50px;
+}
+
+.text {
+    font-family: Ink Free;
     color: white;
-    padding-left: 80px;
-    padding-right: 80px;
+    font-size: 20px;
+    padding-top: 20px;
+    padding-bottom: 10px;
 }
 
-.Item .item {
-    width: calc(33.33% - 10px);
-    padding: 30px;
-}
 
-.Item .name {
-    font-weight: bold;
-    font-family: Ink Free;
-    font-size: 40px;
-    padding-bottom: 20px;
-}
-
-.Item .description {
-    text-align: justify;
-    font-family: Ink Free;
-    font-size: 25px;
-}
-
-form {
+#Searchform {
     margin-left: 110px;
     width: 600px;
     height: 60x;
@@ -89,4 +81,18 @@ button {
     cursor: pointer;
     width: 44px;
     height: 50px;
+
+}
+
+#detailButton {
+    display: inline;
+    align-items: center;
+    border-radius: 10px;
+    font-size: 30px;
+    font-family: Ink Free;
+    color: white;
+    background-color: #17bd3091;
+    border: none;
+
+
 }

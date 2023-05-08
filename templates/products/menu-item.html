@@ -8,32 +8,19 @@
 <script defer src="{% static 'js/menu_item.js' %}"></script>
 
 <div class="pizza-container">
-  <div class="pizza-image">
-    <img src="{{ product.images.url }}" alt="{{ product.name }}" />
-  </div>
   <div class="pizza-details">
     <h1 class="pizza-name">{{ product.name }}</h1>
     <div class="pizza-description">{{ product.description }}</div>
     <div class="pizza-options">
       <div class="pizza-size">
-        <button class="size-btn" data-price="{{ product.price }}">Small</button>
-        <button class="size-btn" data-price="{{ product.price|add:500 }}">
-          Medium
-        </button>
-        <button class="size-btn" data-price="{{ product.price|add:1000 }}">
-          Large
-        </button>
+        <button class="size-btn">Small</button>
+        <button class="size-btn">Medium</button>
+        <button class="size-btn">Large</button>
       </div>
       <div class="pizza-quantity">
-        <input type="number" class="quantity-input" value="1" min="1" />
-        <a class="add-to-cart-btn" href="{% url 'add_to_cart' product.id %}"
-          >Add to Cart</a
-        >
+        <input type="number" class="quantity-input" value="1" />
+        <button class="add-to-cart-btn">Add to Cart</button>
       </div>
-    </div>
-    <div class="pizza-price">
-      <span class="price-label">Price:</span>
-      <span class="price-value">{{ product.price }}</span>
     </div>
   </div>
 </div>

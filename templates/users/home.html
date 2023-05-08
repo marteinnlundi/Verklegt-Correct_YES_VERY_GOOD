@@ -3,25 +3,24 @@
 {% load static %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/menu.css' %}" />
 
 
-  <div class="home-screen-img">
-    <img
-      alt="pizzaneon"
-      src="https://aheioqhobo.cloudimg.io/v7/_playground-bucket-v2.teleporthq.io_/afb08ec6-7501-4143-b01d-8284720e4506/5e717bc6-1664-4af2-b60e-4fe1ff78932e?org_if_sml=1882371"
-      class="homepage1-pizza1"
-    />
+<div class="home-screen-img">
+  <img
+    alt="pizzaneon"
+    src="https://aheioqhobo.cloudimg.io/v7/_playground-bucket-v2.teleporthq.io_/afb08ec6-7501-4143-b01d-8284720e4506/5e717bc6-1664-4af2-b60e-4fe1ff78932e?org_if_sml=1882371"
+    class="homepage1-pizza1"/>
+</div>
+
+<div class="best-offer-container">
+  <div class="bestoffers"></div>
+  <span class="best-offer-title"><span>Best offers</span></span>
+<!-- taka út myndina hér  -->
+  <span class="best-offer-text1"><span>Two for one</span></span>
+  <div class="description-box-1">
+    <span class="description1">Get two pizzas from the menu at the price of one.</span>
   </div>
-  <div class="best-offer-container">
-    <div class="bestoffers"></div>
-    <span class="best-offer-title"><span>Best offers</span></span>
-  <!-- taka út myndina hér  -->
-    <span class="best-offer-text1"><span>Two for one</span></span>
-    <div class="description-box-1">
-      <span class="description1"
-        >Get two pizzas from the menu at the price of one.</span
-      >
-    </div>
     <span class="best-offer-text2"><span>Family style</span></span>
     <div class="description-box-2">
       <span>
@@ -33,15 +32,14 @@
     <img
       alt="pizza-icon"
       src="https://aheioqhobo.cloudimg.io/v7/_playground-bucket-v2.teleporthq.io_/afb08ec6-7501-4143-b01d-8284720e4506/5700d754-1833-48f0-aad4-6bd6246d4579?org_if_sml=128358"
-      class="pizza-icon"
-    />
+      class="pizza-icon"/>
+      
     <div class="order-button-container">
       <a href="{% url 'menu' %}">
         <button class="order-button">Order Now </button>
       </a>
     </div>
     
-  </div>
+</div>
 
-{%include 'menu.html'%}
 {% endblock content %}

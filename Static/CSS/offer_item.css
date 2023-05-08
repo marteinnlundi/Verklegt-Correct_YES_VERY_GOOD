@@ -1,21 +1,74 @@
-
-.name-offer {
-    font-size: 1.5em;
-    font-weight: bold;
+.offer-container {
+    display: grid;
+    grid-template-columns: 55% 45%;
+    grid-gap: 20px;
+    width: 100%;
+  }
+  .text {
+    font-size: 20px;
     color: white;
-    margin-bottom: 0.5em;
-}
-
-
-.orderbutton {
-    width: 300px;
-    height: 59px;
-    border-color: rgba(23, 189, 49, 0.699999988079071);
-    border-style: solid;
+    font-family: Ink Free;
+  }
+  
+  /* Left side */
+  .offer-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .size-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  .quantity {
+    margin-bottom: 10px;
+  }
+  
+  /* Right side */
+  .pizza-image {
+    border-radius: 50%;
     border-width: 1px;
-    border-radius: 50px;
-    color:white;  
-    background-color: black;
-    justify-content: center;
-    margin-top: 20px;
-}
+    margin: 0 auto;
+    display: block;
+  }
+  
+  .title {
+    color: rgba(23, 189, 49, 0.699999988079071);
+    font-size: 40px;
+    font-family: Ink Free;
+    font-weight: 400;
+    text-align: center;
+  }
+  
+  .size-buttons button {
+    display: inline-block;
+    margin-right: 10px; /* adjust the gap between the buttons */
+  
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  
+  }
+  
+  button {
+    font-size: 20px;
+    color: black;
+    font-family: Ink Free;
+    font-weight: bold;
+  }
+  
+  .size-buttons button:hover {
+    background-color: rgba(86, 221, 107, 0.7);
+  }
+  
+  
+  
+  /* remove the right margin from the last button */
+  .size-buttons button:last-child {
+    margin-right: 0;
+  }
