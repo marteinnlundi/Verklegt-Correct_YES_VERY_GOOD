@@ -18,7 +18,27 @@
         <tr>
           <td>{{ item.name }}</td>
           <td>{{ item.price }}</td>
-          <td>{{ item.quantity }}</td>
+          <td>
+            <form
+              method="post"
+              action="{% url 'change_item_quantity' item_id %}"
+            >
+              {% csrf_token %}
+              <input
+                type="number"
+                name="quantity"
+                value="{{ item.quantity }}"
+                min="1"
+              />
+              <button type="submit">Update</button>
+            </form>
+          </td>
+          <td>
+            <form method="post" action="{% url 'remove_item' item_id %}">
+              {% csrf_token %}
+              <button type="submit">Remove</button>
+            </form>
+          </td>
         </tr>
         {% endfor %}
       </tbody>

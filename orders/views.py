@@ -39,12 +39,23 @@ def add_to_cart(request, product_id):
     product = Products.objects.get(id=product_id)
     cart = request.session.get('cart', {})
     quantity = int(request.POST.get('quantity', 1))
+    size = request.GET.get('size', 'small')
+
+    if size == 'medium':
+        price = product.price + 500
+    elif size == 'large':
+        price = product.price + 1000
+    else:
+        price = product.price
+
     if product_id in cart:
         cart[product_id]['quantity'] += quantity
     else:
-        cart[product_id] = {'name': product.name, 'price': str(product.price), 'quantity': quantity}
+        cart[product_id] = {'name': product.name, 'price': str(price), 'quantity': quantity}
+
     request.session['cart'] = cart
     return redirect('cart')
+
 
 def clear_cart(request):
     request.session['cart'] = {}
@@ -54,3 +65,19 @@ def clear_cart(request):
 def confirmation_view(request):
     logging.debug('Rendering confirmation page')
     return render(request, 'confirmation.html')
+
+def change_item_quantity(request, item_id):
+    cart = request.session.get('cart', {})
+    quantity = int(request.POST.get('quantity', 1))
+    if quantity <= 0:
+        del cart[str(item_id)]
+    else:
+        cart[str(item_id)]['quantity'] = quantity
+    request.session['cart'] = cart
+    return redirect('cart')
+
+def remove_item(request, item_id):
+    cart = request.session.get('cart', {})
+    del cart[str(item_id)]
+    request.session['cart'] = cart
+    return redirect('cart')
