@@ -6,6 +6,16 @@ def menu_view(request):
     context = {'products': Products.objects.all()}
     return render(request, 'menu.html', context)
 
+
+def search_filter(request):
+    query = request.GET.get('q')
+    if query:
+        products = Products.objects.filter(name__icontains=query) | Products.objects.filter(description__icontains=query)
+    else:
+        products = Products.objects.all()
+    context = {'products': products, 'search_query': query}
+    return render(request, 'menu.html', context)
+
 def menu_item_view(request):
     product_id = request.GET.get('id')
     product = Products.objects.get(id=product_id)
