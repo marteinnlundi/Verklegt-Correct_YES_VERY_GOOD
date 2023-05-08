@@ -6,6 +6,63 @@ p {
     color: white;
 }
 
+form {
+    padding-top: 80px;
+    padding-bottom: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
 h2 {
+    color: rgba(23, 189, 49, 0.699999988079071);
+    font-size: 50px;
+    font-family: Ink Free;
+    font-weight: 400;
+    text-align: center;
+}
+
+label {
+    margin-top: 10px;
+    color:white;
+    text-align: right;
+    font-size: 24px;
+    font-family: ink free;
+}
+
+input,select {
+    width: 400px;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 50px;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease;
+
+}
+
+.form-btn {
+    width: 209px;
+    height: 50px;
+    border-color: rgba(23, 189, 49, 0.699999988079071);
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 50px;
+    background-color: #1a1a1a;
     color: white;
+    font-size: 24px;
+    font-family: ink free;
+    opacity: 0.8;
+    margin-top:100px;
+
+}
+
+.form-btn:hover {
+    border-style: solid;
+    border-color: rgba(23, 189, 49, 0.699999988079071);
+    border-width: 1px;
+    background-color: rgba(23, 189, 49, 0.75);
+    color: green;
+    cursor: pointer;
 }
