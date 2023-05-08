@@ -2,10 +2,89 @@ html {
     background-color: black;
 }
 
-p {
-    color: white;
+
+form {
+    text-align: center;
+    padding: 100px;
+    border: 2px solid white;
+    width: 50%;
+    height: 700px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 10px 10px 5px 0px rgba(87, 85, 85, 0.75);
 }
 
+
 h2 {
+    color: rgba(23, 189, 49, 0.699999988079071);
+    font-size: 50px;
+    font-family: Ink Free;
+    font-weight: 400;
+    text-align: center;
+    padding: 20px;
+}
+
+
+p {
     color: white;
+    font-size: 24px;
+    font-family: Ink Free;
+    font-weight: 400;
+    text-align: center;
+}
+
+label {
+    margin-top: 10px;
+    color:white;
+    text-align: right;
+    font-size: 24px;
+    font-family: ink free;
+}
+
+
+
+input,select {
+    width: 400px;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 50px;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease;
+
+}
+
+#id_profile_picture {
+    border: none;
+}
+
+#profile_picture-clear_id {
+    width: auto;
+}
+
+.form-btn {
+    width: 209px;
+    height: 50px;
+    border-color: rgba(23, 189, 49, 0.699999988079071);
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 50px;
+    background-color: #1a1a1a;
+    color: white;
+    font-size: 24px;
+    font-family: ink free;
+    opacity: 0.8;
+    margin-top:100px;
+
+}
+
+.form-btn:hover {
+    border-style: solid;
+    border-color: rgba(23, 189, 49, 0.699999988079071);
+    border-width: 1px;
+    background-color: rgba(23, 189, 49, 0.75);
+    color: white;
+    cursor: pointer;
 }
