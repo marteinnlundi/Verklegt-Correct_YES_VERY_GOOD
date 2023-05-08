@@ -3,6 +3,11 @@
 {% load static %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'css/profiles.css' %}" />
+
+<div class="title">
+  <h2>Welcome {{user_profile.name}}</h2>
+</div>
+
 <div class="profiles">
   <form method="POST">
     {% csrf_token %}
