@@ -61,4 +61,18 @@ def about_view(request):
     return render(request, 'about.html')
 
 
+from products.models import Offers
+import random
 
+
+def home_view(request):
+    # Get all the offers
+    offers = Offers.objects.all()
+    
+    # Choose a random offer from the queryset
+    current_offer = random.choice(offers)
+    
+    context = {
+        'current_offer': current_offer,
+    }
+    return render(request, 'home.html', context)

@@ -1,0 +1,47 @@
+.review-order-container {
+    width: 1053px;
+    height: 344px;
+    position: absolute;
+    border-color: rgba(23, 189, 49, 0.699999988079071);
+    border-style: solid;
+    border-width: 1px;
+    text-align: center;
+    color:white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+table{
+   color: rgba(217, 217, 217, 1);
+   font-family: ink free;
+   font-weight: bold;
+   display:flex;
+   flex-direction: column;
+    align-items: center;
+}
+
+p {
+    color:rgba(23, 189, 49, 0.699999988079071);
+}
+
+
+#checkout-btn {
+    width: 100px;
+    height: 40px;
+    border-color: rgba(23, 189, 49, 0.699999988079071);
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 50px;
+    background-color: #1a1a1a;
+    color: white;
+    font-size: 12px;
+    opacity: 0.8;
+    margin-top: 20px;
+}
+
+#checkout-btn:hover {
+    background-color: rgba(23, 189, 49, 0.699999988079071);
+    color: white;
+    opacity: 1;
+}

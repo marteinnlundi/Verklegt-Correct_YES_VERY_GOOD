@@ -1,32 +1,29 @@
-{% extends 'base.html' %} {% block content %} {% load static %}
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
 
-<link
-  rel="stylesheet"
-  type="text/css"
-  href="{% static 'css/confirmation.css' %}"
-/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/confirmation.css' %}" />
+
 <body>
   <div class="confirmation-container">
     <div class="order-summary-box">
       <span class="order-summary"><span>Order summary</span></span>
     </div>
 
-    <div class="order-text-box">
-      <span class="order-text">
-        <span>
-          <span>1x medium Green Monster .......40,0$</span>
-          <br />
-          <span>1x 2L coca-cola ..................................8,00$</span>
-          <br />
-          <span></span>
-          <br />
-          <span>total: 48.00$</span>
+    <<div class="order-text-box">
+      {% for item in cart.items %}
+        <span class="order-text">
+          <span>
+            <span>{{ item.quantity }}x {{ item.product.name }} .......{{ item.total_price }}$</span>
+            <br />
+          </span>
         </span>
-      </span>
+      {% endfor %}
+      <span>total: {{ cart.get_total_price }}$</span>
     </div>
 
     <div class="food-ready-box">
-      <span class="food-ready"><span>Food Ready at: 12:00 PM</span></span>
+      <span class="food-ready"><span>Food Ready at: {{ delivery_time }}</span></span>
     </div>
   </div>
 </body>
