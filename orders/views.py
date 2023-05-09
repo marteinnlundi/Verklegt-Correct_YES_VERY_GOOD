@@ -6,7 +6,9 @@ from products.models import Products
 from decimal import Decimal
 from users.models import Profile
 from django.contrib.auth.decorators import login_required
+import datetime
 
+size_prices = {'small': 0, 'medium': 500, 'large': 1000}
 @login_required
 def cart_view(request):
     user_profile = Profile.objects.get(user=request.user)
@@ -14,11 +16,9 @@ def cart_view(request):
     cart_items = []
     cart_total = 0
 
-    size_prices = {'small': 0, 'medium': 500, 'large': 1000}
-
     for item_id, item in cart.items():
         product = Products.objects.get(id=item_id)
-        size = request.POST.get('size', 'small')
+        size = request.GET.get('size', 'small')
         price = Decimal(item['price']) + size_prices[size]
         quantity = item['quantity']
         total_price = price * quantity
@@ -31,15 +31,13 @@ def cart_view(request):
             'total_price': total_price,
         })
 
-        user = request.user
     context = {
         'cart_items': cart_items,
         'cart_total': cart_total,
         'user_profile': user_profile,
     }
 
-    return render(request, 'cart.html', context=context)
-
+    return render(request, 'cart.html', context)
 
 def checkout_view(request):
     if request.method == 'POST':
@@ -47,15 +45,69 @@ def checkout_view(request):
         if payment_method == 'pay-at-pickup':
             # Process pay-at-pickup payment
             messages.success(request, 'Payment successful! You will pay at pickup.')
-            print('Rendering confirmation page for pay-at-pickup')
-            return render(request, 'confirmation.html')
+            now = datetime.datetime.now()
+            delivery_time = now + datetime.timedelta(minutes=20)
+            cart_items = []
+            cart_total = 0
+            cart = request.session.get('cart', {})
+            for item_id, item in cart.items():
+                product = Products.objects.get(id=item_id)
+                size = request.POST.get('size', 'small')
+                price = Decimal(item['price']) + size_prices[size]
+                quantity = item['quantity']
+                total_price = price * quantity
+                cart_total += total_price
+                cart_items.append({
+                    'id': item_id,
+                    'name': item['name'],
+                    'price': price,
+                    'quantity': quantity,
+                    'total_price': total_price,
+                })
+            user_profile = Profile.objects.get(user=request.user)
+            context = {
+                'cart_items': cart_items,
+                'cart_total': cart_total,
+                'delivery_time': delivery_time,
+                'user_profile': user_profile,
+            }
+            # Clear the cart
+            request.session['cart'] = {}
+            return render(request, 'confirmation.html', context=context)
         else:
             form = PaymentForm(request.POST)
             if form.is_valid():
                 # Process credit card payment
                 messages.success(request, 'Payment successful!')
-                print('Rendering confirmation page for credit card payment')
-                return render(request, 'confirmation.html')
+                now = datetime.datetime.now()
+                delivery_time = now + datetime.timedelta(minutes=20)
+                cart_items = []
+                cart_total = 0
+                cart = request.session.get('cart', {})
+                for item_id, item in cart.items():
+                    product = Products.objects.get(id=item_id)
+                    size = request.POST.get('size', 'small')
+                    price = Decimal(item['price']) + size_prices[size]
+                    quantity = item['quantity']
+                    total_price = price * quantity
+                    cart_total += total_price
+                    cart_items.append({
+                        'id': item_id,
+                        'name': item['name'],
+                        'price': price,
+                        'quantity': quantity,
+                        'total_price': total_price,
+                    })
+                user_profile = Profile.objects.get(user=request.user)
+                context = {
+                    'cart_items': cart_items,
+                    'cart_total': cart_total,
+                    'delivery_time': delivery_time,
+                    'user_profile': user_profile,
+                }
+                # Clear the cart
+                request.session['cart'] = {}
+                return render(request, 'confirmation.html', context=context)
             else:
                 if 'card_number' in form.errors:
                     messages.error(request, form.errors['card_number'][0])

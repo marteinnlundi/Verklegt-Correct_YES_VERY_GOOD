@@ -1,8 +1,10 @@
-{% extends 'base.html' %}
-{% block content %}
-{% load static %}
+{% extends 'base.html' %} {% block content %} {% load static %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'css/confirmation.css' %}" />
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/confirmation.css' %}"
+/>
 
 <body>
   <div class="confirmation-container">
@@ -10,20 +12,34 @@
       <span class="order-summary"><span>Order summary</span></span>
     </div>
 
-    <<div class="order-text-box">
-      {% for item in cart.items %}
-        <span class="order-text">
-          <span>
-            <span>{{ item.quantity }}x {{ item.product.name }} .......{{ item.total_price }}$</span>
-            <br />
-          </span>
-        </span>
-      {% endfor %}
-      <span>total: {{ cart.get_total_price }}$</span>
-    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Item Name</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Total Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in cart_items %}
+        <tr id="table">
+          <td>{{ item.name }}</td>
+          <td>{{ item.price }}</td>
+          <td>{{ item.quantity }}</td>
+          <td>{{ item.total_price }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <p>
+      Order total: <span id="cart-total">{{ cart_total|default:"0" }}</span>
+    </p>
 
     <div class="food-ready-box">
-      <span class="food-ready"><span>Food Ready at: {{ delivery_time }}</span></span>
+      <span class="food-ready"
+        ><span>Food Ready at: {{ delivery_time|time:"h:i A" }}</span></span
+      >
     </div>
   </div>
 </body>

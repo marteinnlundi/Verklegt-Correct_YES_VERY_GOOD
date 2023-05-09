@@ -1,10 +1,8 @@
 <div class="fixed-header">
-    <div>
+  <div>
     <span class="pizza-lairtext">Pizza Lair</span>
   </div>
-  <div>
-    <a href="{% url 'home' %}" class="bannerText">Home</a>.
-  </div>
+  <div><a href="{% url 'home' %}" class="bannerText">Home</a>.</div>
   <div>
     <a href="{% url 'menu' %}" class="bannerText">Menu</a>
   </div>
@@ -25,22 +23,41 @@
   </div>
 
   {% else %}
-    <div>
-      <a href="{% url 'signin' %}" class="bannerText">Register</a>
-    </div>
+  <div>
+    <a href="{% url 'signin' %}" class="bannerText">Register</a>
+  </div>
 
-    <div>
-      <a href="{% url 'login' %}" class="bannerText">Login</a>
-    </div>
-  {% endif %}
-
+  <div>
+    <a href="{% url 'login' %}" class="bannerText">Login</a>
+  </div>
+  {% endif %} {% if user.is_authenticated %}
   <div>
     <a href="{% url 'cart' %}" class="bannerText">Cart</a>
   </div>
+  {% else %}
+  <div>
+    <a href="#" onclick="showPopup()" class="bannerText">Cart</a>
+  </div>
+  {% endif %}
+
+  <!-- The pop-up window -->
+  <div id="popup" style="display: none">
+    <p>Please log in or register to access your cart.</p>
+    <button onclick="hidePopup()">Close</button>
+  </div>
+
+  <script>
+    function showPopup() {
+      document.getElementById("popup").style.display = "block";
+    }
+
+    function hidePopup() {
+      document.getElementById("popup").style.display = "none";
+    }
+  </script>
+  <style>
+    #popup {
+      color: white;
+    }
+  </style>
 </div>
-
-
-
-
-
-
