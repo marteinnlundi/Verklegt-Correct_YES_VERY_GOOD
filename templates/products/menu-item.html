@@ -7,10 +7,14 @@
 />
 <script defer src="{% static 'js/menu_item.js' %}"></script>
 
+
 <div class="pizza-container">
+
+  <!-- Pizza deitail div1 -->
   <div class="pizza-details">
     <h1 class="pizza-name">{{ product.name }}</h1>
     <div class="pizza-description">{{ product.description }}</div>
+    
     <form
       method="POST"
       id="add-to-cart-form"
@@ -41,9 +45,15 @@
           />
           <button type="submit" class="add-to-cart-btn">Add to Cart</button>
         </div>
-      </div>
     </form>
   </div>
-</div>
+  <!-- Picture div2 -->
+  <div class="pizza-image">
+    <img src="{{ product.images }}" alt="{{ product.name }}" />
+  </div>
+</div>	
+
 
 {% endblock %}
+
+
