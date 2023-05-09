@@ -1,4 +1,4 @@
-//  add a function so the offers on the homepage rotate every 5 seconds
+//  Function so the offers on the homepage rotate every 5 seconds
 
 var slideIndex = 0;
 carousel();

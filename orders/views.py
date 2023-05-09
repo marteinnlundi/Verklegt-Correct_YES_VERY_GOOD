@@ -4,22 +4,39 @@ from django.contrib import messages
 
 from orders.models import UserOrder
 from .forms import PaymentForm
-from products.models import Products
+from products.models import Products, Offers
 from decimal import Decimal
 from users.models import Profile
 from django.contrib.auth.decorators import login_required
 import datetime
 
+
 size_prices = {'small': 0, 'medium': 500, 'large': 1000}
+
 @login_required
 def cart_view(request):
+    """
+    Display the contents of the user's shopping cart.
+
+    Args:
+        request (HttpRequest): The HTTP request object.
+
+    Returns:
+        HttpResponse: The HTTP response containing the cart template and its context.
+    """
     user_profile = Profile.objects.get(user=request.user)
     cart = request.session.get('cart', {})
     cart_items = []
     cart_total = 0
 
     for item_id, item in cart.items():
-        product = Products.objects.get(id=item_id)
+        try:
+            product = Products.objects.get(id=item_id)
+        except Products.DoesNotExist:
+            try:
+                product = Offers.objects.get(id=item_id)
+            except Offers.DoesNotExist:
+                return redirect('cart')
         size = request.GET.get('size', 'small')
         price = Decimal(item['price']) + size_prices[size]
         quantity = item['quantity']
@@ -41,9 +58,10 @@ def cart_view(request):
 
     return render(request, 'cart.html', context)
 
-from django.utils.crypto import get_random_string
 
+#from django.utils.crypto import get_random_string
 
+"""
 def checkout_view(request):
     if request.method == 'POST':
         payment_method = request.POST.get('payment-method')
@@ -130,20 +148,47 @@ def checkout_view(request):
                 # Clear the cart
                 request.session['cart'] = {}
                 return render(request, 'confirmation.html', context=context)
+"""
+
+def checkout(request):
+    """
+    Display the checkout form and handle the payment.
+
+    Args:
+    request (HttpRequest): The HTTP request object.
+    
+    Returns:
+    HttpResponse: The HTTP response containing the checkout template and its context.
+    """
+    form = PaymentForm()
+    if request.method == 'POST':
+        payment_method = request.POST.get('payment_method')
+
+        if payment_method == 'pay-with-card':
+            print("pay with card")
+            form = PaymentForm(request.POST)
+            if form.is_valid():
+                print("form validated")
+                return redirect('confirmation')
+
             else:
-                if 'card_number' in form.errors:
-                    messages.error(request, form.errors['card_number'][0])
-                if 'cardholder_name' in form.errors:
-                    messages.error(request, form.errors['cardholder_name'][0])
-                if 'expiration_date' in form.errors:
-                    messages.error(request, form.errors['expiration_date'][0])
-                if 'cvc' in form.errors:
-                    messages.error(request, form.errors['cvc'][0])
-    else:
-        form = PaymentForm()
+                print("form not valid")
+        elif payment_method == 'pay-at-pickup':
+            return redirect('confirmation')
     return render(request, 'checkout.html', {'form': form})
 
+
 def add_to_cart(request, product_id):
+    """
+    Add a product to the shopping cart.
+    
+    Args:
+    request (HttpRequest): The HTTP request object.
+    product_id (int): The ID of the product to add to the cart.
+        
+    Returns:
+    HttpResponse: The HTTP response redirecting the user to the cart.
+    """
     product = Products.objects.get(id=product_id)
     cart = request.session.get('cart', {})
     quantity = int(request.POST.get('quantity', 1))
@@ -165,16 +210,106 @@ def add_to_cart(request, product_id):
     return redirect('cart')
 
 
+def add_offer_to_cart(request, offer_id):
+    """
+    Add an offer to the shopping cart.
+    
+    Args:
+    request (HttpRequest): The HTTP request object.
+    offer_id (int): The ID of the offer to add to the cart.
+    
+    Returns:
+    HttpResponse: The HTTP response redirecting the user to the cart.
+    """
+    offer = Offers.objects.get(id=offer_id)
+    cart = request.session.get('cart', {})
+    quantity = int(request.POST.get('quantity', 1))
+    size = request.GET.get('size', 'small')
+
+    if offer_id in cart:
+        cart[offer_id]['quantity'] += quantity
+    else:
+        cart[offer_id] = {'name': offer.name, 'price': str(offer.price), 'quantity': quantity}
+
+    request.session['cart'] = cart
+    return redirect('cart')
+
+
 def clear_cart(request):
+    """
+    Clear the shopping cart.
+    
+    Args:
+    request (HttpRequest): The HTTP request object.
+    
+    Returns:
+    HttpResponse: The HTTP response redirecting the user to the cart.
+    """
     request.session['cart'] = {}
     messages.success(request, 'Cart cleared successfully!')
     return redirect('cart')
 
+
 def confirmation_view(request):
-    logging.debug('Rendering confirmation page')
-    return render(request, 'confirmation.html')
+    """
+    Display the order confirmation page.
+    
+    Args:
+    request (HttpRequest): The HTTP request object.
+        
+    Returns:
+    HttpResponse: The HTTP response containing the confirmation template and its context.
+    """
+    cart_items = []
+    cart_total = 0
+
+    # Retrieve the order details from the session
+    cart = request.session.get('cart', {})
+    for item_id, item in cart.items():
+        try:
+            product = Products.objects.get(id=item_id)
+        except Products.DoesNotExist:
+            try:
+                product = Offers.objects.get(id=item_id)
+            except Offers.DoesNotExist:
+                return redirect('cart')
+
+        size = request.GET.get('size', 'small')
+        price = Decimal(item['price']) + size_prices[size]
+        quantity = item['quantity']
+        total_price = price * quantity
+        cart_total += total_price
+
+        cart_items.append({
+            'id': item_id,
+            'name': item['name'],
+            'price': price,
+            'quantity': quantity,
+            'total_price': total_price,
+        })
+
+    # Clear the cart
+    request.session['cart'] = {}
+
+    # Pass the order details to the template context
+    context = {
+        'cart_items': cart_items,
+        'cart_total': cart_total,
+        'delivery_time': datetime.datetime.now() + datetime.timedelta(minutes=30),
+    }
+    return render(request, 'confirmation.html', context)
+
 
 def change_item_quantity(request, item_id):
+    """
+    Change the quantity of an item in the shopping cart.
+    
+    Args:
+    request (HttpRequest): The HTTP request object.
+    
+    Returns:
+    HttpResponse: The HTTP response redirecting the user to the cart.
+    """
     cart = request.session.get('cart', {})
     quantity = int(request.POST.get('quantity', 1))
     if quantity <= 0:
@@ -184,20 +319,47 @@ def change_item_quantity(request, item_id):
     request.session['cart'] = cart
     return redirect('cart')
 
+
 def remove_item(request, item_id):
+    """
+    Remove an item from the shopping cart.
+    
+    Args:
+    request (HttpRequest): The HTTP request object.
+    
+    Returns:
+    HttpResponse: The HTTP response redirecting the user to the cart.
+    """
     cart = request.session.get('cart', {})
     del cart[str(item_id)]
     request.session['cart'] = cart
     return redirect('cart')
 
+
 def review_order(request):
+    """
+    Display the order details for the user to review.
+    
+    Args:
+    request (HttpRequest): The HTTP request object.
+    
+    Returns:
+    HttpResponse: The HTTP response containing the review order template and its context.
+    """
     cart = request.session.get('cart', {})
     cart_items = []
 
     size_prices = {'small': 0, 'medium': 500, 'large': 1000}
 
     for item_id, item in cart.items():
-        product = Products.objects.get(id=item_id)
+        try:
+            product = Products.objects.get(id=item_id)
+        except Products.DoesNotExist:
+            try:
+                product = Offers.objects.get(id=item_id)
+            except Offers.DoesNotExist:
+                return redirect('cart')
+
         size = request.POST.get('size', 'small')
         price = Decimal(item['price']) + size_prices[size]
         quantity = item['quantity']
