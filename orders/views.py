@@ -48,13 +48,18 @@ def cart_view(request):
 def checkout(request):
     form = PaymentForm()
     if request.method == 'POST':
-        payment_method = request.POST.get('payment-method')
-        if payment_method == 'pay-at-pickup':
-            return redirect('confirmation')
-        elif payment_method == 'pay-with-card':
+        payment_method = request.POST.get('payment_method')
+
+        if payment_method == 'pay-with-card':
+            print("pay with card")
             form = PaymentForm(request.POST)
             if form.is_valid():
+                print("form validated")
                 return redirect('confirmation')
+            else:
+                print("form not valid")
+        elif payment_method == 'pay-at-pickup':
+            return redirect('confirmation')
     return render(request, 'checkout.html', {'form': form})
 
 def add_to_cart(request, product_id):
