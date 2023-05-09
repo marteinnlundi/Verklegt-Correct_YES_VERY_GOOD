@@ -9,7 +9,6 @@ from django.contrib.auth.decorators import login_required
 import datetime
 
 size_prices = {'small': 0, 'medium': 500, 'large': 1000}
-
 @login_required
 def cart_view(request):
     user_profile = Profile.objects.get(user=request.user)
@@ -19,7 +18,7 @@ def cart_view(request):
 
     for item_id, item in cart.items():
         product = Products.objects.get(id=item_id)
-        size = request.POST.get('size', 'small')
+        size = request.GET.get('size', 'small')
         price = Decimal(item['price']) + size_prices[size]
         quantity = item['quantity']
         total_price = price * quantity
@@ -38,7 +37,7 @@ def cart_view(request):
         'user_profile': user_profile,
     }
 
-    return render(request, 'cart.html', context=context)
+    return render(request, 'cart.html', context)
 
 def checkout_view(request):
     if request.method == 'POST':

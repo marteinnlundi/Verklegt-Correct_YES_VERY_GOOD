@@ -7,14 +7,12 @@
 />
 <script defer src="{% static 'js/menu_item.js' %}"></script>
 
-
 <div class="pizza-container">
-
   <!-- Pizza deitail div1 -->
   <div class="pizza-details">
     <h1 class="pizza-name">{{ product.name }}</h1>
     <div class="pizza-description">{{ product.description }}</div>
-    
+
     <form
       method="POST"
       id="add-to-cart-form"
@@ -23,37 +21,54 @@
       {% csrf_token %}
       <div class="pizza-size">
         <label>
-            <input type="radio" name="size" value="small" checked>
-            Small
-        </label>
-        <label>
-            <input type="radio" name="size" value="medium">
-            Medium (+500)
-        </label>
-        <label>
-            <input type="radio" name="size" value="large">
-            Large (+1000)
-        </label>
-    </div>
-    
-        <div class="pizza-quantity">
           <input
-            type="number"
-            name="quantity"
-            class="quantity-input"
-            value="1"
+            type="radio"
+            name="size"
+            value="small"
+            id="small-size"
+            onclick="updateFormAction('small')"
           />
-          <button type="submit" class="add-to-cart-btn">Add to Cart</button>
-        </div>
+          Small
+        </label>
+        <label>
+          <input
+            type="radio"
+            name="size"
+            value="medium"
+            id="medium-size"
+            onclick="updateFormAction('medium')"
+          />
+          Medium (+500)
+        </label>
+        <label>
+          <input
+            type="radio"
+            name="size"
+            value="large"
+            id="large-size"
+            onclick="updateFormAction('large')"
+          />
+          Large (+1000)
+        </label>
+      </div>
+
+      <div class="pizza-quantity">
+        <input type="number" name="quantity" class="quantity-input" value="1" />
+        <button type="submit" class="add-to-cart-btn">Add to Cart</button>
+      </div>
     </form>
   </div>
   <!-- Picture div2 -->
   <div class="pizza-image">
     <img src="{{ product.images }}" alt="{{ product.name }}" />
   </div>
-</div>	
-
-
+</div>
+<script>
+  function updateFormAction(size) {
+    const form = document.getElementById("add-to-cart-form");
+    const url = form.getAttribute("action");
+    const newUrl = url.split("?")[0] + `?size=${size}`;
+    form.setAttribute("action", newUrl);
+  }
+</script>
 {% endblock %}
-
-
