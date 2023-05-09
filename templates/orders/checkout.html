@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+
 {% block content %}
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/checkout.css' %}" />
@@ -7,16 +8,73 @@
   <div class="checkout-container">
       <div class="col">
         <h2>Payment Details</h2>
-        <form method="POST">
-          {% csrf_token %} {{ form.as_p }}
+        <form method="POST" action="{% url 'checkout' %}">
+          {% csrf_token %}
+          <div class="form-row">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="John Doe" />
+          </div>
+          <div class="form-row">
+            <label for="street-name">Street Name:</label>
+            <input type="text" id="street-name" name="street_name" placeholder="Nauthólsvegur" />
+          </div>
+          <div class="form-row">
+            <label for="house-number">House Number:</label>
+            <input type="text" id="house-number" name="house_number" placeholder="123" />
+          </div>
+          <div class="form-row">
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city" placeholder="Reykjavík" />
+          </div>
+          <div class="form-row">
+            <label for="country">Country:</label>
+            <select id="country" name="country">
+              <option value="" selected disabled>Select a country</option>
+              <option value="Iceland">Iceland</option>
+              <option value="Danmark">Danmark</option>
+              <option value="Greenland">Greenland</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="postal-code">Postal Code:</label>
+            <input type="text" id="postal-code" name="postal_code" placeholder="12345" />
+          </div>
           <div class="radio-button">
             <input
               type="radio"
               id="pay-at-pickup"
-              name="payment-method"
-              value="pay-at-pickup"
+              name="payment_method"
+              value="pay-at-pickup" 
+              checked
             />
             <label for="pay-at-pickup">Pay at Pickup</label>
+          </div>
+          <div class="radio-button">
+            <input
+              type="radio"
+              id="pay-with-card"
+              name="payment_method"
+              value="pay-with-card"
+            />
+            <label for="pay-with-card">Pay with Card</label>
+          </div>
+          <div id="card-form" class="hidden">
+            <div class="form-row">
+              <label for="card-number">Card Number:</label>
+              <input type="text" id="card-number" name="card_number" placeholder="1234 5678 9012 3456" />
+            </div>
+            <div class="form-row">
+              <label for="cardholder-name">Cardholder Name:</label>
+              <input type="text" id="cardholder-name" name="cardholder_name" placeholder="John Doe" />
+            </div>
+            <div class="form-row">
+              <label for="expiration-date">Expiration Date:</label>
+              <input type="text" id="expiration-date" name="expiration_date" placeholder="MM/YY" />
+            </div>
+            <div class="form-row">
+              <label for="cvc">CVC:</label>
+              <input type="text" id="cvc" name="cvc" placeholder="123" />
+            </div>
           </div>
           <button id="confirm-button" class="confirm-button">Confirm</button>
         </form>

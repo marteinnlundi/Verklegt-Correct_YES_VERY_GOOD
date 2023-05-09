@@ -2,7 +2,7 @@ import logging
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import PaymentForm
-from products.models import Products
+from products.models import Products, Offers
 from decimal import Decimal
 from users.models import Profile
 from django.contrib.auth.decorators import login_required
@@ -17,7 +17,13 @@ def cart_view(request):
     cart_total = 0
 
     for item_id, item in cart.items():
-        product = Products.objects.get(id=item_id)
+        try:
+            product = Products.objects.get(id=item_id)
+        except Products.DoesNotExist:
+            try:
+                product = Offers.objects.get(id=item_id)
+            except Offers.DoesNotExist:
+                return redirect('cart')
         size = request.GET.get('size', 'small')
         price = Decimal(item['price']) + size_prices[size]
         quantity = item['quantity']
@@ -39,86 +45,21 @@ def cart_view(request):
 
     return render(request, 'cart.html', context)
 
-def checkout_view(request):
+def checkout(request):
+    form = PaymentForm()
     if request.method == 'POST':
-        payment_method = request.POST.get('payment-method')
-        if payment_method == 'pay-at-pickup':
-            # Process pay-at-pickup payment
-            messages.success(request, 'Payment successful! You will pay at pickup.')
-            now = datetime.datetime.now()
-            delivery_time = now + datetime.timedelta(minutes=20)
-            cart_items = []
-            cart_total = 0
-            cart = request.session.get('cart', {})
-            for item_id, item in cart.items():
-                product = Products.objects.get(id=item_id)
-                size = request.POST.get('size', 'small')
-                price = Decimal(item['price']) + size_prices[size]
-                quantity = item['quantity']
-                total_price = price * quantity
-                cart_total += total_price
-                cart_items.append({
-                    'id': item_id,
-                    'name': item['name'],
-                    'price': price,
-                    'quantity': quantity,
-                    'total_price': total_price,
-                })
-            user_profile = Profile.objects.get(user=request.user)
-            context = {
-                'cart_items': cart_items,
-                'cart_total': cart_total,
-                'delivery_time': delivery_time,
-                'user_profile': user_profile,
-            }
-            # Clear the cart
-            request.session['cart'] = {}
-            return render(request, 'confirmation.html', context=context)
-        else:
+        payment_method = request.POST.get('payment_method')
+
+        if payment_method == 'pay-with-card':
+            print("pay with card")
             form = PaymentForm(request.POST)
             if form.is_valid():
-                # Process credit card payment
-                messages.success(request, 'Payment successful!')
-                now = datetime.datetime.now()
-                delivery_time = now + datetime.timedelta(minutes=20)
-                cart_items = []
-                cart_total = 0
-                cart = request.session.get('cart', {})
-                for item_id, item in cart.items():
-                    product = Products.objects.get(id=item_id)
-                    size = request.POST.get('size', 'small')
-                    price = Decimal(item['price']) + size_prices[size]
-                    quantity = item['quantity']
-                    total_price = price * quantity
-                    cart_total += total_price
-                    cart_items.append({
-                        'id': item_id,
-                        'name': item['name'],
-                        'price': price,
-                        'quantity': quantity,
-                        'total_price': total_price,
-                    })
-                user_profile = Profile.objects.get(user=request.user)
-                context = {
-                    'cart_items': cart_items,
-                    'cart_total': cart_total,
-                    'delivery_time': delivery_time,
-                    'user_profile': user_profile,
-                }
-                # Clear the cart
-                request.session['cart'] = {}
-                return render(request, 'confirmation.html', context=context)
+                print("form validated")
+                return redirect('confirmation')
             else:
-                if 'card_number' in form.errors:
-                    messages.error(request, form.errors['card_number'][0])
-                if 'cardholder_name' in form.errors:
-                    messages.error(request, form.errors['cardholder_name'][0])
-                if 'expiration_date' in form.errors:
-                    messages.error(request, form.errors['expiration_date'][0])
-                if 'cvc' in form.errors:
-                    messages.error(request, form.errors['cvc'][0])
-    else:
-        form = PaymentForm()
+                print("form not valid")
+        elif payment_method == 'pay-at-pickup':
+            return redirect('confirmation')
     return render(request, 'checkout.html', {'form': form})
 
 def add_to_cart(request, product_id):
@@ -142,6 +83,21 @@ def add_to_cart(request, product_id):
     request.session['cart'] = cart
     return redirect('cart')
 
+def add_offer_to_cart(request, offer_id):
+    offer = Offers.objects.get(id=offer_id)
+    cart = request.session.get('cart', {})
+    quantity = int(request.POST.get('quantity', 1))
+    size = request.GET.get('size', 'small')
+
+    if offer_id in cart:
+        cart[offer_id]['quantity'] += quantity
+    else:
+        cart[offer_id] = {'name': offer.name, 'price': str(offer.price), 'quantity': quantity}
+
+    request.session['cart'] = cart
+    return redirect('cart')
+
+
 
 def clear_cart(request):
     request.session['cart'] = {}
@@ -149,8 +105,46 @@ def clear_cart(request):
     return redirect('cart')
 
 def confirmation_view(request):
-    logging.debug('Rendering confirmation page')
-    return render(request, 'confirmation.html')
+    cart_items = []
+    cart_total = 0
+
+    # Retrieve the order details from the session
+    cart = request.session.get('cart', {})
+    for item_id, item in cart.items():
+        try:
+            product = Products.objects.get(id=item_id)
+        except Products.DoesNotExist:
+            try:
+                product = Offers.objects.get(id=item_id)
+            except Offers.DoesNotExist:
+                return redirect('cart')
+
+        size = request.GET.get('size', 'small')
+        price = Decimal(item['price']) + size_prices[size]
+        quantity = item['quantity']
+        total_price = price * quantity
+        cart_total += total_price
+
+        cart_items.append({
+            'id': item_id,
+            'name': item['name'],
+            'price': price,
+            'quantity': quantity,
+            'total_price': total_price,
+        })
+
+    # Clear the cart
+    request.session['cart'] = {}
+
+    # Pass the order details to the template context
+    context = {
+        'cart_items': cart_items,
+        'cart_total': cart_total,
+        'delivery_time': datetime.datetime.now() + datetime.timedelta(minutes=30),
+    }
+    return render(request, 'confirmation.html', context)
+
+
 
 def change_item_quantity(request, item_id):
     cart = request.session.get('cart', {})
