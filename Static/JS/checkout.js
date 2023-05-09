@@ -8,6 +8,7 @@ $(document).ready(function() {
     }
   });
 
+//  Validation for the checkout info
 $("#confirm-button").click(function(event) {
   event.preventDefault();
   var paymentMethod = $("input[name='payment_method']:checked").val();

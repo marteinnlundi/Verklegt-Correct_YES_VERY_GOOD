@@ -4,6 +4,15 @@ from. models import Offers
 
 
 def menu_view(request):
+    """
+    A view to return the menu page
+    
+    Args:
+    request (HttpRequest): HTTP request object.
+        
+    Returns:
+    HttpResponse: HTTP response object.
+    """
     search_query = request.GET.get('search')
     product_type = request.GET.get('type')
     
@@ -30,6 +39,15 @@ def menu_view(request):
 
 
 def menu_item_view(request):
+    """
+    A view to return the menu item page
+    
+    Args:
+    request (HttpRequest): HTTP request object.
+    
+    Returns:
+    HttpResponse: HTTP response object.
+    """
     product_id = request.GET.get('id')
     product = Products.objects.get(id=product_id)
     context = {'product': product}
@@ -37,6 +55,15 @@ def menu_item_view(request):
 
 
 def offers_view(request):
+    """
+    A view to return the offers page
+    
+    Args:
+    request (HttpRequest): HTTP request object.
+    
+    Returns:
+    HttpResponse: HTTP response object.
+    """
     offers = Offers.objects.all()
     for offer in offers:
         offer.price = '{:,.0f}kr'.format(offer.price).replace(',', '.')
@@ -45,6 +72,15 @@ def offers_view(request):
 
 
 def offer_item_view(request):
+    """
+    A view to return the offer item page
+    
+    Args:
+    request (HttpRequest): HTTP request object.
+    
+    Returns:
+    HttpResponse: HTTP response object.
+    """
     offer_id = request.GET.get('id')
     offer = Offers.objects.get(id=offer_id)
     context = {'offer': offer}

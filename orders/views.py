@@ -8,9 +8,20 @@ from users.models import Profile
 from django.contrib.auth.decorators import login_required
 import datetime
 
+
 size_prices = {'small': 0, 'medium': 500, 'large': 1000}
+
 @login_required
 def cart_view(request):
+    """
+    Display the contents of the user's shopping cart.
+
+    Args:
+        request (HttpRequest): The HTTP request object.
+
+    Returns:
+        HttpResponse: The HTTP response containing the cart template and its context.
+    """
     user_profile = Profile.objects.get(user=request.user)
     cart = request.session.get('cart', {})
     cart_items = []
@@ -45,7 +56,17 @@ def cart_view(request):
 
     return render(request, 'cart.html', context)
 
+
 def checkout(request):
+    """
+    Display the checkout form and handle the payment.
+
+    Args:
+    request (HttpRequest): The HTTP request object.
+    
+    Returns:
+    HttpResponse: The HTTP response containing the checkout template and its context.
+    """
     form = PaymentForm()
     if request.method == 'POST':
         payment_method = request.POST.get('payment_method')
@@ -62,7 +83,18 @@ def checkout(request):
             return redirect('confirmation')
     return render(request, 'checkout.html', {'form': form})
 
+
 def add_to_cart(request, product_id):
+    """
+    Add a product to the shopping cart.
+    
+    Args:
+    request (HttpRequest): The HTTP request object.
+    product_id (int): The ID of the product to add to the cart.
+        
+    Returns:
+    HttpResponse: The HTTP response redirecting the user to the cart.
+    """
     product = Products.objects.get(id=product_id)
     cart = request.session.get('cart', {})
     quantity = int(request.POST.get('quantity', 1))
@@ -83,7 +115,18 @@ def add_to_cart(request, product_id):
     request.session['cart'] = cart
     return redirect('cart')
 
+
 def add_offer_to_cart(request, offer_id):
+    """
+    Add an offer to the shopping cart.
+    
+    Args:
+    request (HttpRequest): The HTTP request object.
+    offer_id (int): The ID of the offer to add to the cart.
+    
+    Returns:
+    HttpResponse: The HTTP response redirecting the user to the cart.
+    """
     offer = Offers.objects.get(id=offer_id)
     cart = request.session.get('cart', {})
     quantity = int(request.POST.get('quantity', 1))
@@ -98,13 +141,31 @@ def add_offer_to_cart(request, offer_id):
     return redirect('cart')
 
 
-
 def clear_cart(request):
+    """
+    Clear the shopping cart.
+    
+    Args:
+    request (HttpRequest): The HTTP request object.
+    
+    Returns:
+    HttpResponse: The HTTP response redirecting the user to the cart.
+    """
     request.session['cart'] = {}
     messages.success(request, 'Cart cleared successfully!')
     return redirect('cart')
 
+
 def confirmation_view(request):
+    """
+    Display the order confirmation page.
+    
+    Args:
+    request (HttpRequest): The HTTP request object.
+        
+    Returns:
+    HttpResponse: The HTTP response containing the confirmation template and its context.
+    """
     cart_items = []
     cart_total = 0
 
@@ -145,8 +206,16 @@ def confirmation_view(request):
     return render(request, 'confirmation.html', context)
 
 
-
 def change_item_quantity(request, item_id):
+    """
+    Change the quantity of an item in the shopping cart.
+    
+    Args:
+    request (HttpRequest): The HTTP request object.
+    
+    Returns:
+    HttpResponse: The HTTP response redirecting the user to the cart.
+    """
     cart = request.session.get('cart', {})
     quantity = int(request.POST.get('quantity', 1))
     if quantity <= 0:
@@ -156,13 +225,33 @@ def change_item_quantity(request, item_id):
     request.session['cart'] = cart
     return redirect('cart')
 
+
 def remove_item(request, item_id):
+    """
+    Remove an item from the shopping cart.
+    
+    Args:
+    request (HttpRequest): The HTTP request object.
+    
+    Returns:
+    HttpResponse: The HTTP response redirecting the user to the cart.
+    """
     cart = request.session.get('cart', {})
     del cart[str(item_id)]
     request.session['cart'] = cart
     return redirect('cart')
 
+
 def review_order(request):
+    """
+    Display the order details for the user to review.
+    
+    Args:
+    request (HttpRequest): The HTTP request object.
+    
+    Returns:
+    HttpResponse: The HTTP response containing the review order template and its context.
+    """
     cart = request.session.get('cart', {})
     cart_items = []
 
