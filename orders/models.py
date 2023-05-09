@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
-from products.models import Products
+#from django.contrib.auth.models import Products 
+from products.models import Offers, Products
+
 
 class BillingInfo(models.Model):
     """
@@ -24,10 +26,24 @@ class PaymentInfo(models.Model):
     cvc = models.CharField(max_length=3)
 
 
+
 class UserOrder(models.Model):
     """
     A model to store the user's order information.
     """
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    product = models.ForeignKey(Products, on_delete=models.CASCADE)
+    product = models.ForeignKey(Products, on_delete=models.CASCADE, null=True, blank=True)
+    offer = models.ForeignKey(Offers, on_delete=models.CASCADE, null=True, blank=True)
     order_id = models.CharField(max_length=100)
+    name = models.CharField(max_length=255)
+    description = models.TextField()
+    date = models.DateTimeField(auto_now_add=True)
+
+    def get_product_or_offer_name(self):
+        if self.product:
+            return self.product.name
+        elif self.offer:
+            return self.offer.name
+        else:
+            return 'Unknown'
+
