@@ -100,8 +100,46 @@ def clear_cart(request):
     return redirect('cart')
 
 def confirmation_view(request):
-    logging.debug('Rendering confirmation page')
-    return render(request, 'confirmation.html')
+    cart_items = []
+    cart_total = 0
+
+    # Retrieve the order details from the session
+    cart = request.session.get('cart', {})
+    for item_id, item in cart.items():
+        try:
+            product = Products.objects.get(id=item_id)
+        except Products.DoesNotExist:
+            try:
+                product = Offers.objects.get(id=item_id)
+            except Offers.DoesNotExist:
+                return redirect('cart')
+
+        size = request.GET.get('size', 'small')
+        price = Decimal(item['price']) + size_prices[size]
+        quantity = item['quantity']
+        total_price = price * quantity
+        cart_total += total_price
+
+        cart_items.append({
+            'id': item_id,
+            'name': item['name'],
+            'price': price,
+            'quantity': quantity,
+            'total_price': total_price,
+        })
+
+    # Clear the cart
+    request.session['cart'] = {}
+
+    # Pass the order details to the template context
+    context = {
+        'cart_items': cart_items,
+        'cart_total': cart_total,
+        'delivery_time': datetime.datetime.now() + datetime.timedelta(minutes=30),
+    }
+    return render(request, 'confirmation.html', context)
+
+
 
 def change_item_quantity(request, item_id):
     cart = request.session.get('cart', {})
