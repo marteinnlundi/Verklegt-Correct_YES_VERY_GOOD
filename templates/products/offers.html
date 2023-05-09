@@ -7,8 +7,8 @@
 
 
 <div class="title">
-    <h2>The Pizza Lair offers</h2>
-  </div>
+    The Pizza Lair Offers
+</div>
 
 
 <div class="offer-container">
@@ -18,7 +18,6 @@
         <p class="description text">{{ offer.description }}</p>
         <p class="price text">{{ offer.price }}</p>
     
-
         <form  action="{% url 'offerItem' %}" method="get">
             <input type="hidden" name="id" value="{{ offer.id }}">
             <button class="offerbutton text" type="submit">Order Now</button>

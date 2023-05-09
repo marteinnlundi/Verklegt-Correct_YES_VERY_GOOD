@@ -5,45 +5,67 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/menu.css' %}" />
 
 <div class="title">
-  <h2>The Lair Menu</h2>
+  The Lair Menu
 </div>
 
-<div class="crustSizes text">
-  <h2>Crust Sizes</h2>
-  <span>Small 1.500kr<br></span>  
-  <span>Medium 2.000kr<br></span> 
-  <span>Large 3.000kr<br></span>
-  <span>Extra Large<br></span>
-</div>
+<div class="subtitle">Pizzas</div>
 
-<form role="search" id="Searchform" method="get" action="{% url 'search_filter' %}">
-  <input
-    type="search"
-    id="query"
-    name="q"
-    placeholder="  Search for your favorite"
-    aria-label="Search through site content"
-    value="{{ search_query }}"
-  />
-  <button type="submit">Search</button>
-</form>
-
-<div id="productList">
-  {% if products %}
-    {% for product in products %}
+<div class="products-container">
+  {% for product in pizzas %}
+    <div class="products">
+      <p class="name text">{{ product.name }}</p>
+      <p class="description text">{{product.description}}</p>
       <span class="text">
-        <h2 id="name">{{ product.name }}</h2>
-        <p id="description">{{product.description}}</p>
-
-        <form id="detailButton" action="{% url 'menuItem' %}" method="get">
-          <input type="hidden" name="id" value="{{ product.id }}">
-          <button type="submit">Details</button>
-        </form>
+        Small {{ product.small_price }} kr <br>
+        Medium {{ product.medium_price }} kr <br>
+        Large {{ product.large_price }} kr
       </span>
-    {% endfor %}
-  {% else %}
+
+      <form  action="{% url 'menuItem' %}" method="get">
+        <input type="hidden" name="id" value="{{ product.id }}">
+        <button class="productbutton text" type="submit">Details</button>
+      </form>
+    </div>
+  {% endfor %}
+</div>
+
+
+  <div class="subtitle">Sides</div>
+  <div class="products-container">
+  {% for product in sides %}
+    <div class="products">
+      <p class="name text">{{ product.name }}</p>
+      <p class="description text">{{product.description}}</p>
+      <span class="text">{{ product.price }} kr</span>
+
+      <form  action="{% url 'menuItem' %}" method="get">
+        <input type="hidden" name="id" value="{{ product.id }}">
+        <button class="productbutton text" type="submit">Details</button>
+      </form>
+
+    </div>
+  {% endfor %}
+</div>
+
+
+  <div class="subtitle">Drinks</div>
+  <div class="products-container">
+  {% for product in drinks %}
+    <div class="products">
+      <p class="name text">{{ product.name }}</p>
+      <p class="description text">{{product.description}}</p>
+      <span class="text">{{ product.price }} kr</span>
+
+      <form  action="{% url 'menuItem' %}" method="get">
+        <input type="hidden" name="id" value="{{ product.id }}">
+        <button class="productbutton text" type="submit">Details</button>
+      </form>
+
+    </div>
+  {% endfor %}
+
+  {% if not pizzas and not sides and not drinks %}
     <p>No products found.</p>
   {% endif %}
 </div>
-
 {% endblock %}
