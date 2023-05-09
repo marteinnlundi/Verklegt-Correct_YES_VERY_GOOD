@@ -71,6 +71,8 @@ def checkout_view(request):
                 'delivery_time': delivery_time,
                 'user_profile': user_profile,
             }
+            # Clear the cart
+            request.session['cart'] = {}
             return render(request, 'confirmation.html', context=context)
         else:
             form = PaymentForm(request.POST)
@@ -79,7 +81,33 @@ def checkout_view(request):
                 messages.success(request, 'Payment successful!')
                 now = datetime.datetime.now()
                 delivery_time = now + datetime.timedelta(minutes=20)
-                return render(request, 'confirmation.html', {'delivery_time': delivery_time})
+                cart_items = []
+                cart_total = 0
+                cart = request.session.get('cart', {})
+                for item_id, item in cart.items():
+                    product = Products.objects.get(id=item_id)
+                    size = request.POST.get('size', 'small')
+                    price = Decimal(item['price']) + size_prices[size]
+                    quantity = item['quantity']
+                    total_price = price * quantity
+                    cart_total += total_price
+                    cart_items.append({
+                        'id': item_id,
+                        'name': item['name'],
+                        'price': price,
+                        'quantity': quantity,
+                        'total_price': total_price,
+                    })
+                user_profile = Profile.objects.get(user=request.user)
+                context = {
+                    'cart_items': cart_items,
+                    'cart_total': cart_total,
+                    'delivery_time': delivery_time,
+                    'user_profile': user_profile,
+                }
+                # Clear the cart
+                request.session['cart'] = {}
+                return render(request, 'confirmation.html', context=context)
             else:
                 if 'card_number' in form.errors:
                     messages.error(request, form.errors['card_number'][0])
