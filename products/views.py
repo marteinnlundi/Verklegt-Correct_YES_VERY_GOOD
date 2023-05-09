@@ -2,19 +2,30 @@ from django.shortcuts import render
 from .models import Products
 from. models import Offers
 
+
 def menu_view(request):
-    context = {'products': Products.objects.all()}
+    search_query = request.GET.get('search')
+    filter_type = request.GET.get('type')
+    products = Products.objects.order_by('name')
+
+    if filter_type:
+        products = products.filter(type=filter_type)
+
+    if search_query:
+        products = products.filter(description__icontains=search_query)
+
+    pizzas = products.filter(type='pizza')
+    sides = products.filter(type='side')
+    drinks = products.filter(type='drink')
+
+    context = {
+        'pizzas': pizzas,
+        'sides': sides,
+        'drinks': drinks,
+    }
     return render(request, 'menu.html', context)
 
 
-def search_filter(request):
-    query = request.GET.get('q')
-    if query:
-        products = Products.objects.filter(name__icontains=query) | Products.objects.filter(description__icontains=query)
-    else:
-        products = Products.objects.all()
-    context = {'products': products, 'search_query': query}
-    return render(request, 'menu.html', context)
 
 def menu_item_view(request):
     product_id = request.GET.get('id')

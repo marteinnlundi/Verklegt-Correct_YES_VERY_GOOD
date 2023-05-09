@@ -23,8 +23,6 @@ urlpatterns = [
     path('menuItem', views.menu_item_view, name='menuItem'),
     path('offers', views.offers_view, name='offers'),
     path('offerItem', views.offer_item_view, name='offerItem'),
-    path('search/', views.search_filter, name='search_filter'),
-
 ]
 
 
