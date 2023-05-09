@@ -8,27 +8,22 @@ $(document).ready(function() {
     }
   });
 
-//  Validation for the checkout info
-$("#confirm-button").click(function(event) {
-  event.preventDefault();
-  var paymentMethod = $("input[name='payment_method']:checked").val();
-  var formValid = true;
-  if (paymentMethod === "pay-with-card") {
-    var cardNumber = $("#card-number").val();
-    var cardholderName = $("#cardholder-name").val();
-    var expirationDate = $("#expiration-date").val();
-    var cvc = $("#cvc").val();
-    if (cardNumber === "" ||
-        cardholderName === "" ||
-        expirationDate === "" ||
-        cvc === "") {
-          $("#error-message").text("Please fill in all the required fields.");
-          $("#error-dialog").modal("show");
-          formValid = false;
+  $("#confirm-button").click(function(event) {
+    event.preventDefault();
+    var paymentMethod = $("input[name='payment_method']:checked").val();
+    if (paymentMethod === "pay-with-card") {
+      var cardNumber = $("#card-number").val();
+      var cardholderName = $("#cardholder-name").val();
+      var expirationDate = $("#expiration-date").val();
+      var cvc = $("#cvc").val();
+      if (cardNumber === "" ||
+          cardholderName === "" ||
+          expirationDate === "" ||
+          cvc === "") {
+        alert("Please fill in all the required fields.");
+        return;
+      }
     }
-  }
-  if (formValid) {
     $("form").submit();
-  }
-});
+  });
 });
