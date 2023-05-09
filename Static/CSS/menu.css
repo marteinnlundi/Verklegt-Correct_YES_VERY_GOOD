@@ -1,182 +1,82 @@
 .title {
-    color: rgba(23, 189, 49, 0.699999988079071);
-    font-size: 60px;
-    font-family: Ink Free;
-    font-weight: 500;
-    text-align: center;
-    padding-top: 40px;
+  color: rgba(23, 189, 49, 0.699999988079071);
+  font-size: 60px;
+  font-family: Ink Free;
+  font-weight: 500;
+  text-align: center;
+  padding-top: 40px;
 }
 
 .subtitle {
-    color: rgba(255, 255, 255, 1);
-    font-size: 50px;
-    font-family: Ink Free;
-    font-weight: 400;
-    white-space: nowrap;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 1),
-    0 0 20px rgba(255, 0, 0, 1),
-    0 0 30px rgba(255, 0, 0, 1),
-    0 0 40px rgba(255, 0, 0, 1),
-    0 0 70px rgba(255, 0, 0, 1),
-    0 0 80px rgba(255, 0, 0, 1),
-    0 0 100px rgba(255, 0, 0, 1);
-    padding-left: 80px;
-    padding-bottom: 5px;
+  color: rgba(255, 255, 255, 1);
+  font-size: 50px;
+  font-family: Ink Free;
+  font-weight: 400;
+  white-space: nowrap;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 1),
+  0 0 20px rgba(255, 0, 0, 1),
+  0 0 30px rgba(255, 0, 0, 1),
+  0 0 40px rgba(255, 0, 0, 1),
+  0 0 70px rgba(255, 0, 0, 1),
+  0 0 80px rgba(255, 0, 0, 1),
+  0 0 100px rgba(255, 0, 0, 1);
+  padding-left: 80px;
+  padding-bottom: 5px;
 }
 
 .products-container {
-    margin-top: 50px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 40px;
-    width: 250%;
-    max-width: 90%;
-    margin: 0 auto;
-    margin-bottom: 60px;
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
+  width: 250%;
+  max-width: 90%;
+  margin: 0 auto;
+  margin-bottom: 60px;
 }
 
 .products {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center; 
-    height: 400px;
-    box-shadow: 10px 10px 5px 0px rgba(87, 85, 85, 0.75);
-    border: solid 1px rgb(135, 123, 123);
-    padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center; 
+  height: 400px;
+  box-shadow: 10px 10px 5px 0px rgba(87, 85, 85, 0.75);
+  border: solid 1px rgb(135, 123, 123);
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 .text {
-    font-family: Ink Free;
-    color: white;
+  font-family: Ink Free;
+  color: white;
 }
 
 .name {
-    font-size: 30px;
-    margin-bottom: 5px;
+  font-size: 35px;
 }
 .description {
-    font-size: 20px;
-    margin-bottom: 5px;
+  font-size: 20px;
+  margin-bottom: 5px;
 }
 
-.searchFilter-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  #Searchform {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    position: relative;
-    width: 350px;
-    height: 35px;
-    border: solid 1.5px #17bd31;
-    border-radius: 10px;
-    padding-left: 10px;
-    margin-bottom: 10px;
-  }
-  
-  input {
-    all: unset;
-    font-family: Ink Free;
-    font-size: 20px;
-    color: white;
-    height: 100%;
-    width: calc(100% - 40px);
-    padding-right: 40px;
-  }
-  
-  ::placeholder {
-    color: #fff;
-    opacity: 0.7;
-  }
-  
-  #clearBtn {
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-    color: #17bd31;
-    font-family: Ink Free;
-    font-size: 35px;
-    opacity: 0.5;
-    transition: opacity 0.3s ease;
-    background-color: transparent;
-  }
-  
-  #clearBtn:hover {
-    opacity: 1;
-    cursor: pointer;
- 
+.buttonStyle {
+  width: 150px;
+  height: 45px;
+  border-color: rgba(23, 189, 49, 0.699999988079071);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 50px;
+  color:white;  
+  background-color: black;
+  font-family: Ink Free;
+  font-weight: 500;    
+  margin-bottom: 30px;
+  font-size: 25px;
 }
-  .filter-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    position: relative;
-    width: 350px;
-    height: 35px;
-    border: solid 1.5px #17bd31;
-    border-radius: 10px;
-    margin-bottom: 10px;
-  }
-  
-  select {
-    all: unset;
-    font-family: Ink Free;
-    font-size: 20px;
-    color: white;
-    height: 100%;
-    width: calc(100% - 80px);
-    padding-left: 10px;
-  }
-  
-  #clearFilterBtn {
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-    color: #17bd31;
-    font-family: Ink Free;
-    font-size: 20px;
-    opacity: 0.5;
-    transition: opacity 0.3s ease;
-    background-color: transparent;
-  }
-  
-  #clearFilterBtn:hover {
-    opacity: 1;
-    cursor: pointer;
-  }
-  
-  .filter-container:focus-within {
-    box-shadow: 0 0 5px #17bd31;
-    }
-  
-  
-    .buttonStyle {
-        width: 150px;
-        height: 45px;
-        border-color: rgba(23, 189, 49, 0.699999988079071);
-        border-style: solid;
-        border-width: 1px;
-        border-radius: 50px;
-        color:white;  
-        background-color: black;
-        font-family: Ink Free;
-        font-weight: 500;    
-        margin-bottom: 30px;
-        font-size: 25px;
-    }
-        
-    .buttonStyle:hover {
-        background-color: green;
-        color: white;
-        cursor: pointer;
-    }
-    
-  
+
+.buttonStyle:hover {
+  background-color: green;
+  color: white;
+  cursor: pointer;
+}
