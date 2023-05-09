@@ -1,6 +1,8 @@
 import logging
 from django.shortcuts import render, redirect
 from django.contrib import messages
+
+from orders.models import UserOrder
 from .forms import PaymentForm
 from products.models import Products
 from decimal import Decimal
@@ -39,6 +41,9 @@ def cart_view(request):
 
     return render(request, 'cart.html', context)
 
+from django.utils.crypto import get_random_string
+
+
 def checkout_view(request):
     if request.method == 'POST':
         payment_method = request.POST.get('payment-method')
@@ -71,6 +76,13 @@ def checkout_view(request):
                 'delivery_time': delivery_time,
                 'user_profile': user_profile,
             }
+            order_id = get_random_string(length=10)
+            for item in cart_items:
+                UserOrder.objects.create(
+                    user=request.user,
+                    product=Products.objects.get(id=item['id']),
+                    order_id=order_id
+                )
             # Clear the cart
             request.session['cart'] = {}
             return render(request, 'confirmation.html', context=context)
@@ -105,6 +117,16 @@ def checkout_view(request):
                     'delivery_time': delivery_time,
                     'user_profile': user_profile,
                 }
+
+                order_id = get_random_string(length=10)
+                for item in cart_items:
+                    UserOrder.objects.create(
+                        user=request.user,
+                        product=Products.objects.get(id=item['id']),
+                        order_id=order_id
+                    )
+
+
                 # Clear the cart
                 request.session['cart'] = {}
                 return render(request, 'confirmation.html', context=context)
@@ -194,3 +216,4 @@ def review_order(request):
     }
 
     return render(request, 'review_order.html', context=context)
+

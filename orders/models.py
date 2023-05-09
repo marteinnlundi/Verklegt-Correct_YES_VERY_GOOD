@@ -2,7 +2,8 @@ from django.db import models
 
 from django.contrib.auth.models import User
 #from django.contrib.auth.models import Products 
-from products.models import Products
+from products.models import Offers, Products
+
 class BillingInfo(models.Model):
     full_name = models.CharField(max_length=100)
     address = models.CharField(max_length=100)
@@ -17,8 +18,33 @@ class PaymentInfo(models.Model):
     exp_date = models.CharField(max_length=5)
     cvc = models.CharField(max_length=3)
 
+# class UserOrder(models.Model):
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+#     product = models.ForeignKey(Products, on_delete=models.CASCADE)
+#     order_id = models.CharField(max_length=100)
+    
+
+# class UserOrder(models.Model):
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+#     product = models.ForeignKey(Products, on_delete=models.CASCADE)
+#     order_id = models.CharField(max_length=100)
+#     name = models.CharField(max_length=255)
+#     description = models.TextField()
+#     date = models.DateTimeField(auto_now_add=True)
+
 class UserOrder(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    product = models.ForeignKey(Products, on_delete=models.CASCADE)
+    product = models.ForeignKey(Products, on_delete=models.CASCADE, null=True, blank=True)
+    offer = models.ForeignKey(Offers, on_delete=models.CASCADE, null=True, blank=True)
     order_id = models.CharField(max_length=100)
+    name = models.CharField(max_length=255)
+    description = models.TextField()
+    date = models.DateTimeField(auto_now_add=True)
 
+    def get_product_or_offer_name(self):
+        if self.product:
+            return self.product.name
+        elif self.offer:
+            return self.offer.name
+        else:
+            return 'Unknown'
