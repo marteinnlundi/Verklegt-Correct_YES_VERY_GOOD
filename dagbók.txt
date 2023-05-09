@@ -307,10 +307,18 @@ Ritari: Marteinn Lundi
 Mæting: Ágústa, Guðbjörg og Marteinn
 
 Fundurinn: 
-To-Do dagsins:
-Markmið morgundagsins:
-###############################################################################
+Í dag er planað að klára alla virkni og allt sem við munum eftir að þarf að klára þegar það kemur að flæði vefsíðunnar
+Það ekki mikið eftir og ekkert útlit sem við munum eftir eða virkni sem er ekki kominn hjá okkur.
 
+To-Do dagsins:
+Klára alla virkni sem er eftir
+Add to cart
+Search and filter items 
+Modify cart
+
+Markmið morgundagsins:
+Taka stöðufund og fara vel yfir allar þarfir verkefnisins og skrifa niður hvað okkur vantar í smáatriðum.
+###############################################################################
 
 Þriðjudagurinn 9.maí 2023
 
@@ -318,10 +326,17 @@ Ritari: Marteinn Lundi
 Mæting: Ágústa, Guðbjörg og Marteinn
 
 Fundurinn: 
-To-Do dagsins:
-Markmið morgundagsins:
-###############################################################################
+Byrjum daginn á löngum stöðufund til að vinna allar villur og allar breytingar eða þarfir sem þarf að laga.
+Það aðalega útlitsbreytingar eftir sem þarf að laga
+Virkninn sem þarf að laga er eithvað sem við þurfum aðstoð við og ætlum að laga allt annað í dag en það.
 
+To-Do dagsins:
+Laga allar útlitsbreytingar
+
+Markmið morgundagsins:
+Eiga bara eftir það sem við þurfum hjálp með og fá hjálp með það.
+
+###############################################################################
 
 Miðvikudagurinn 10.maí 2023
 
@@ -333,7 +348,6 @@ To-Do dagsins:
 Markmið morgundagsins:
 ###############################################################################
 
-
 Fimmtudagurinn 11.maí 2023
 
 Ritari: Marteinn Lundi 
@@ -343,7 +357,6 @@ Fundurinn:
 To-Do dagsins:
 Markmið morgundagsins:
 ###############################################################################
-
 
 Föstudagurinn 12.maí 2023
 
