@@ -2,7 +2,7 @@ import logging
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import PaymentForm
-from products.models import Products
+from products.models import Products, Offers
 from decimal import Decimal
 from users.models import Profile
 from django.contrib.auth.decorators import login_required
@@ -17,7 +17,13 @@ def cart_view(request):
     cart_total = 0
 
     for item_id, item in cart.items():
-        product = Products.objects.get(id=item_id)
+        try:
+            product = Products.objects.get(id=item_id)
+        except Products.DoesNotExist:
+            try:
+                product = Offers.objects.get(id=item_id)
+            except Offers.DoesNotExist:
+                return redirect('cart')
         size = request.GET.get('size', 'small')
         price = Decimal(item['price']) + size_prices[size]
         quantity = item['quantity']
@@ -141,6 +147,21 @@ def add_to_cart(request, product_id):
 
     request.session['cart'] = cart
     return redirect('cart')
+
+def add_offer_to_cart(request, offer_id):
+    offer = Offers.objects.get(id=offer_id)
+    cart = request.session.get('cart', {})
+    quantity = int(request.POST.get('quantity', 1))
+    size = request.GET.get('size', 'small')
+
+    if offer_id in cart:
+        cart[offer_id]['quantity'] += quantity
+    else:
+        cart[offer_id] = {'name': offer.name, 'price': str(offer.price), 'quantity': quantity}
+
+    request.session['cart'] = cart
+    return redirect('cart')
+
 
 
 def clear_cart(request):
