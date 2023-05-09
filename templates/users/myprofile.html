@@ -9,17 +9,19 @@
 </div>
 
 <div class="profiles">
-  <form method="POST">
+
     {% csrf_token %}
     {{ form }}
     <div class="profile-container">
-      <img alt="profilepicture" src="{{ user_profile.profile_picture.url }}" class="profile-pic" />
+
+      <img src="{{ user_profile.profile_picture.url }}" alt="Profile picture" class="profile-pic">
+
 
       <h2 class="name">{{ user_profile.name }}</h2>
       <h2 class="email">{{ user_profile.email }}</h2>
 
     </div>
-  </form>
+
   
 
   <div class="my-orders">

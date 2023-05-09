@@ -152,3 +152,10 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = '/users/myprofile'
+
+
+# media mappa fyrir user_profile myndir
+#mappan heitir user_images
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'user_images')
+MEDIA_URL = '/media/'

@@ -20,7 +20,7 @@ def signin_view(request):
             profile = Profile()
             profile.user = form.instance
             profile.name = form.cleaned_data['username']
-            profile.email = form.cleaned_data['email']
+            # profile.email = form.cleaned_data['email']
             profile.password = form.cleaned_data['password1']
             profile.save()
             return redirect('/users/login/')
@@ -32,13 +32,13 @@ def signin_view(request):
 
 #edit profile form, update the user to the user_profile table
 def edit_profile_view(request):
+    profile = Profile.objects.get(user=request.user)
     if request.user.id:
         if request.method == 'POST':
             form = UserEditForm(request.POST, request.FILES, instance=request.user.profile)
             if form.is_valid():
                 form.save()
                 messages.success(request, f'Your account has been updated!')
-                profile = Profile.objects.get(user=request.user)
             return render(request, 'users/myprofile.html', { 'user_profile': profile})
         else:
             form = UserEditForm(instance=request.user.profile)
@@ -48,6 +48,11 @@ def edit_profile_view(request):
 
 def myprofile_view(request):
     user_profile = Profile.objects.get(user=request.user)
+    #if the profile picture is not uploaded, use the default picture
+    if not user_profile.profile_picture:
+        user_profile.profile_picture = '/default.jpg'
+        user_profile.save()
+
     return render(request, 'users/myprofile.html', {'user_profile': user_profile})
 
 

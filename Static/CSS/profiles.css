@@ -3,18 +3,6 @@ html {
     background-color: black;
 }
 
-/* body {
-    background-image: url('https://aheioqhobo.cloudimg.io/v7/_playground-bucket-v2.teleporthq.io_/afb08ec6-7501-4143-b01d-8284720e4506/aa9cb2d0-6cba-4a49-a379-9002210cacb2?org_if_sml=147458');
-    background-repeat: repeat-x;
-    background-size: 200px;
-    animation: move-background 30s linear infinite;
-    
-  }
-  
-  @keyframes move-background {
-    from { background-position: 0 0; }
-    to { background-position: 100% 0; }
-  } */
 
 .title {
     color: rgba(23, 189, 49, 0.699999988079071);
