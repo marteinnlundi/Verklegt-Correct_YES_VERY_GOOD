@@ -6,7 +6,7 @@ class Products(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
     images = models.ImageField(upload_to='product_images', max_length=999)
-    price = models.DecimalField(max_digits=6, decimal_places=2)
+    price = models.DecimalField(max_digits=6, decimal_places=0)
     type = models.CharField(max_length=100, null=True, blank=True)
 
     def __str__(self):

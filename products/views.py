@@ -4,9 +4,20 @@ from. models import Offers
 
 
 def menu_view(request):
-    pizzas = Products.objects.filter(type='pizza').order_by('name')
-    sides = Products.objects.filter(type='side').order_by('name')
-    drinks = Products.objects.filter(type='drink').order_by('name')
+    search_query = request.GET.get('search')
+    filter_type = request.GET.get('type')
+    products = Products.objects.order_by('name')
+
+    if filter_type:
+        products = products.filter(type=filter_type)
+
+    if search_query:
+        products = products.filter(description__icontains=search_query)
+
+    pizzas = products.filter(type='pizza')
+    sides = products.filter(type='side')
+    drinks = products.filter(type='drink')
+
     context = {
         'pizzas': pizzas,
         'sides': sides,

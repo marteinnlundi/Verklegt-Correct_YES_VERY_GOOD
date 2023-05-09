@@ -1,5 +1,5 @@
-{% extends 'base.html' %} 
-{% block content %} 
+{% extends 'base.html' %}
+{% block content %}
 {% load static %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'css/menu.css' %}" />
@@ -7,6 +7,30 @@
 <div class="title">
   The Lair Menu
 </div>
+<div class="searchFilter-container">
+  <div class="search-container">
+    <form id="Searchform" action="{% url 'menu' %}" method="get">
+      <div class="inputContainer">
+        <input type="text" name="search" placeholder="Search for your favorite ...">
+        <button type="button" id="clearBtn">X</button>
+      </div>
+    </form>
+  </div>
+  <div class="filter-container">
+    <form id="Filterform" action="{% url 'menu' %}" method="get">
+        <label for="type">Filter by:</label>
+        <select name="type">
+            <option value="">All</option>
+            <option value="pizza">Pizzas</option>
+            <option value="side">Sides</option>
+            <option value="drink">Drinks</option>
+        </select>
+        <button type="submit">Filter</button>
+    </form>
+    <button type="button" id="clearFilterBtn">X</button>
+</div>
+</div>
+{% if pizzas %}
 
 <div class="subtitle">Pizzas</div>
 
@@ -16,56 +40,77 @@
       <p class="name text">{{ product.name }}</p>
       <p class="description text">{{product.description}}</p>
       <span class="text">
-        Small {{ product.small_price }} kr <br>
-        Medium {{ product.medium_price }} kr <br>
-        Large {{ product.large_price }} kr
+        Small 1.500kr <br>
+        Medium 3.500kr <br>
+        Large 4.500kr
       </span>
 
-      <form  action="{% url 'menuItem' %}" method="get">
-        <input type="hidden" name="id" value="{{ product.id }}">
-        <button class="productbutton text" type="submit">Details</button>
-      </form>
-    </div>
-  {% endfor %}
+  <form  action="{% url 'menuItem' %}" method="get">
+    <input type="hidden" name="id" value="{{ product.id }}">
+    <button class="buttonStyle" type="submit">Details</button>
+  </form>
 </div>
+{% endfor %}
 
+</div>
+{% endif %}
+{% if sides %}
 
-  <div class="subtitle">Sides</div>
-  <div class="products-container">
+<div class="subtitle">Sides</div>
+<div class="products-container">
   {% for product in sides %}
     <div class="products">
       <p class="name text">{{ product.name }}</p>
       <p class="description text">{{product.description}}</p>
       <span class="text">{{ product.price }} kr</span>
 
-      <form  action="{% url 'menuItem' %}" method="get">
-        <input type="hidden" name="id" value="{{ product.id }}">
-        <button class="productbutton text" type="submit">Details</button>
-      </form>
+  <form  action="{% url 'menuItem' %}" method="get">
+    <input type="hidden" name="id" value="{{ product.id }}">
+    <button class="buttonStyle" type="submit">Details</button>
+  </form>
 
-    </div>
-  {% endfor %}
 </div>
+{% endfor %}
 
+</div>
+{% endif %}
+{% if drinks %}
 
-  <div class="subtitle">Drinks</div>
-  <div class="products-container">
+<div class="subtitle">Drinks</div>
+<div class="products-container">
   {% for product in drinks %}
     <div class="products">
       <p class="name text">{{ product.name }}</p>
       <p class="description text">{{product.description}}</p>
       <span class="text">{{ product.price }} kr</span>
 
-      <form  action="{% url 'menuItem' %}" method="get">
-        <input type="hidden" name="id" value="{{ product.id }}">
-        <button class="productbutton text" type="submit">Details</button>
-      </form>
+  <form  action="{% url 'menuItem' %}" method="get">
+    <input type="hidden" name="id" value="{{ product.id }}">
+    <button class="buttonStyle" type="submit">Details</button>
+  </form>
 
-    </div>
-  {% endfor %}
-
-  {% if not pizzas and not sides and not drinks %}
-    <p>No products found.</p>
-  {% endif %}
 </div>
+{% endfor %}
+
+</div>
+{% endif %}
+{% if not pizzas and not sides and not drinks %}
+  <p>No products found.</p>
+{% endif %}
+<script>
+const clearFilterBtn = document.getElementById('clearFilterBtn');
+clearFilterBtn.addEventListener('click', () => {
+    const url = new URL(window.location.href);
+    url.searchParams.delete('type');
+    window.location.href = url.toString();
+});
+  const Filterform = document.getElementById('Filterform');
+Filterform.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const type = document.querySelector('#Filterform select[name="type"]').value;
+    const url = new URL(window.location.href);
+    url.searchParams.set('type', type);
+    window.location.href = url.toString();
+});
+</script>
 {% endblock %}
