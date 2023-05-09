@@ -45,86 +45,16 @@ def cart_view(request):
 
     return render(request, 'cart.html', context)
 
-def checkout_view(request):
+def checkout(request):
+    form = PaymentForm()
     if request.method == 'POST':
         payment_method = request.POST.get('payment-method')
         if payment_method == 'pay-at-pickup':
-            # Process pay-at-pickup payment
-            messages.success(request, 'Payment successful! You will pay at pickup.')
-            now = datetime.datetime.now()
-            delivery_time = now + datetime.timedelta(minutes=20)
-            cart_items = []
-            cart_total = 0
-            cart = request.session.get('cart', {})
-            for item_id, item in cart.items():
-                product = Products.objects.get(id=item_id)
-                size = request.POST.get('size', 'small')
-                price = Decimal(item['price']) + size_prices[size]
-                quantity = item['quantity']
-                total_price = price * quantity
-                cart_total += total_price
-                cart_items.append({
-                    'id': item_id,
-                    'name': item['name'],
-                    'price': price,
-                    'quantity': quantity,
-                    'total_price': total_price,
-                })
-            user_profile = Profile.objects.get(user=request.user)
-            context = {
-                'cart_items': cart_items,
-                'cart_total': cart_total,
-                'delivery_time': delivery_time,
-                'user_profile': user_profile,
-            }
-            # Clear the cart
-            request.session['cart'] = {}
-            return render(request, 'confirmation.html', context=context)
-        else:
+            return redirect('confirmation')
+        elif payment_method == 'pay-with-card':
             form = PaymentForm(request.POST)
             if form.is_valid():
-                # Process credit card payment
-                messages.success(request, 'Payment successful!')
-                now = datetime.datetime.now()
-                delivery_time = now + datetime.timedelta(minutes=20)
-                cart_items = []
-                cart_total = 0
-                cart = request.session.get('cart', {})
-                for item_id, item in cart.items():
-                    product = Products.objects.get(id=item_id)
-                    size = request.POST.get('size', 'small')
-                    price = Decimal(item['price']) + size_prices[size]
-                    quantity = item['quantity']
-                    total_price = price * quantity
-                    cart_total += total_price
-                    cart_items.append({
-                        'id': item_id,
-                        'name': item['name'],
-                        'price': price,
-                        'quantity': quantity,
-                        'total_price': total_price,
-                    })
-                user_profile = Profile.objects.get(user=request.user)
-                context = {
-                    'cart_items': cart_items,
-                    'cart_total': cart_total,
-                    'delivery_time': delivery_time,
-                    'user_profile': user_profile,
-                }
-                # Clear the cart
-                request.session['cart'] = {}
-                return render(request, 'confirmation.html', context=context)
-            else:
-                if 'card_number' in form.errors:
-                    messages.error(request, form.errors['card_number'][0])
-                if 'cardholder_name' in form.errors:
-                    messages.error(request, form.errors['cardholder_name'][0])
-                if 'expiration_date' in form.errors:
-                    messages.error(request, form.errors['expiration_date'][0])
-                if 'cvc' in form.errors:
-                    messages.error(request, form.errors['cvc'][0])
-    else:
-        form = PaymentForm()
+                return redirect('confirmation')
     return render(request, 'checkout.html', {'form': form})
 
 def add_to_cart(request, product_id):
