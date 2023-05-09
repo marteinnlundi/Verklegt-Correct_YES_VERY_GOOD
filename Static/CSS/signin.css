@@ -1,5 +1,6 @@
 body {
     background-color: black;
+    overflow: auto;
 }
 
 .signup {
@@ -15,6 +16,7 @@ body {
     text-align: right;
     font-family: Arial, sans-serif;
     color:white;
+   
 }
 
 
@@ -25,7 +27,7 @@ form {
     border: solid;
     padding:40px;
     box-shadow: 10px 10px 5px 0px rgba(87, 85, 85, 0.75);
-    
+
 }
 
 label {
@@ -45,6 +47,7 @@ input, select {
     box-sizing: border-box;
     background-color: black;
     transition: background-color 0.3s ease;
+    color:white;
 }
 
 input:focus, select:focus {

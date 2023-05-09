@@ -1,4 +1,3 @@
-
 .home-screen-img {
   position: relative;
   display: flex;
@@ -6,7 +5,6 @@
   align-items: center;
   height: 100%;
   width: 100%;
-
 }
 
 .best-offer-container {
@@ -48,14 +46,14 @@
   text-decoration: none;
 }
 
-.best-offer-text1 {
+.best-offer-text {
   top: -740px;
   left: 118px;
   color: rgba(23, 189, 49, 0.699999988079071);
   width: 459px;
   height: auto;
   position: absolute;
-  font-size: 50px;
+  font-size: 35px;
   font-style: Regular;
   text-align: left;
   font-family: Ink Free;
@@ -65,29 +63,10 @@
   text-decoration: none;
 }
 
-.best-offer-text2 {
-  top: -549.9px;
-  left: 118px;
-  color: rgba(23, 189, 49, 0.699999988079071);
-  width: 459px;
-  height: auto;
-  position: absolute;
-  font-size: 50px;
-  font-style: Regular;
-  text-align: left;
-  font-family: Ink Free;
-  font-weight: 400;
-  line-height: normal;
-  font-stretch: normal;
-  text-decoration: none;
-}
 
-.pizza-icon {
-  top: -403px;
-  left: 1125.33px;
-  width: 249px;
-  height: 262px;
-  position: absolute;
+
+.order-button-container {
+  background-image: url("https://aheioqhobo.cloudimg.io/v7/_playground-bucket-v2.teleporthq.io_/afb08ec6-7501-4143-b01d-8284720e4506/aa9cb2d0-6cba-4a49-a379-9002210cacb2?org_if_sml=147458");
 }
 
 .order-button{
@@ -112,7 +91,7 @@
 }
 
 
-.description1 {
+.description {
   color: rgba(255, 255, 255, 1);
   font-size: 30px;
   font-style: Regular;
@@ -123,18 +102,11 @@
   font-stretch: normal;
 }
 
-.description2 {
-  color: rgba(255, 255, 255, 1);
-  font-size: 30px;
-  font-style: Regular;
-  text-align: center;
-  font-family: Ink Free;
-  font-weight: 400;
-  line-height: normal;
-  font-stretch: normal;
+.order-offer-price {
+  color:white;
 }
 
-.description-box-1 {
+.description-box {
 top: -680px;
 left: 48px;
 width: 459px;
@@ -145,17 +117,6 @@ align-items: flex-start;
 flex-shrink: 1;
 }
 
-.description-box-2 {
-    top: -450px;
-    left: 48px;
-    width: 459px;
-    height: 100px;
-    display: flex;
-    position: absolute;
-    align-items: flex-start;
-    flex-shrink: 1;
-
-}
 
 .order-text-box {
   top: 0px;

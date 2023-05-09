@@ -21,3 +21,4 @@ class UserOrder(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     product = models.ForeignKey(Products, on_delete=models.CASCADE)
     order_id = models.CharField(max_length=100)
+
