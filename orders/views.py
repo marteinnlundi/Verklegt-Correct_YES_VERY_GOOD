@@ -169,7 +169,14 @@ def review_order(request):
     size_prices = {'small': 0, 'medium': 500, 'large': 1000}
 
     for item_id, item in cart.items():
-        product = Products.objects.get(id=item_id)
+        try:
+            product = Products.objects.get(id=item_id)
+        except Products.DoesNotExist:
+            try:
+                product = Offers.objects.get(id=item_id)
+            except Offers.DoesNotExist:
+                return redirect('cart')
+
         size = request.POST.get('size', 'small')
         price = Decimal(item['price']) + size_prices[size]
         quantity = item['quantity']
@@ -188,3 +195,4 @@ def review_order(request):
     }
 
     return render(request, 'review_order.html', context=context)
+

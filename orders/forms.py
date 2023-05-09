@@ -1,4 +1,5 @@
 from django import forms
+from datetime import datetime
 
 class PaymentForm(forms.Form):
     name = forms.CharField(max_length=255, label='Name')
@@ -11,14 +12,15 @@ class PaymentForm(forms.Form):
 
     card_number = forms.CharField(max_length=16, label='Card Number', required=False)
     cardholder_name = forms.CharField(max_length=255, label='Cardholder Name', required=False)
-    expiration_date = forms.DateField(label='Expiration Date', required=False)
+    expiration_date = forms.CharField(max_length=5, label='Expiration Date (MM/YY)', required=False)
     cvc = forms.CharField(max_length=3, label='CVC', required=False)
 
     def clean_card_number(self):
         card_number = self.cleaned_data['card_number']
         if card_number and (not card_number.isdigit() or len(card_number) != 16):
             raise forms.ValidationError("Invalid card number.")
-        return card_number
+        raise forms.ValidationError("Please fill in all the required fields.")
+
 
     def clean_cvc(self):
         cvc = self.cleaned_data['cvc']
@@ -61,3 +63,14 @@ class PaymentForm(forms.Form):
         if not postal_code.isalnum():
             raise forms.ValidationError("Invalid postal code.")
         return postal_code
+
+    def clean_expiration_date(self):
+        expiration_date = self.cleaned_data['expiration_date']
+        if expiration_date:
+            try:
+                datetime.strptime(expiration_date, '%m/%y')
+            except ValueError:
+                raise forms.ValidationError("Invalid expiration date. Use MM/YY format.")
+        return expiration_date
+    
+
