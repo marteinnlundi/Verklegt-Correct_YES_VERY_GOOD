@@ -10,17 +10,18 @@
 <div class="pizza-container">
   <!-- Pizza deitail div1 -->
   <div class="pizza-details">
-    <h1 class="pizza-name">{{ product.name }}</h1>
-    <div class="pizza-description">{{ product.description }}</div>
+    <h1 class="pizza-name title">{{ product.name }}</h1>
+    <div class="pizza-description text">{{ product.description }}</div>
 
-    <form
-      method="POST"
-      id="add-to-cart-form"
-      action="{% url 'add_to_cart' product.id %}?size=small"
-    >
-      {% csrf_token %}
-      <div class="pizza-size">
-        <label>
+    <div class="pizza-size text">
+      <form
+        class="radio-form"
+        method="POST"
+        id="add-to-cart-form"
+        action="{% url 'add_to_cart' product.id %}?size=small"
+      >
+        {% csrf_token %}
+        <label class="form-controle">
           <input
             type="radio"
             name="size"
@@ -28,9 +29,9 @@
             id="small-size"
             onclick="updateFormAction('small')"
           />
-          Small
+          <span>Small</span>
         </label>
-        <label>
+        <label class="form-controle">
           <input
             type="radio"
             name="size"
@@ -38,9 +39,9 @@
             id="medium-size"
             onclick="updateFormAction('medium')"
           />
-          Medium (+500)
+          <span>Medium (+500)</span>
         </label>
-        <label>
+        <label class="form-controle">
           <input
             type="radio"
             name="size"
@@ -48,16 +49,21 @@
             id="large-size"
             onclick="updateFormAction('large')"
           />
-          Large (+1000)
+          <span>Large (+1000)</span>
         </label>
-      </div>
-
-      <div class="pizza-quantity">
-        <input type="number" name="quantity" class="quantity-input" value="1" />
-        <button type="submit" class="add-to-cart-btn">Add to Cart</button>
-      </div>
-    </form>
+        <div class="pizza-quantity">
+          <input
+            type="number"
+            name="quantity"
+            class="quantity-input"
+            value="1"
+          />
+          <button type="submit" class="add-to-cart-btn">Add to Cart</button>
+        </div>
+      </form>
+    </div>
   </div>
+
   <!-- Picture div2 -->
   <div class="pizza-image">
     <img src="{{ product.images }}" alt="{{ product.name }}" />
@@ -67,7 +73,7 @@
   function updateFormAction(size) {
     const form = document.getElementById("add-to-cart-form");
     const url = form.getAttribute("action");
-    const newUrl = url.split("?")[0] + `?size=${size}`;
+    const newUrl = url.split("?")[0] + ?size=${size};
     form.setAttribute("action", newUrl);
   }
 </script>

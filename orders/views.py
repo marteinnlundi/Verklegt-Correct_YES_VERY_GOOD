@@ -87,8 +87,6 @@ def checkout(request):
 from django.utils.crypto import get_random_string
 
 
-
-
 def add_to_cart(request, product_id):
     """
     Add a product to the shopping cart.
@@ -207,11 +205,28 @@ def confirmation_view(request):
         }
         order_id = get_random_string(length=10)
         for item in cart_items:
-            UserOrder.objects.create(
-                user=request.user,
-                product=Products.objects.get(id=item['id']),
-                order_id=order_id
-            )
+            try:
+                # Attempt to retrieve the item as a product
+                product = Products.objects.get(id=item['id'])
+                UserOrder.objects.create(
+                    user=request.user,
+                    product=product,
+                    order_id=order_id
+                )
+            except Products.DoesNotExist:
+                try:
+                    # If the item is not a product, attempt to retrieve it as an offer
+                    offer = Offers.objects.get(id=item['id'])
+                    UserOrder.objects.create(
+                        user=request.user,
+                        offer=offer,
+                        order_id=order_id
+                    )
+                except Offers.DoesNotExist:
+                    # If the item is neither a product nor an offer, log an error and continue to the next item
+                    print(f"Invalid cart item: {item}")
+                    continue
+
 
     # Clear the cart
     request.session['cart'] = {}
