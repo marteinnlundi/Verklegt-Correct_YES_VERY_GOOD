@@ -60,6 +60,13 @@ def cart_view(request):
 
 def checkout(request):
     """
+    Display the checkout page.
+
+    Args:
+    request (HttpRequest): The HTTP request object.
+    
+    Returns:
+    HttpResponse: The HTTP response containing the checkout template and its context.
     
     """
     form = PaymentForm()
