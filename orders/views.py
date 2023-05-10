@@ -210,8 +210,6 @@ def confirmation_view(request):
             UserOrder.create(
                 user=request.user,
                 order_id=order_id,
-                product = Products.objects.get(id=item.get('id')),
-                #product_offers = Offers.objects.get(id=item.get('id')),
             ).save()
 
 
