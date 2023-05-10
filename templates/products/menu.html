@@ -7,22 +7,26 @@
 <div class="title">The Lair Menu</div>
 
 <div class="search-filter-container">
-  <form class="search-form" method="get" action="{% url 'menu' %}">
-    <input type="text" name="search" placeholder="Search..." value="{{ request.GET.search }}">
-    <button type="submit" id="search-button">Search</button>
-    <button class="buttonStyle"  type="button" id="clear-button" style="display: none;">X</button>
-  </form>
-
-  <form method="get">
-    <label for="type">Filter by type:</label>
-    <select id="type" name="type">
-        <option value="">All</option>
-        <option value="pizza" {% if request.GET.type == "pizza" %}selected{% endif %}>Pizzas</option>
-        <option value="side" {% if request.GET.type == "side" %}selected{% endif %}>Sides</option>
-        <option value="drink" {% if request.GET.type == "drink" %}selected{% endif %}>Drinks</option>
-    </select>
-    <button type="submit">Apply</button>
-  </form>
+  <div class="container">
+    <form class="search-form" method="get" action="{% url 'menu' %}">
+      <input type="text" name="search" placeholder="Search your for your favorite..."  value="{{ request.GET.search }}">
+      <button class="search-button" id="search-button">Search</button>
+      <button class="search-button" id="clear-button">Clear</button>
+    </form>
+  </div>
+  
+  <div class="container">
+    <form class="search-form" method="get">
+      <select id="type" name="type">
+          <option value="">All</option>
+          <option value="pizza" {% if request.GET.type == "pizza" %}selected{% endif %}>Pizzas</option>
+          <option value="side" {% if request.GET.type == "side" %}selected{% endif %}>Sides</option>
+          <option value="drink" {% if request.GET.type == "drink" %}selected{% endif %}>Drinks</option>
+      </select>
+      <button class="filter-button" id="filter-button">Apply</button>
+      <button class="filter-button" id="clear-filter-button">Clear</button>
+    </form>
+  </div>
 </div>
 
 <!-- All the pizza products -->
@@ -35,12 +39,12 @@
         <p class="name text">{{ pizza.name }}</p>
         <p class="description text">{{ pizza.description }}</p>
         <span class="text">
-          Small 1.500kr <br>
-          Medium 3.500kr <br>
-          Large 4.500kr
+          Small &nbsp &nbsp 1.500kr <br>
+          Medium &nbsp &nbsp 3.500kr <br>
+          Large &nbsp &nbsp 4.500kr
         </span>
 
-        <form  action="{% url 'menuItem' %}" method="get">
+        <form action="{% url 'menuItem' %}" method="get">
           <input type="hidden" name="id" value="{{ pizza.id }}">
           <button class="buttonStyle" type="submit">Details</button>
         </form>
@@ -59,7 +63,7 @@
       <div class="Side products">
         <p class="name text">{{ side.name }}</p>
         <p class="description text">{{ side.description }}</p>
-        <span class="text">{{ side.price }} kr</span>
+        <span class="text">{{ side.price }}</span>
 
         <form  action="{% url 'menuItem' %}" method="get">
           <input type="hidden" name="id" value="{{ side.id }}">
@@ -80,7 +84,7 @@
       <div class="Drink products">
         <p class="name text">{{ drink.name }}</p>
         <p class="description text">{{ drink.description }}</p>
-        <span class="text">{{ drink.price }} kr</span>
+        <span class="text">{{ drink.price }}</span>
 
         <form  action="{% url 'menuItem' %}" method="get">
           <input type="hidden" name="id" value="{{ drink.id }}">
@@ -92,19 +96,53 @@
   </div>
 {% endif %}
 
+
 <script>
-  const searchInput = document.querySelector('input[name="search"]');
   const searchButton = document.getElementById('search-button');
   const clearButton = document.getElementById('clear-button');
-
-  searchInput.addEventListener('input', () => {
-    if (searchInput.value.trim().length > 0) {
-      clearButton.style.display = 'block';
-    } else {
-      clearButton.style.display = 'none';
-    }
+  const searchInput = document.querySelector('.search-form input');
+  
+  const filterButton = document.getElementById('filter-button');
+  const clearFilterButton = document.getElementById('clear-filter-button');
+  const typeSelect = document.getElementById('type');
+  
+  searchButton.addEventListener('click', () => {
+    clearButton.style.display = 'inline-block';
+    searchButton.style.display = 'none';
   });
-
-</script>
+  
+  clearButton.addEventListener('click', () => {
+    searchInput.value = '';
+    clearButton.style.display = 'none';
+    searchButton.style.display = 'inline-block';
+  });
+  
+  if (!searchInput.value) {
+    clearButton.style.display = 'none';
+    searchButton.style.display = 'inline-block';
+  } else {
+    clearButton.style.display = 'inline-block';
+    searchButton.style.display = 'none';
+  }
+  
+  filterButton.addEventListener('click', () => {
+    clearFilterButton.style.display = 'inline-block';
+    filterButton.style.display = 'none';
+  });
+  
+  clearFilterButton.addEventListener('click', () => {
+    typeSelect.value = '';
+    clearFilterButton.style.display = 'none';
+    filterButton.style.display = 'inline-block';
+  });
+  
+  if (!typeSelect.value) {
+    clearFilterButton.style.display = 'none';
+    filterButton.style.display = 'inline-block';
+  } else {
+    clearFilterButton.style.display = 'inline-block';
+    filterButton.style.display = 'none';
+  }
+  </script>
 
 {% endblock %}

@@ -30,6 +30,11 @@ def menu_view(request):
         sides = sides.filter(description__icontains=search_query)
         drinks = drinks.filter(description__icontains=search_query)
 
+    for side in sides:
+        side.price = '{:,.0f}kr'.format(side.price).replace(',', '.')
+    for drink in drinks:
+        drink.price = '{:,.0f}kr'.format(drink.price).replace(',', '.')
+
     context = {
         'pizzas': pizzas,
         'sides': sides,
