@@ -3,12 +3,13 @@
   grid-template-columns: 55% 45%;
   grid-gap: 20px;
   width: 100%;
-  margin-bottom: 20px;
+  margin-top: 5px;
+  margin-bottom: 10px;
 }
 
 .title {
   color: rgb(23 189 49);
-  font-size: 55px;
+  font-size: 5px;
   font-family: Ink Free;
   font-weight: 500;
   text-align: center;
@@ -152,3 +153,4 @@ input[type=number]::-webkit-outer-spin-button {
   width: 700px;
   height: 600px;
 }
+

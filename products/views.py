@@ -87,7 +87,10 @@ def offer_item_view(request):
     HttpResponse: HTTP response object.
     """
     offer_id = request.GET.get('id')
+
     offer = Offers.objects.get(id=offer_id)
+    offer.price = '{:,.0f}kr'.format(offer.price).replace(',', '.')
+
     context = {'offer': offer}
     return render(request, 'offer-item.html', context)
 
