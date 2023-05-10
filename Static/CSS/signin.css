@@ -3,6 +3,12 @@ body {
     overflow: auto;
 }
 
+.container {
+    height: 100vh; 
+    display: flex;
+    flex-direction: column;
+}
+
 .signup {
     background-color:black;
     padding: 20px;
@@ -31,10 +37,10 @@ form {
 }
 
 label {
-    margin-top: 10px;
-    font-size: 24px;
+    
+    
     font-family: ink free;
-    text-align: right;
+    
     color:green;
 }
 

@@ -1,38 +1,40 @@
-{% extends 'base.html' %} 
-{% block content %} 
-{% load static %}
+{% extends 'base.html' %}
+{% block content %}
+  {% load static %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}"/>
-<link rel="stylesheet" type="text/css" href="{% static 'css/menu.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}" />
 
+  <div class="home-container">
+    <div class="background-image"></div>
 
-
-<div class="home-screen-img">
-  <img
-    alt="pizzaneon"
-    src="https://aheioqhobo.cloudimg.io/v7/_playground-bucket-v2.teleporthq.io_/afb08ec6-7501-4143-b01d-8284720e4506/5e717bc6-1664-4af2-b60e-4fe1ff78932e?org_if_sml=1882371"
-    class="homepage1-pizza1"/>
-</div>
-<div class="best-offer-container">
-  <div class="bestoffers"></div>
-  <span class="best-offer-title"><span>Baning offers!</span></span>
-  <span class="best-offer-text"><span>{{ current_offer.name }}</span></span>
-  <br>
-  <div class="description-box">
-    <span class="description">{{ current_offer.description }}</span>
+    <div class="content-container">
+      <div class="best-offer-container">
+        <a href="{% url 'offers' %}">
+        <div class="best-offers">
+          <h2 class="best-offer-title">Baning offers!</h2>
+          <div id="offer-rotator">
+            {% for offer in offers %}
+            <div class="offer-slide">
+              <p class="best-offer-text">{{ offer.name }}</p>
+              <div class="description-box">
+                <p class="description">{{ offer.description }}</p>
+              </div>
+              <div class="best-offer-price">
+                <span class="price">{{ offer.price }}</span>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        </a>
+      </div>
+      <div class="order-button-container">
+        <a href="{% url 'menu' %}">
+          <button class="order-button">Order Now</button>
+        </a>
+      </div>
+    </div>
   </div>
 
-  <div class="best-offer-price">
-    <span class="price">{{ current_offer.price }}</span>
-  </div>
- 
-  <div class="order-button-container">
-    <a href="{% url 'menu' %}">
-      <button class="order-button">Order Now </button>
-    </a>
-  </div>
-</div>
-
-<script defer src="{% static 'js/home.js' %}"></script>
-
+  <script defer src="{% static 'js/home.js' %}"></script>
 {% endblock content %}

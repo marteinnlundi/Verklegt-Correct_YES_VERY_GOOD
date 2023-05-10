@@ -5,62 +5,55 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/signin.css' %}" />
 <script defer src="{% static 'js/users.js' %}"></script>
 
-<div class ="signup">
-<form method="POST">
-  {% csrf_token %}
+<div class="container">
+  <div class="signup">
+    <form method="POST">
+      {% csrf_token %}
 
-  
-  <div class ="signup-username">
-  <label for="username">Name</label>
+      <div class="signup-username">
+        <label for="username">Name</label>
+        <input type="text" name="username" id="username" value="{{ form.username.value }}" maxlength="150" required autofocus>
+      </div>
 
-  <input type="text" name="username" id="username" value="{{ form.username.value }}" maxlength="150" required autofocus>
-  </div>
+      <div class="signup-email">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" maxlength="254" value="{{ form.email.value }}" required>
+      </div>
 
-  <div class ="signup-email">
-  <label for="email">Email</label>
+      <div class="signup-password">
+        <label for="password1">Password</label>
+        <input type="password" name="password1" id="password1" required>
+      </div>
 
-  <input type="email" name="email" id="email" maxlength="254" required>
+      <div class="signup-password">
+        <label for="password2">Confirm Password</label>
+        <input type="password" name="password2" id="password2" required>
+      </div>
 
+      <div class="signup-signup">
+        <button type="submit">Sign Up</button>
+      </div>
 
-
-  </div>
-
-  <div class ="signup-password">
-  <label for="password1">Password</label>
-
-  <input type="password" name="password1" id="password1" required>
-  </div>
-
-  <div class ="signup-password">
-  <label for="password2">Confirm Password</label>
-    
-  <input type="password" name="password2" id="password2" required>
-  </div>
-
-  <div class ="signup-signup">
-  <button type="submit">Sign Up</button>
-  </div>
-  {% if form.errors %}
-    <div class="error-message">
-        <ul>
+      {% if form.errors %}
+        <div class="error-message">
+          <ul>
             {% for field in form %}
-                {% for error in field.errors %}
-                    <li>{{ error }}</li>
-                {% endfor %}
+              {% for error in field.errors %}
+                <li>{{ error }}</li>
+              {% endfor %}
             {% endfor %}
-        </ul>
+          </ul>
+        </div>
+      {% endif %}
+    </form>
+
+    <div class="login-redirect">
+      <p class="sub-login">Already have an account?</p>
+      <a href="/users/login">
+        <button class="login-redirect-btn" id="login-redirect">Log In</button>
+      </a>
     </div>
-{% endif %}
-
-</form>
-<div class="login-redirect">
-  <p class="sub-login">Already have an account?</p>
-<a href="/users/login">
-  <button class="login-redirect-btn" id="login-redirect">Log In</button>
-</a>
+  </div>
 </div>
-</div>
-
-
 
 {% endblock %}

@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import get_object_or_404, render,redirect
 
 from django.shortcuts import render
 from django.contrib.auth.forms import UserCreationForm
@@ -22,23 +22,28 @@ def signin_view(request):
     A new Profile instance is created and saved, using the information from the UserCreationForm.
     Finally, the user is redirected to the login page.
     """
-    if request.user.id:
+    if request.user.is_authenticated:
         return redirect('/')
+
     if request.method == 'POST':
-        form = UserCreationForm(data=request.POST)
+        form = UserCreationForm(request.POST)
         if form.is_valid():
-            form.save()
+            print(form.cleaned_data)
+            user = form.save()
             profile = Profile()
-            profile.user = form.instance
+            profile.user = user
             profile.name = form.cleaned_data['username']
             # profile.email = form.cleaned_data['email']
+            # eg skill ekkert 
             profile.password = form.cleaned_data['password1']
             profile.save()
+            print(form.cleaned_data)
+
             return redirect('/users/login/')
     else:
         form = UserCreationForm()
+
     return render(request, 'users/signin.html', {'form': form})
-    
 
 def edit_profile_view(request):
     """
@@ -112,11 +117,11 @@ def index_view(request):
     return render(request, 'index.html')
 
 
-def home_view(request):
-    """
-    Render the home page.
-    """
-    return render(request, 'home.html')
+# def home_view(request):
+#     """
+#     Render the home page.
+#     """
+#     return render(request, 'home.html')
 
 
 def about_view(request):
@@ -128,11 +133,19 @@ def about_view(request):
 
 def home_view(request):
     """
-    Render the home page.
+    Render the home page with rotating offers.
     """
     offers = Offers.objects.all()
-    current_offer = random.choice(offers)
     context = {
-        'current_offer': current_offer,
+        'offers': offers,
     }
     return render(request, 'home.html', context)
+
+def add_to_cart_view(request, order_id):
+    """
+    Add an order to the cart.
+    """
+    order = UserOrder.objects.get(id=order_id)
+    order.in_cart = True
+    order.save()
+    return redirect('cart')
