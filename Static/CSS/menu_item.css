@@ -3,11 +3,31 @@
   grid-template-columns: 55% 45%;
   grid-gap: 20px;
   width: 100%;
+  margin-top: 5px;
+  margin-bottom: 10px;
 }
+
+.title {
+  color: rgb(23 189 49);
+  font-size: 5px;
+  font-family: Ink Free;
+  font-weight: 500;
+  text-align: center;
+  padding-top: 45px;
+  margin: 0;
+  padding-bottom: 40px;
+}
+
 .text {
-  font-size: 20px;
+  font-size: 25px;
   color: white;
   font-family: Ink Free;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.pizza-description {
+  margin-bottom: 10px;
 }
 
 /* Left side */
@@ -16,59 +36,121 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
-.size-buttons {
+/* radio-form */
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+.pizza-size {
+  margin-bottom: 10px;
+}
+
+.radio-form {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
-  font-weight: bold;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-bottom: 30px;
 }
 
-.quantity {
-  margin-bottom: 10px;
+input[type="radio"] {
+  display: none;
 }
 
-/* Right side */
-.pizza-image {
+label {
+  display: block;
+  cursor: pointer;
+  font-weight: 500;  
+  margin-bottom: 10px; 
+}
+
+label span{
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 20px 10px 10px;
+  border-radius: 31px;
+  transition: .25 ease;
+}
+
+label span:hover{
+  background-color: rgba(23, 189, 49, 0.699999988079071);
+}
+
+label span::before{
+  content: "";
+  background-color: black;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
-  border-width: 1px;
+  margin-right: 10px;
+  transition: .25s ease;
+  box-shadow: inset 0 0 0 3px rgb(23, 189, 48); 
+}
+
+input[type="radio"]:checked + span::before{
+  box-shadow: inset 0 0 0 10px #2c1e4d;
+}
+
+
+/* Quantity container */
+.pizza-quantity {
+  border: 0.5px solid rgba(23, 189, 48, 0.587);
+  margin-right: 75px;
+  margin-bottom: 160;
+}
+
+.add-to-cart-btn {
+  all: unset;
+  font-family: Ink Free;
+  font-size: 20px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding-left: 10px;
+  padding-right: 10px;
+  object-fit: cover;
+}
+
+.add-to-cart-btn:hover {
+  background-color: green;
+  color: rgba(255, 255, 255, 0.617);
+  cursor: pointer;
+}
+
+input,
+select {
+  all: unset;
+  font-family: Ink Free;
+  font-size: 25px;
+  color: white;
+  height: 30px;
+  width: 100px;
+  padding-left: 15px;
+  align-items: center;
+  margin: auto;
+}
+
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {
+  opacity: 1;
+}
+
+
+.pizza-image {
   margin: 0 auto;
   display: block;
+  overflow: hidden; /* hide any overflow from the image */
 }
 
-.title {
-  color: rgba(23, 189, 49, 0.699999988079071);
-  font-size: 40px;
-  font-family: Ink Free;
-  font-weight: 400;
-  text-align: center;
+.pizza-image img {
+  object-fit: cover;
+  width: 700px;
+  height: 600px;
 }
 
-.size-buttons button {
-  display: inline-block;
-  margin-right: 10px; /* adjust the gap between the buttons */
-
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-
-}
-
-button {
-  font-size: 20px;
-  color: black;
-  font-family: Ink Free;
-  font-weight: bold;
-}
-
-.size-buttons button:hover {
-  background-color: rgba(86, 221, 107, 0.7);
-}
-
-
-
-/* remove the right margin from the last button */
-.size-buttons button:last-child {
-  margin-right: 0;
-}

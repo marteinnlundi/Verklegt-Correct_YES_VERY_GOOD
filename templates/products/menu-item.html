@@ -10,54 +10,35 @@
 <div class="pizza-container">
   <!-- Pizza deitail div1 -->
   <div class="pizza-details">
-    <h1 class="pizza-name">{{ product.name }}</h1>
-    <div class="pizza-description">{{ product.description }}</div>
+    <h1 class="pizza-name title">{{ product.name }}</h1>
+    <div class="pizza-description text">{{ product.description }}</div>
 
-    <form
-      method="POST"
-      id="add-to-cart-form"
-      action="{% url 'add_to_cart' product.id %}?size=small"
-    >
-      {% csrf_token %}
-      <div class="pizza-size">
-        <label>
-          <input
-            type="radio"
-            name="size"
-            value="small"
-            id="small-size"
-            onclick="updateFormAction('small')"
-          />
-          Small
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="size"
-            value="medium"
-            id="medium-size"
-            onclick="updateFormAction('medium')"
-          />
-          Medium (+500)
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="size"
-            value="large"
-            id="large-size"
-            onclick="updateFormAction('large')"
-          />
-          Large (+1000)
-        </label>
-      </div>
+    <div class="pizza-size text">  
+    
+      <form class="radio-form" method="POST" id="add-to-cart-form" action="{% url 'add_to_cart' product.id %}?size=small" >
+        {% csrf_token %}  
+        <label class="form-controle">
+            <input type="radio" name="size" value="small" id="small-size" onclick="updateFormAction('small')" />
+            <span>Small</span>
+          </label>
+          <label class="form-controle">
+            <input type="radio" name="size" value="medium" id="medium-size" onclick="updateFormAction('medium')"/>
+            <span>Medium (+500)</span>  
+          </label>
+          <label class="form-controle">
+            <input type="radio" name="size" value="large" id="large-size" onclick="updateFormAction('large')"/>
+            <span>Large (+1000)</span>   
+          </label>
+          <div class="pizza-quantity">
+            <input type="number" name="quantity" class="quantity-input" value="1" />
+            <button type="submit" class="add-to-cart-btn">Add to Cart</button>
+          </div>
+      </form>
+    </div>
 
-      <div class="pizza-quantity">
-        <input type="number" name="quantity" class="quantity-input" value="1" />
-        <button type="submit" class="add-to-cart-btn">Add to Cart</button>
-      </div>
-    </form>
+
   </div>
+  
   <!-- Picture div2 -->
   <div class="pizza-image">
     <img src="{{ product.images }}" alt="{{ product.name }}" />
