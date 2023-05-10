@@ -207,11 +207,13 @@ def confirmation_view(request):
         }
         order_id = get_random_string(length=10)
         for item in cart_items:
-            UserOrder.objects.create(
+            UserOrder.create(
                 user=request.user,
-                product=Products.objects.get(id=item['id']),
-                order_id=order_id
-            )
+                order_id=order_id,
+                product_id=item.get('product_id'),
+                offer_id=item.get('offer_id')
+            ).save()
+
 
     # Clear the cart
     request.session['cart'] = {}

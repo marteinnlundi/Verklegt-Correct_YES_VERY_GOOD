@@ -39,11 +39,23 @@ class UserOrder(models.Model):
     description = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
 
-    def get_product_or_offer_name(self):
-        if self.product:
-            return self.product.name
-        elif self.offer:
-            return self.offer.name
+    @classmethod
+    def create(cls, user, order_id, product_id=None, offer_id=None):
+        if product_id:
+            product = Products.objects.get(id=product_id)
         else:
-            return 'Unknown'
+            product = None
+        if offer_id:
+            offer = Offers.objects.get(id=offer_id)
+        else:
+            offer = None
+        return cls(user=user, product=product, offer=offer, order_id=order_id)
+
+    def get_product_or_offer_name(self):
+            if self.product:
+                return self.product.name
+            elif self.offer:
+                return self.offer.name
+            else:
+                return 'Unknown'
 
