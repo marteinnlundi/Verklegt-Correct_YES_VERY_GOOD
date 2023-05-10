@@ -1,10 +1,11 @@
 .title {
   color: rgba(23, 189, 49, 0.699999988079071);
-  font-size: 60px;
+  font-size: 70px;
   font-family: Ink Free;
   font-weight: 500;
   text-align: center;
-  padding-top: 40px;
+  padding-top: 50px;
+  margin-bottom: 0;
 }
 
 .subtitle {
@@ -20,44 +21,53 @@
   0 0 70px rgba(255, 0, 0, 1),
   0 0 80px rgba(255, 0, 0, 1),
   0 0 100px rgba(255, 0, 0, 1);
-  padding-left: 80px;
+  padding-left: 90px;
   padding-bottom: 5px;
+  margin-top: 0;
 }
 
 .products-container {
-  margin-top: 50px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 40px;
-  width: 250%;
+  gap: 50px;
   max-width: 90%;
   margin: 0 auto;
-  margin-bottom: 60px;
+  margin-bottom: 80px;
 }
 
 .products {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   text-align: center; 
-  height: 400px;
+  height: 500px;
   box-shadow: 10px 10px 5px 0px rgba(87, 85, 85, 0.75);
   border: solid 1px rgb(135, 123, 123);
-  padding-left: 30px;
-  padding-right: 30px;
+  padding: 10px;
+  padding-left: 40px;
+  padding-right: 40px;
 }
 
 .text {
   font-family: Ink Free;
   color: white;
+  font-size: 20px;
 }
 
 .name {
-  font-size: 35px;
+  font-size: 40px;
+  margin-bottom: 15px;
+
 }
 .description {
-  font-size: 20px;
-  margin-bottom: 5px;
+  margin: 0;
+}
+
+span {
+  padding-bottom: 30px;
+  padding-top: 30px;
+  line-height: 1.5;
 }
 
 .buttonStyle {
@@ -71,12 +81,95 @@
   background-color: black;
   font-family: Ink Free;
   font-weight: 500;    
-  margin-bottom: 30px;
   font-size: 25px;
+  margin-bottom: 70px;
 }
 
 .buttonStyle:hover {
   background-color: green;
   color: white;
   cursor: pointer;
+}
+
+
+.search-filter-container {
+  display: grid;
+  justify-content: right;
+  gap: 10px;
+  margin-bottom: 0;
+}
+
+.container {
+  border: 0.5px solid rgba(23, 189, 48, 0.587);
+  margin-right: 100px;
+
+}
+
+.search-form {
+  display: flex;
+}
+
+input,
+select {
+  all: unset;
+  font-family: Ink Free;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.617);
+  height: 30px;
+  width: 320px;
+  padding-left: 15px;
+  align-items: center;
+  margin: auto;
+
+}
+
+select {
+  background-color: black;
+  border: 1px solid rgba(23, 189, 49, 0.7);
+  border-radius: 50px;
+}
+
+select:hover {
+  cursor: pointer;
+}
+
+::placeholder {
+  color: rgba(255, 255, 255, 0.617);
+  opacity: 0.7;
+}
+
+.search-button {
+  all: unset;
+  font-family: Ink Free;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.617);
+  background-color: rgba(0, 0, 0, 0.5);
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.search-button:hover {
+  background-color: green;
+  color: rgba(255, 255, 255, 0.617);
+  cursor: pointer;
+}
+
+.filter-button {
+  all: unset;
+  font-family: Ink Free;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.617);
+  background-color: rgba(0, 0, 0, 0.5);
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.filter-button:hover {
+  background-color: green;
+  color: rgba(255, 255, 255, 0.617);
+  cursor: pointer;
+}
+
+.container select {
+  border: none;
 }
