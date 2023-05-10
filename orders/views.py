@@ -1,7 +1,7 @@
 import logging
 from django.shortcuts import render, redirect
 from django.contrib import messages
-
+from django.utils.crypto import get_random_string
 from orders.models import UserOrder
 from .forms import PaymentForm
 from products.models import Products, Offers
@@ -58,107 +58,16 @@ def cart_view(request):
 
     return render(request, 'cart.html', context)
 
-
-#from django.utils.crypto import get_random_string
-
-"""
-def checkout_view(request):
-    if request.method == 'POST':
-        payment_method = request.POST.get('payment-method')
-        if payment_method == 'pay-at-pickup':
-            # Process pay-at-pickup payment
-            messages.success(request, 'Payment successful! You will pay at pickup.')
-            now = datetime.datetime.now()
-            delivery_time = now + datetime.timedelta(minutes=20)
-            cart_items = []
-            cart_total = 0
-            cart = request.session.get('cart', {})
-            for item_id, item in cart.items():
-                product = Products.objects.get(id=item_id)
-                size = request.POST.get('size', 'small')
-                price = Decimal(item['price']) + size_prices[size]
-                quantity = item['quantity']
-                total_price = price * quantity
-                cart_total += total_price
-                cart_items.append({
-                    'id': item_id,
-                    'name': item['name'],
-                    'price': price,
-                    'quantity': quantity,
-                    'total_price': total_price,
-                })
-            user_profile = Profile.objects.get(user=request.user)
-            context = {
-                'cart_items': cart_items,
-                'cart_total': cart_total,
-                'delivery_time': delivery_time,
-                'user_profile': user_profile,
-            }
-            order_id = get_random_string(length=10)
-            for item in cart_items:
-                UserOrder.objects.create(
-                    user=request.user,
-                    product=Products.objects.get(id=item['id']),
-                    order_id=order_id
-                )
-            # Clear the cart
-            request.session['cart'] = {}
-            return render(request, 'confirmation.html', context=context)
-        else:
-            form = PaymentForm(request.POST)
-            if form.is_valid():
-                # Process credit card payment
-                messages.success(request, 'Payment successful!')
-                now = datetime.datetime.now()
-                delivery_time = now + datetime.timedelta(minutes=20)
-                cart_items = []
-                cart_total = 0
-                cart = request.session.get('cart', {})
-                for item_id, item in cart.items():
-                    product = Products.objects.get(id=item_id)
-                    size = request.POST.get('size', 'small')
-                    price = Decimal(item['price']) + size_prices[size]
-                    quantity = item['quantity']
-                    total_price = price * quantity
-                    cart_total += total_price
-                    cart_items.append({
-                        'id': item_id,
-                        'name': item['name'],
-                        'price': price,
-                        'quantity': quantity,
-                        'total_price': total_price,
-                    })
-                user_profile = Profile.objects.get(user=request.user)
-                context = {
-                    'cart_items': cart_items,
-                    'cart_total': cart_total,
-                    'delivery_time': delivery_time,
-                    'user_profile': user_profile,
-                }
-
-                order_id = get_random_string(length=10)
-                for item in cart_items:
-                    UserOrder.objects.create(
-                        user=request.user,
-                        product=Products.objects.get(id=item['id']),
-                        order_id=order_id
-                    )
-
-
-                # Clear the cart
-                request.session['cart'] = {}
-                return render(request, 'confirmation.html', context=context)
-"""
-
 def checkout(request):
     """
-    Display the checkout form and handle the payment.
+    Display the checkout page.
 
     Args:
     request (HttpRequest): The HTTP request object.
     
     Returns:
     HttpResponse: The HTTP response containing the checkout template and its context.
+    
     """
     form = PaymentForm()
     if request.method == 'POST':
@@ -170,12 +79,14 @@ def checkout(request):
             if form.is_valid():
                 print("form validated")
                 return redirect('confirmation')
-
             else:
                 print("form not valid")
         elif payment_method == 'pay-at-pickup':
             return redirect('confirmation')
     return render(request, 'checkout.html', {'form': form})
+from django.utils.crypto import get_random_string
+
+
 
 
 def add_to_cart(request, product_id):
@@ -287,6 +198,20 @@ def confirmation_view(request):
             'quantity': quantity,
             'total_price': total_price,
         })
+        user_profile = Profile.objects.get(user=request.user)
+        context = {
+            'cart_items': cart_items,
+            'cart_total': cart_total,
+            'delivery_time': datetime.datetime.now() + datetime.timedelta(minutes=30),
+            'user_profile': user_profile,
+        }
+        order_id = get_random_string(length=10)
+        for item in cart_items:
+            UserOrder.objects.create(
+                user=request.user,
+                product=Products.objects.get(id=item['id']),
+                order_id=order_id
+            )
 
     # Clear the cart
     request.session['cart'] = {}
