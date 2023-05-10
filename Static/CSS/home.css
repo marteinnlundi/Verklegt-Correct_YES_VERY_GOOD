@@ -1,127 +1,113 @@
-.home-screen-img {
+
+
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-image: url("https://aheioqhobo.cloudimg.io/v7/_playground-bucket-v2.teleporthq.io_/afb08ec6-7501-4143-b01d-8284720e4506/5e717bc6-1664-4af2-b60e-4fe1ff78932e?org_if_sml=1882371");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.7;
+}
+
+.content-container {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  z-index: 1;
+
+
 }
 
 .best-offer-container {
-  top: 108px;
-  left: 133px;
-  /* taka út hæð og breydd  */
+  grid-column:1;
   display: flex;
-  position: relative;
-  align-items: flex-start;
-  flex-shrink: 0;
+  flex-direction: column;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+
 }
 
-.bestoffers {
-  top: -887px;
-  left: 7px;
-  width: 563px;
-  height: 566px;
-  display: flex;
-  position: absolute;
-  align-items: flex-start;
-  flex-shrink: 1;
-  background-color: rgba(28, 29, 32, 0.800000011920929);
+
+.best-offers {
+  width: 400px;
+  background-color: rgba(28, 29, 32, 0.8);
+  padding: 20px;
+  text-align: center;
+  margin-left: auto;
 }
 
 .best-offer-title {
-  top: -840px;
-  left: 120px;
-  color: rgba(23, 189, 49, 0.699999988079071);
-  width: 397px;
-  height: auto;
-  position: absolute;
-  font-size: 50px;
-  font-style: Regular;
-  text-align: left;
-  font-family: Ink Free;
-  font-weight: 400;
-  line-height: normal;
-  font-stretch: normal;
-  text-decoration: none;
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: white;
+  font-family: ink free;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 1),
+  0 0 20px rgba(255, 0, 0, 1),
+  0 0 30px rgba(255, 0, 0, 1),
+  0 0 40px rgba(255, 0, 0, 1),
+  0 0 70px rgba(255, 0, 0, 1),
+  0 0 80px rgba(255, 0, 0, 1),
+  0 0 100px rgba(255, 0, 0, 1);;
 }
 
 .best-offer-text {
-  top: -740px;
-  left: 118px;
-  color: rgba(23, 189, 49, 0.699999988079071);
-  width: 459px;
-  height: auto;
-  position: absolute;
-  font-size: 35px;
-  font-style: Regular;
-  text-align: left;
-  font-family: Ink Free;
-  font-weight: 400;
-  line-height: normal;
-  font-stretch: normal;
-  text-decoration: none;
+  color: rgba(23, 189, 49, 0.7);
+  font-size: 24px;
+  font-family:ink free;
+  margin-bottom: 20px;
 }
 
+.description-box {
+  margin-bottom: 20px;
+}
 
+.description {
+  color: white;
+  font-size: 24px;
+  font-family: ink free;
+}
+
+.best-offer-price {
+  color: white;
+  font-size: 24px;
+  font-family: ink free;
+}
 
 .order-button-container {
-  background-image: url("https://aheioqhobo.cloudimg.io/v7/_playground-bucket-v2.teleporthq.io_/afb08ec6-7501-4143-b01d-8284720e4506/aa9cb2d0-6cba-4a49-a379-9002210cacb2?org_if_sml=147458");
+  grid-column: 2;
+  margin:auto;
+
 }
 
-.order-button{
-  top: -320px;
-  left: 50%;
-  display: flex;
-  position: absolute;
-  align-items: flex-start;
-  flex-shrink: 1;
+.order-button {
   width: 200px;
-  height: 59px;
-  border-color: rgba(23, 189, 49, 0.699999988079071);
-  border-style: solid;
-  border-width: 1px;
+  height: 100px;
+  display: inline-block;
+  padding: 10px 20px;
   border-radius: 50px;
-  color:white;  
-  background-color: rgba(28, 29, 32, 0.800000011920929);
-  justify-content: center;
-  text-align: center;
+  color: white;
+  background-color: rgba(28, 29, 32, 0.8);
+  margin: auto;
+  box-shadow: 0 0 10px 2px rgba(0, 255, 0, 0.8); 
+  border: none;
   font-family: Ink Free;
   font-size: 24px;
 }
 
 
-.description {
-  color: rgba(255, 255, 255, 1);
-  font-size: 30px;
-  font-style: Regular;
-  text-align: center;
-  font-family: Ink Free;
-  font-weight: 400;
-  line-height: normal;
-  font-stretch: normal;
+.order-button:hover {
+  cursor: pointer;
+  box-shadow: 0 0 10px 2px rgba(0, 255, 0, 1); 
+  color: rgba(23, 189, 49, 0.7);
 }
 
-.order-offer-price {
-  color:white;
-}
-
-.description-box {
-top: -680px;
-left: 48px;
-width: 459px;
-height: 100px;
-display: flex;
-position: absolute;
-align-items: flex-start;
-flex-shrink: 1;
-}
-
-
-.order-text-box {
-  top: 0px;
-  left: 0px;
-  width: 345px;
-  height: 118px;
-
+a {
+  text-decoration: none;
 }

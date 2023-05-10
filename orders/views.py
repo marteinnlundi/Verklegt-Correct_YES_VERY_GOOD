@@ -160,7 +160,6 @@ def clear_cart(request):
     messages.success(request, 'Cart cleared successfully!')
     return redirect('cart')
 
-
 def confirmation_view(request):
     """
     Display the order confirmation page.
@@ -207,10 +206,27 @@ def confirmation_view(request):
         }
         order_id = get_random_string(length=10)
         for item in cart_items:
-            UserOrder.create(
-                user=request.user,
-                order_id=order_id,
-            ).save()
+            try:
+                # Attempt to retrieve the item as a product
+                product = Products.objects.get(id=item['id'])
+                UserOrder.objects.create(
+                    user=request.user,
+                    product=product,
+                    order_id=order_id
+                )
+            except Products.DoesNotExist:
+                try:
+                    # If the item is not a product, attempt to retrieve it as an offer
+                    offer = Offers.objects.get(id=item['id'])
+                    UserOrder.objects.create(
+                        user=request.user,
+                        offer=offer,
+                        order_id=order_id
+                    )
+                except Offers.DoesNotExist:
+                    # If the item is neither a product nor an offer, log an error and continue to the next item
+                    print(f"Invalid cart item: {item}")
+                    continue
 
 
     # Clear the cart
@@ -223,7 +239,6 @@ def confirmation_view(request):
         'delivery_time': datetime.datetime.now() + datetime.timedelta(minutes=30),
     }
     return render(request, 'confirmation.html', context)
-
 
 def change_item_quantity(request, item_id):
     """

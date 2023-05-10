@@ -1,20 +1,17 @@
-//  Function so the offers on the homepage rotate every 5 seconds
-
 var slideIndex = 0;
 carousel();
 
 function carousel() {
-    var i;
-    var x = document.getElementsByClassName("offerSlides");
-    for (i = 0; i < x.length; i++) {
-       x[i].style.display = "none";  
-    }
-    
-    slideIndex++;
-    
-    if (slideIndex > x.length) {slideIndex = 1}    
-    x[slideIndex-1].style.display = "block";  
-    
-    setTimeout(carousel, 5000); // Change image every 5 seconds
-}
+  var offerSlides = document.getElementsByClassName("offer-slide");
+  for (var i = 0; i < offerSlides.length; i++) {
+    offerSlides[i].style.display = "none";
+  }
 
+  slideIndex++;
+  if (slideIndex > offerSlides.length) {
+    slideIndex = 1;
+  }
+  offerSlides[slideIndex - 1].style.display = "block";
+
+  setTimeout(carousel, 5000); // Change offer every 5 seconds
+}

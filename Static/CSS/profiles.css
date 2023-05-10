@@ -5,32 +5,21 @@ html {
 
 
 .title {
-    color: rgba(23, 189, 49, 0.699999988079071);
+    color: white;
     font-size: 50px;
     font-family: Ink Free;
     font-weight: 400;
     text-align: center;
     margin-top: 80px;
-    background-image: url('https://aheioqhobo.cloudimg.io/v7/_playground-bucket-v2.teleporthq.io_/afb08ec6-7501-4143-b01d-8284720e4506/aa9cb2d0-6cba-4a49-a379-9002210cacb2?org_if_sml=147458');
-    transform-style: preserve-3d;
-    transition: all 0.3s ease-in-out;
-    animation: move-background 30s linear infinite;
-    background-size: 100px;
-    
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.8); 
   }
-  
-  @keyframes move-background {
-    from { background-position: 0 0; }
-    to { background-position: 100% 0; }
-  }
-
 
 
 .profiles {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 20px;
-    margin-top: 150px;
+    margin-top: 80px;
     margin-bottom: 150px;
 }
 
@@ -79,4 +68,42 @@ h2.email {
 
 }
 
+.my-orders-title {
+    color: green;
+    padding: 10px;
+    font-size: 30px;
+    font-weight: bold;
+    font-family : Ink Free;
+  }
+  
+  /* Order Item Styling */
+  .order-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .order-item p {
+    margin: 5px 0;
+  }
+  
+  .order-item p.empty-message {
+    font-size: 16px;
+    color: black;
+    text-align: center;
+  }
+  
 
+  .new-order-btn {
+    border : 1px solid rgba(0, 255, 0, 0.8);
+    border-radius: 50px;
+    padding: 10px;
+    background-color: black;
+    color:white;
+
+  }
+
+.new-order-btn:hover {
+    background-color: rgba(0, 255, 0, 0.8);
+    color: black;
+    }

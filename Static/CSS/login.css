@@ -1,9 +1,18 @@
 body {
     height: 100vh;
     background-color: black;
-}
-
-.login {
+  }
+  
+  .container {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .login {
+    
     background-color: black;
     color: white;
     font-family: Ink Free;
@@ -13,41 +22,43 @@ body {
     margin: auto;
     border: 2px solid white;
     width: 50%;
-    height: 500px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
+    height: 50vh;
+    max-width: 800px;
+    max-height: 500px;
     background-image: url('https://aheioqhobo.cloudimg.io/v7/_playground-bucket-v2.teleporthq.io_/afb08ec6-7501-4143-b01d-8284720e4506/aa9cb2d0-6cba-4a49-a379-9002210cacb2?org_if_sml=147458');
     background-size: cover;
     background-position: center;
     background-size: 50%;
     background-repeat: no-repeat;
-    box-shadow: 10px 10px 5px 0px rgba(87, 85, 85, 0.75);  
-}
-
-
-
-
-form {
+    box-shadow: 10px 10px 5px 0px rgba(87, 85, 85, 0.75);
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .login {
+      width: 80%;
+    }
+  }
+  
+  form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 100px;
-}
-
-label {
+    margin-top: 20px;
+    width: 100%;
+  }
+  
+  label {
     margin-top: 10px;
-    color:white;
+    color: white;
     text-align: right;
     font-size: 24px;
     font-family: ink free;
-}
-
-
-input, select {
-    width: 400px;
+  }
+  
+  input,
+  select {
+    width: 80%;
+    max-width: 400px;
     padding: 10px;
     margin-top: 5px;
     border: 1px solid #ccc;
@@ -55,12 +66,19 @@ input, select {
     box-sizing: border-box;
     transition: background-color 0.3s ease;
     background-color: black;
-    color:white;
-
-}
-
-.form-button {
-    width: 209px;
+    color: white;
+  }
+  
+  @media only screen and (max-width: 768px) {
+    input,
+    select {
+      width: 100%;
+    }
+  }
+  
+  .form-button {
+    width: 50%;
+    margin: 209px;
     height: 50px;
     border-color: rgba(23, 189, 49, 0.699999988079071);
     border-style: solid;
@@ -71,17 +89,13 @@ input, select {
     font-size: 24px;
     font-family: ink free;
     opacity: 0.8;
-    margin-top:100px;
- 
-}
-
-.form-button:hover {
+    margin-top: 10%;
+  }
+  
+  .form-button:hover {
     border-style: solid;
     border-color: rgba(23, 189, 49, 0.699999988079071);
     border-width: 1px;
     background-color: rgba(23, 189, 49, 0.75);
-    
     cursor: pointer;
-}
-
-
+  }

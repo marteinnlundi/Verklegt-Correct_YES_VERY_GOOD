@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block content %} {% load static %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'css/cart.css' %}" />
-
+<div class="container">
 <div class="cart">
   <div class="my-cart">{{user_profile.name}}'s Cart</div>
   <div class="cart-border" class="cart-container">
@@ -57,6 +57,7 @@
       </button>
     </a>
   </div>
+</div>
 </div>
 
 {% endblock %}

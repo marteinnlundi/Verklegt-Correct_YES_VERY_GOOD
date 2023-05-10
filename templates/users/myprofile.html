@@ -22,22 +22,25 @@
 
     </div>
 
-  
     <div class="my-orders">
-      <h2 class="my-orders-title">My Orders</h2>
+      <h2 class="my-orders-title">Order history</h2>
       {% if orders %}
-        {% for order in orders %}
-          <div class="order-item">
-            <p>Name: {{ order.name }}</p>
-            <p>Description: {{ order.description }}</p>
-            <p>Date: {{ order.date }}</p>
-          </div>
-        {% endfor %}
+      {% for order in orders %}
+      <div class="order-item">
+        <p class="ordname">Name: {{ order.name }}</p>
+        <p class="descr">Description: {{ order.description }}</p>
+        <p class="date">Date: {{ order.date }}</p>
+        
+      </div>
+    {% endfor %}
       {% else %}
         <p>You haven't placed any orders yet.</p>
       {% endif %}
+     
+      <a href="{% url 'menu' %}">
+      <button class="new-order-btn">Place a new order</button>
+    </a> 
     </div>
-
-</div>
+  </div>
 </div>
 {% endblock %}

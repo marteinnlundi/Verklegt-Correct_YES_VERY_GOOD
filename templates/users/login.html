@@ -3,6 +3,7 @@
   {% load static %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}" />
+<div class="container">
 <div class="login">
 <form method = "POST" class="form-form-horizontal">
 {% csrf_token %}
@@ -10,6 +11,7 @@
 
 <input type="submit" value="Log In" class="form-button" />
 </form>
+</div>
 </div>
 
 {% endblock content %}
