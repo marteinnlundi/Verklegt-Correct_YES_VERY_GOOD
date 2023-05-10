@@ -1,52 +1,35 @@
-html {
-  background-color: black;
-}
 
-.container {
-  height: 100vh; 
-  display: flex;
-  flex-direction: column;
+.my-cart {
+  padding:20px;
 }
-
 
 .cart {
-  width: 80%;
-  max-width: 1053px;
-  height: auto;
-  position: absolute;
+  background-color: black;
+  padding: 20px;
   margin: auto;
+  width: 800px;
   border-color: rgba(23, 189, 49, 0.699999988079071);
   border-style: solid;
   border-width: 1px;
   text-align: center;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  box-shadow: 10px 10px 5px 0px rgba(87, 85, 85, 0.75);  
-  z-index: 1;
+  box-shadow: 10px 10px 5px 0px rgba(87, 85, 85, 0.75);
+  box-sizing: border-box;
+  margin-bottom:80px;
 }
 
 
-.footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  height: 50px;
-  background-color: black;
-  color: white;
-  text-align: center;
-  padding: 10px;
-  z-index: 2;
-}
+
 
 
 table {
   width: 100%;
-  background-color: transparent;
   border-color: rgba(23, 189, 49, 0.699999988079071);
   border-style: solid;
   border-width: 1px;
+  border-collapse: collapse;
+
 }
+
 
 
 th,
@@ -63,8 +46,10 @@ th {
   background-color: transparent;
 }
 
+
+
 .cart-summary {
-  margin-top: 165px;
+  /* margin-top: 165px; */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -89,8 +74,7 @@ th {
   color: white;
 }
 
-/* breyta i sitthvorann button gera remove rauðann eða ehv  */
-/* kannski lika clear chart btn  */
+
 
 #quantity-input {
   width: 100px;
@@ -183,13 +167,19 @@ margin-top: 20px;
   color: white;
 }
 
-@media screen and (max-width: 100%) {
-  .cart {
-    transform: translate(-50%, -50%) scale(0.8); /* Adjust the scale value as per your requirement */
-  }
 
-  th,
-  td {
-    font-size: 24px; /* Adjust the font size as per your requirement */
-  }
+p {
+  color: white;
+  font-size: 24px;
+  font-family: Ink Free;
+  text-align: center;
 }
+
+p#cart-total {
+  color: white;
+  font-size: 24px;
+  font-family: Ink Free;
+  text-align: center;
+}
+
+

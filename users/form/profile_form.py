@@ -19,9 +19,10 @@ class UserProfileForm(forms.ModelForm):
 class UserEditForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['name', 'email', 'password','profile_picture']
+        fields = ['name', 'email','profile_picture']
 
     profile_picture = forms.ImageField(required=False, label='Profile Picture')
     name = forms.CharField(required=True, label='Name')
     email = forms.EmailField(required=True, label='Email')
-    password = forms.CharField(required=True, label='Password')
+  
+    

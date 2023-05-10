@@ -4,12 +4,15 @@
 
 <link rel="stylesheet" type="text/css" href="{% static 'css/edit-profile.css' %}" />
 
-
+<div class="container">
 <form method="POST" enctype="multipart/form-data">
   {% csrf_token %}
   {{ form.as_p }}
 
   <button type="submit" class ="form-btn">Save Changes</button>
 </form>
+</div>
+
+
 
 {% endblock %}

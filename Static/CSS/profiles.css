@@ -21,8 +21,8 @@ html {
     grid-gap: 20px;
     margin-top: 80px;
     margin-bottom: 150px;
-}
 
+}
 
 
 .profile-pic {
@@ -65,18 +65,19 @@ h2.email {
     box-shadow: 10px 10px 5px 0px rgba(87, 85, 85, 0.75);
     border: solid 1px rgb(135, 123, 123);
     padding: 10px;
+    margin-right: 100px;
+    max-height: 600px;
+    overflow: auto;
+ 
 
 }
 
 .my-orders-title {
     color: green;
-    padding: 10px;
     font-size: 30px;
-    font-weight: bold;
     font-family : Ink Free;
   }
   
-  /* Order Item Styling */
   .order-item {
     border: 1px solid #ccc;
     padding: 10px;

@@ -51,22 +51,17 @@ html {
     margin-bottom:20px;
   }
 
-  #pay-at-pickup {
-    margin-top: 10px;
-  }
+
 
   label {
     font-weight: bold;
-    font-size: 1.2rem; /* Increase the font size */
+    font-size: 1.2rem; 
     color: rgba(23, 189, 49, 0.7);
     margin-bottom: 5px;
     font-family: "Ink Free", sans-serif;
     margin-bottom:20px;
   }
 
-  .pay-at-pickup {
-    margin-top: 10px;
-  }
 
   .confirm-button {
     border: 2px solid green;
@@ -101,3 +96,27 @@ html {
     display: none;
   }
   
+  .radio-button {
+    display: flex; 
+  }
+
+  input#pay-at-pickup {
+    width: 50px;
+  }
+
+  input#pay-with-card{
+    width: 50px;
+  }
+
+  #country {
+    margin-bottom: 10px;
+    padding: 5px;
+    border-radius: 50px;
+    border: 1px solid white;
+    background: black;
+    height: 25px; 
+    width: 100%;
+    color: white;
+    transition: background-color 0.3s ease;
+    margin-bottom:20px;
+  }

@@ -1,9 +1,11 @@
 {% extends 'base.html' %} {% block content %} {% load static %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'css/cart.css' %}" />
-<div class="container">
-<div class="cart">
+{% comment %} <div class="container"> {% endcomment %}
   <div class="my-cart">{{user_profile.name}}'s Cart</div>
+<div class="cart">
+<div class="content-wrapper">
+
   <div class="cart-border" class="cart-container">
     <table>
       <thead>
@@ -47,6 +49,8 @@
   </div>
   <div class="cart-summary">
     <p>Total: <span id="cart-total">{{ cart_total|default:"0" }}</span></p>
+  
+
     <form id="clear-cart-form" action="{% url 'clear_cart' %}" method="post">
       {% csrf_token %}
       <button id="clear-cart-btn" type="submit">Clear cart</button>
