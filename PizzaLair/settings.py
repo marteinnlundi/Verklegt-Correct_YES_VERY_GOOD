@@ -24,9 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'django-insecure-^ho)kh^gad6m%k5$i61s#x4ig0@+bvm5&*w%drs2q#qcsfyz7z'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -156,6 +156,7 @@ LOGIN_REDIRECT_URL = '/users/myprofile'
 
 # media mappa fyrir user_profile myndir
 #mappan heitir user_images
+
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'user_images')
 MEDIA_URL = '/media/'

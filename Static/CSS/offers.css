@@ -1,21 +1,23 @@
 .title {
     color: rgba(23, 189, 49, 0.699999988079071);
-    font-size: 60px;
+    font-size: 55px;
     font-family: Ink Free;
     font-weight: 500;
     text-align: center;
     padding-top: 40px;
+    padding-bottom: 10px;
 }
 
 .offer-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 40px;
-    width: 100%;
-    max-width: 1200px;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 50px;
+    max-width: 90%;
     margin: 0 auto;
-    margin-bottom: 120px;
-    margin-top: 40px;
+    margin-bottom: 80px;
+    margin-top: 30px;
+    padding-right: 1%;
+    padding-left: 1%;
 }
 
 .offers {
@@ -24,10 +26,13 @@
     justify-content: space-between;
     align-items: center;
     text-align: center; 
-    height: 450px;
+    height:  auto;
     box-shadow: 10px 10px 5px 0px rgba(87, 85, 85, 0.75);
     border: solid 1px rgb(135, 123, 123);
     padding: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 40px;
 }
 
 .text {

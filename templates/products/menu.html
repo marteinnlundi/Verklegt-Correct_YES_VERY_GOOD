@@ -11,7 +11,7 @@
 <div class="search-filter-container">
   <div class="container">
     <form class="search-form" method="get" action="{% url 'menu' %}">
-      <input type="text" name="search" placeholder="Search your for your favorite..."  value="{{ request.GET.search }}">
+      <input type="text" name="search" autocomplete="off" placeholder="Search your for your favorite..." value="{{ request.GET.search }}">
       <button class="search-button" id="search-button">Search</button>
       <button class="search-button" id="clear-button">Clear</button>
     </form>
@@ -20,13 +20,13 @@
   <div class="container">
     <form class="search-form" method="get">
       <select id="type" name="type">
-          <option value="">All</option>
+          <option value="">Filter by type...</option>
           <option value="pizza" {% if request.GET.type == "pizza" %}selected{% endif %}>Pizzas</option>
           <option value="side" {% if request.GET.type == "side" %}selected{% endif %}>Sides</option>
           <option value="drink" {% if request.GET.type == "drink" %}selected{% endif %}>Drinks</option>
       </select>
-      <button class="filter-button" id="filter-button">Apply</button>
-      <button class="filter-button" id="clear-filter-button">Clear</button>
+      <button class="filter-button btn" id="filter-button">Apply</button>
+      <button class="filter-button btn" id="clear-filter-button">Clear</button>
     </form>
   </div>
 </div>
@@ -42,8 +42,8 @@
         <p class="description text">{{ pizza.description }}</p>
         <span class="text">
           Small &nbsp &nbsp 1.500kr <br>
-          Medium &nbsp &nbsp 3.500kr <br>
-          Large &nbsp &nbsp 4.500kr
+          Medium &nbsp &nbsp 2.000kr <br>
+          Large &nbsp &nbsp 2.500kr
         </span>
 
         <form action="{% url 'menuItem' %}" method="get">
@@ -101,4 +101,5 @@
 {% if not pizzas and not sides and not drinks %}
   <p id="errorMessage">Sorry no item found with this name.</p>
 {% endif %}
+
 {% endblock %}

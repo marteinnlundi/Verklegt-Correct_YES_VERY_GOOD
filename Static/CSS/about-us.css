@@ -9,6 +9,7 @@
 
 }
 .about-us {
+    padding : 20px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 60px;
@@ -37,5 +38,38 @@
     box-shadow: 10px 10px 5px 0px rgba(87, 85, 85, 0.75);
     margin: 0 auto;
     display: block;
+    margin-bottom:100px;
 }
 
+.email-us {
+    text-align: center;
+    color: white;
+    font-family: Ink Free;
+    font-weight: 400;
+    line-height: 2;
+    font-size: 20px;
+    margin-bottom: 100px;
+}
+
+.email-address{
+    text-align: center;
+    color: white;
+    font-family: Ink Free;
+    font-weight: 400;
+    line-height: 2;
+    font-size: 20px;
+    margin-bottom: 100px;
+}
+
+.email-link {
+    text-decoration: none; 
+    font-weight: bold; 
+    color:white;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 1),
+    0 0 20px rgba(255, 0, 0, 1),
+    0 0 30px rgba(255, 0, 0, 1),
+    0 0 40px rgba(255, 0, 0, 1),
+    0 0 70px rgba(255, 0, 0, 1),
+    0 0 80px rgba(255, 0, 0, 1),
+    0 0 100px rgba(255, 0, 0, 1);
+  }

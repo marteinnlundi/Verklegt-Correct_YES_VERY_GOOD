@@ -1,49 +1,46 @@
-{% extends 'base.html' %} {% block content %} {% load static %}
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/confirmation.css' %}" />
 
-<link
-  rel="stylesheet"
-  type="text/css"
-  href="{% static 'css/confirmation.css' %}"
-/>
+<div class="page-wrapper">
+  <div class="content-wrapper">
+    <div class="confirmation-container">
+      <h2>Thank you for your order!</h2>
 
-<body>
-  <div class="confirmation-container">
-    <h2>Thank you for your order!</h2>
+      <div class="order-summary-box">
+        <span class="order-summary"><span>Order summary</span></span>
+      </div>
 
-    <div class="order-summary-box">
-      <span class="order-summary"><span>Order summary</span></span>
-    </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Item Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in cart_items %}
+          <tr id="table">
+            <td>{{ item.name }}</td>
+            <td>{{ item.price }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.total_price }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <p>
+        Order total: <span id="cart-total">{{ cart_total|default:"0" }}</span>
+      </p>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Item Name</th>
-          <th>Price</th>
-          <th>Quantity</th>
-          <th>Total Price</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for item in cart_items %}
-        <tr id="table">
-          <td>{{ item.name }}</td>
-          <td>{{ item.price }}</td>
-          <td>{{ item.quantity }}</td>
-          <td>{{ item.total_price }}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-    <p>
-      Order total: <span id="cart-total">{{ cart_total|default:"0" }}</span>
-    </p>
-
-    <div class="food-ready-box">
-      <span class="food-ready"
-        ><span>Food Ready at: {{ delivery_time|time:"h:i A" }}</span></span
-      >
+      <div class="food-ready-box">
+        <span class="food-ready"><span>Food Ready at: {{ delivery_time|time:"h:i A" }}</span></span>
+      </div>
     </div>
   </div>
-</body>
+</div>
 
 {% endblock %}

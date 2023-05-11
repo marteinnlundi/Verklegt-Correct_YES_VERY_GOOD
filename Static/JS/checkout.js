@@ -27,3 +27,6 @@ $(document).ready(function() {
     $("form").submit();
   });
 });
+
+const errorMessages = document.querySelector('.error-messages');
+errorMessages.classList.add('fade-out');

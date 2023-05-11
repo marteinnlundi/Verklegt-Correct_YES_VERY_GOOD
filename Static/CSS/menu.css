@@ -18,6 +18,7 @@
 
 .container {
   border: 0.5px solid rgba(23, 189, 48, 0.587);
+  border-radius: 10px;
   margin-right: 75px;
 }
 
@@ -30,6 +31,7 @@ select {
   all: unset;
   font-family: Ink Free;
   font-size: 20px;
+  font-weight: 500;
   color: rgba(255, 255, 255, 0.617);
   height: 30px;
   width: 320px;
@@ -63,9 +65,15 @@ select:hover {
   padding-right: 10px;
 }
 
-.search-button:hover {
-  background-color: green;
-  color: rgba(255, 255, 255, 0.617);
+button:hover {
+  color: rgba(248, 66, 66, 0.735);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 1),
+  0 0 20px rgba(255, 0, 0, 1),
+  0 0 30px rgba(255, 0, 0, 1),
+  0 0 40px rgba(255, 0, 0, 1),
+  0 0 70px rgba(255, 0, 0, 1),
+  0 0 80px rgba(255, 0, 0, 1),
+  0 0 100px rgba(255, 0, 0, 1);
   cursor: pointer;
 }
 
@@ -77,12 +85,6 @@ select:hover {
   background-color: rgba(0, 0, 0, 0.5);
   padding-left: 10px;
   padding-right: 10px;
-}
-
-.filter-button:hover {
-  background-color: green;
-  color: rgba(255, 255, 255, 0.617);
-  cursor: pointer;
 }
 
 .container select {
@@ -114,6 +116,8 @@ select:hover {
   max-width: 90%;
   margin: 0 auto;
   margin-bottom: 80px;
+  padding-right: 1%;
+  padding-left: 1%;
 }
 
 .products {
@@ -122,7 +126,7 @@ select:hover {
   justify-content: space-between;
   align-items: center;
   text-align: center; 
-  height: 500px;
+  height: auto;
   box-shadow: 10px 10px 5px 0px rgba(87, 85, 85, 0.75);
   border: solid 1px rgb(135, 123, 123);
   padding: 10px;

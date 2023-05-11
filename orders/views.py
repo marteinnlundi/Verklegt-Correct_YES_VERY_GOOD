@@ -37,7 +37,7 @@ def cart_view(request):
                 product = Offers.objects.get(id=item_id)
             except Offers.DoesNotExist:
                 return redirect('cart')
-        size = request.GET.get('size', 'small')
+        size = request.POST.get('size', 'small')
         price = Decimal(item['price']) + size_prices[size]
         quantity = item['quantity']
         total_price = price * quantity
@@ -45,14 +45,14 @@ def cart_view(request):
         cart_items.append({
             'id': item_id,
             'name': item['name'],
-            'price': price,
+            'price': f"{price} kr",
             'quantity': quantity,
-            'total_price': total_price,
+            'total_price': f"{total_price} kr",
         })
 
     context = {
         'cart_items': cart_items,
-        'cart_total': cart_total,
+        'cart_total': f"{cart_total} kr",
         'user_profile': user_profile,
     }
 
@@ -136,6 +136,7 @@ def add_offer_to_cart(request, offer_id):
     cart = request.session.get('cart', {})
     quantity = int(request.POST.get('quantity', 1))
     size = request.GET.get('size', 'small')
+    
 
     if offer_id in cart:
         cart[offer_id]['quantity'] += quantity
@@ -189,55 +190,23 @@ def confirmation_view(request):
         quantity = item['quantity']
         total_price = price * quantity
         cart_total += total_price
-
         cart_items.append({
             'id': item_id,
             'name': item['name'],
-            'price': price,
+            'price': f"{price} kr",
             'quantity': quantity,
-            'total_price': total_price,
+            'total_price': f"{total_price} kr",
         })
-        user_profile = Profile.objects.get(user=request.user)
-        context = {
-            'cart_items': cart_items,
-            'cart_total': cart_total,
-            'delivery_time': datetime.datetime.now() + datetime.timedelta(minutes=30),
-            'user_profile': user_profile,
-        }
-        order_id = get_random_string(length=10)
-        for item in cart_items:
-            try:
-                # Attempt to retrieve the item as a product
-                product = Products.objects.get(id=item['id'])
-                UserOrder.objects.create(
-                    user=request.user,
-                    product=product,
-                    order_id=order_id
-                )
-            except Products.DoesNotExist:
-                try:
-                    # If the item is not a product, attempt to retrieve it as an offer
-                    offer = Offers.objects.get(id=item['id'])
-                    UserOrder.objects.create(
-                        user=request.user,
-                        offer=offer,
-                        order_id=order_id
-                    )
-                except Offers.DoesNotExist:
-                    # If the item is neither a product nor an offer, log an error and continue to the next item
-                    print(f"Invalid cart item: {item}")
-                    continue
+    
+    cart_total_with_kr = f"{cart_total} kr"
 
-
-    # Clear the cart
-    request.session['cart'] = {}
-
-    # Pass the order details to the template context
     context = {
         'cart_items': cart_items,
-        'cart_total': cart_total,
-        'delivery_time': datetime.datetime.now() + datetime.timedelta(minutes=30),
+        'cart_total': cart_total_with_kr,
     }
+
+    request.session['cart'] = {}
+
     return render(request, 'confirmation.html', context)
 
 def change_item_quantity(request, item_id):
@@ -276,15 +245,16 @@ def remove_item(request, item_id):
     return redirect('cart')
 
 
+
 def review_order(request):
     """
     Display the order details for the user to review.
-    
+
     Args:
-    request (HttpRequest): The HTTP request object.
-    
+        request (HttpRequest): The HTTP request object.
+
     Returns:
-    HttpResponse: The HTTP response containing the review order template and its context.
+        HttpResponse: The HTTP response containing the review order template and its context.
     """
     cart = request.session.get('cart', {})
     cart_items = []
@@ -304,18 +274,19 @@ def review_order(request):
         price = Decimal(item['price']) + size_prices[size]
         quantity = item['quantity']
         total_price = price * quantity
+        total_price = float(f'{total_price:.2f}')
         cart_items.append({
             'id': item_id,
             'name': item['name'],
-            'price': price,
+            'price': f'{price:.2f} kr',
             'quantity': quantity,
             'total_price': total_price,
         })
 
     context = {
-        'cart_items': cart_items,
-        'cart_total': sum(item['total_price'] for item in cart_items),
+    'cart_items': cart_items,
+    'cart_total': '{:.0f} kr'.format(sum(item["total_price"] for item in cart_items)),
     }
 
-    return render(request, 'review_order.html', context=context)
 
+    return render(request, 'review_order.html', context=context)

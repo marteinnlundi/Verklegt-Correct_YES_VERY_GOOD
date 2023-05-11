@@ -1,10 +1,8 @@
-{% extends 'base.html' %} {% block content %} {% load static %}
+{% extends 'base.html' %} 
+{% block content %} 
+{% load static %}
 
-<link
-  rel="stylesheet"
-  type="text/css"
-  href="{% static 'css/offer_item.css' %}"
-/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/offer_item.css' %}"/>
 
 <div class="offer-container">
   
@@ -12,17 +10,18 @@
     <h1 class="name-offer title" id="name-offer">{{ offer.name }}</h1>
     <p class="description text">{{ offer.description }}</p>
     <p class="price text" id="price-offer">{{ offer.price }}</p>
+    {% if not request.user.is_authenticated %}
+    <p class="error-message text">You must be logged in to add this offer to your cart.</p>
+    {% else %}
 
-
-
-      <form method="POST" action="{% url 'add_offer_to_cart' offer.id %}">
-        {% csrf_token %} 
-        <div class="offer-quantity-container">
-          <input class="quantity-input" type="number" id="quantity" name="quantity" min="1" value="1" />
-          <button type="submit" class="add-to-cart-btn">Add to Cart</button>
-        </div>
-      </form>
-
+    <form method="POST" action="{% url 'add_offer_to_cart' offer.id %}">
+      {% csrf_token %} 
+      <div class="quantity">
+        <input class="quantity-input" type="number" id="quantity" name="quantity" min="1" value="1" />
+        <button type="submit" class="add-to-cart-btn">Add to Cart</button>
+      </div>
+    </form>
+    {% endif %}
   </div>
 
   <div class="SecondDiv pizza-image">
@@ -32,3 +31,5 @@
 
 
 {% endblock %}
+
+
