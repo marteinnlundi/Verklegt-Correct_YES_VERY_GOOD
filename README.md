@@ -10,22 +10,19 @@ Users can also create an account.
 
 _How to Install and Run the Project:_
 
-1. Clone the repository
-2. Navigate to the project directory:
+1. Navigate to the project directory:
    cd pizza-lair
-3. Install the required dependencies:
+2. Install the required dependencies:
    pip install -r requirements.txt
-4. Set up the database:
+3. Set up the database:
    python manage.py migrate
-5. Run the server:
+4. Run the server:
    python manage.py runserver
-6. Open the application in your browser at: http://
+5. Open the application in your browser at: http://
 
 _How to Use the Project:_
-Pizza Lair is a user-friendly web application that can be used like any other website. Here are some basic instructions:
+Pizza Lair is a user-friendly web application that can be used like any other website. User navigates through the website by clicking the mouse on a desired route.
 
-    Browse available pizzas by clicking on the "Menu" link in the navigation bar.
-    [...]
 
 _Project Structure:_
 The project directory has the following structure:
@@ -37,42 +34,79 @@ The project directory has the following structure:
     │ ├── **init**.py
     │ ├── settings.py
     │ ├── urls.py
+    │ ├── asgi.py
     │ └── wsgi.py
-    ├── menu/
+    ├── products/
     │ ├── migrations/
-    │ ├── templates/
     │ ├── **init**.py
     │ ├── admin.py
     │ ├── apps.py
     │ ├── models.py
     │ ├── tests.py
+    │ ├── urls.py
+    │ ├── wsgi.py
     │ └── views.py
     ├── orders/
-    │ ├── migrations/
-    │ ├── templates/
+    │ ├── migrations
     │ ├── **init**.py
     │ ├── admin.py
     │ ├── apps.py
     │ ├── forms.py
     │ ├── models.py
     │ ├── tests.py
+    │ ├── urls.py
+    │ ├── wsgi.py
+    │ └── views.py
+    ├── users/
+    │ ├── migrations/
+    │ ├── forms/
+    │ ├── **init**.py
+    │ ├── admin.py
+    │ ├── apps.py
+    │ ├── urls.py
+    │ ├── models.py
+    │ ├── tests.py
+    │ ├── wsgi.py
     │ └── views.py
     ├── static/
     ├── templates/
+    ├── media/
+    ├── user_images/
     ├── db.sqlite3
     ├── manage.py
+    ├── population_script.sql
+    ├── gitignore
+    ├── dagbók.txt
     └── requirements.txt
 ```
-*_Files:_* [...]
-
-    pizza_lair/: the main project directory containing settings and configuration files.
-    menu/: an app that handles pizza menu functionality, including displaying available pizzas and customizing orders.
-    orders/: an app that handles order processing, including submitting orders and displaying order history.
-    static/: a directory containing static assets like CSS and JavaScript files.
-    templates/: a directory containing HTML templates used by the project.
-    db.sqlite3: the SQLite database used by the project.
-    manage.py: a command-line utility for performing various Django tasks.
-    requirements.txt: a file listing the Python packages required by the project.
+__Programming Rules__
+Below are listed a few rules that will be followed during the development phase of this
+project. These rules will help the project look cohesive, clean, and readable.
+HTML:
+   1. Use semantic HTML tags to improve the accessibility and readability of the code.
+   2. Use lowercase letters for all HTML tags and attributes.
+   3. Do not use any inline styles or scripts.
+CSS:
+   4. Use a consistent naming convention for CSS classes.
+   5. Use shorthand properties to simplify the code and reduce redundancy.
+Python:
+   7. All functions and classes will have a docstring that explains their purpose.
+   8. All names of variables should be unique and descriptive.
+   10. Use exceptions instead of returning error codes.
+   11. Avoid using global variables.
+JavaScript:
+   13. Use arrow functions to simplify code and avoid binding issues.
+   14. Use the === operator for strict equality comparisons
+All programming languages:
+   15. A simple code is a readable code, shorter and simple functions are better.
+   16. There should be a minimum of two lines of whitespace between functions to
+   separate code.
+   17. If a line of code is to be complicated, a comment shall be added to explain it.
+   18. Git merge to master should be reviewed by another team member before the
+   merge.
+   19. All functions, classes and variables will have a good and descriptive name.
+   Team members should either work together on one computer, or on separate and
+   new branches, pulled from master to minimize mishaps
 
 _Include Credits:_
 Pizza Lair was created by:
