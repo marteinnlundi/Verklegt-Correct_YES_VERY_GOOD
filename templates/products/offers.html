@@ -5,11 +5,9 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/offers.css' %}" />
 <script src="{% static 'js/offers.js' %}"></script>
 
-
 <div class="title">
     The Pizza Lair Offers
 </div>
-
 
 <div class="offer-container">
     {% for offer in offers %}
@@ -26,6 +24,5 @@
     </div>
         {% endfor %} 
 </div>
-
 
 {% endblock %}

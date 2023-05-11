@@ -27,10 +27,9 @@
       {% if orders %}
       {% for order in orders %}
       <div class="order-item">
-        <p class="ordname">Name: {{ order.name }}</p>
-        <p class="descr">Description: {{ order.description }}</p>
-        <p class="date">Date: {{ order.date }}</p>
-        
+        <p class="ordname">{{ order.name }}</p>
+        <p class="descr">{{ order.description }}</p>
+        <p class="date">Date: {{ order.date }}</p>        
       </div>
     {% endfor %}
       {% else %}

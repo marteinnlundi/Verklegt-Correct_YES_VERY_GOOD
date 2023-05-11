@@ -1,40 +1,40 @@
 {% extends 'base.html' %}
 {% block content %}
-  {% load static %}
+{% load static %}
 
-  <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}" />
+<div class="background-image"></div>
 
-  <div class="home-container">
-    <div class="background-image"></div>
-
-    <div class="content-container">
-      <div class="best-offer-container">
-        <a href="{% url 'offers' %}">
-        <div class="best-offers">
-          <h2 class="best-offer-title">Baning offers!</h2>
-          <div id="offer-rotator">
-            {% for offer in offers %}
-            <div class="offer-slide">
-              <p class="best-offer-text">{{ offer.name }}</p>
-              <div class="description-box">
-                <p class="description">{{ offer.description }}</p>
-              </div>
-              <div class="best-offer-price">
-                <span class="price">{{ offer.price }}</span>
-              </div>
-            </div>
-            {% endfor %}
+<div class="grid-container">
+  <!-- left Div -->
+  <div class="best-offer-container">
+    <a href="{% url 'offers' %}">
+    <div class="best-offers">
+      <h2 class="best-offer-title">Baning offers!</h2>
+      <div id="offer-rotator">
+        {% for offer in offers %}
+        <div class="offer-slide">
+          <p class="best-offer-text">{{ offer.name }}</p>
+          <div class="description-box">
+            <p class="description">{{ offer.description }}</p>
+          </div>
+          <div class="best-offer-price">
+            <span class="price">{{ offer.price }}</span>
           </div>
         </div>
-        </a>
-      </div>
-      <div class="order-button-container">
-        <a href="{% url 'menu' %}">
-          <button class="order-button">Order Now</button>
-        </a>
+        {% endfor %}
       </div>
     </div>
+    </a>
   </div>
 
-  <script defer src="{% static 'js/home.js' %}"></script>
+  <!-- Right Div -->
+  <div class="order-button-container">
+    <a href="{% url 'menu' %}">
+      <button class="order-button">Order Now</button>
+    </a>
+  </div>
+</div>
+
+<script defer src="{% static 'js/home.js' %}"></script>
 {% endblock content %}

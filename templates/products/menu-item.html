@@ -1,55 +1,75 @@
-{% extends 'base.html' %} {% block content %} {% load static %}
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
 
-<link
-  rel="stylesheet"
-  type="text/css"
-  href="{% static 'css/menu_item.css' %}"
-/>
-<script defer src="{% static 'js/menu_item.js' %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'css/menu_item.css' %}" />
 
-<div class="pizza-container">
-  <!-- Pizza deitail div1 -->
-  <div class="pizza-details">
-    <h1 class="pizza-name title">{{ product.name }}</h1>
-    <div class="pizza-description text">{{ product.description }}</div>
-
-    <div class="pizza-size text">  
+<!-- Body tha -->
+<div class="body-containor">
+  <div class="Left-side-div">
+    <h1 class="title">{{ product.name }}</h1>
+    <p class="text">{{ product.description }}</p>
     
-      <form class="radio-form" method="POST" id="add-to-cart-form" action="{% url 'add_to_cart' product.id %}?size=small" >
-        {% csrf_token %}  
+    {% if product.type == 'pizza' %}
+      <!-- If type: pizza then this form is shown -->
+      <form class="pizza-form" method="POST" id="add-to-cart-form" 
+        {% if not request.user.is_authenticated %} action="" {% else %}
+        action="{% url 'add_to_cart' product.id %}?size=small" {% endif %}>
+        {% csrf_token %}
         <label class="form-controle">
-            <input type="radio" name="size" value="small" id="small-size" onclick="updateFormAction('small')" />
-            <span>Small</span>
-          </label>
-          <label class="form-controle">
-            <input type="radio" name="size" value="medium" id="medium-size" onclick="updateFormAction('medium')"/>
-            <span>Medium (+500)</span>  
-          </label>
-          <label class="form-controle">
-            <input type="radio" name="size" value="large" id="large-size" onclick="updateFormAction('large')"/>
-            <span>Large (+1000)</span>   
-          </label>
-          <div class="pizza-quantity">
-            <input type="number" name="quantity" class="quantity-input" value="1" />
+          <input type="radio" name="size" value="small" id="small-size" onclick="updateFormAction('small')" />
+          <span class="text">Small &nbsp 1.500kr</span>
+        </label>
+        <label class="form-controle">
+          <input type="radio" name="size" value="medium" id="medium-size" onclick="updateFormAction('medium')"/>
+          <span class="text">Medium &nbsp (+500kr)</span>  
+        </label>
+        <label class="form-controle">
+          <input type="radio" name="size" value="large" id="large-size" onclick="updateFormAction('large')"/>
+          <span class="text">Large &nbsp (+1000kr)</span>   
+        </label>
+
+        {% if not request.user.is_authenticated %}
+          <p class="error-message text">You must be logged in to add this item to your cart.</p>
+        {% else %}
+          <div class="quantity">
+            <input class="quantity-input" type="number" name="quantity" min="1" value="1" />
             <button type="submit" class="add-to-cart-btn">Add to Cart</button>
           </div>
+        {% endif %}
       </form>
-    </div>
-
-
+    {% else %}
+      <!-- If type: side or drink then this form is shown -->
+      <form class="sideDrinks-form" method="POST" id="add-to-cart-form" action="{% url 'add_to_cart' product.id %}">
+        {% csrf_token %} 
+          <p class="text">{{ product.price }}</p>
+        {% if not request.user.is_authenticated %}
+          <p class="error-message text">You must be logged in to add this item to your cart.</p>
+        {% else %}
+        <div class="quantity">
+          <input class="quantity-input" type="number" name="quantity" min="1" value="1" />
+          <button type="submit" class="add-to-cart-btn">Add to Cart</button>
+        </div>
+        {% endif %}
+      </form>
+    {% endif %}  
   </div>
-  
-  <!-- Picture div2 -->
-  <div class="pizza-image">
+  <div class="SecondDiv pizza-image">
     <img src="{{ product.images }}" alt="{{ product.name }}" />
   </div>
 </div>
+
 <script>
-  function updateFormAction(size) {
-    const form = document.getElementById("add-to-cart-form");
-    const url = form.getAttribute("action");
-    const newUrl = url.split("?")[0] + `?size=${size}`;
-    form.setAttribute("action", newUrl);
-  }
+
+  // Hide/show forms based on product type
+const pizzaForm = document.querySelector('.pizza-form');
+const sideDrinksForm = document.querySelector('.sideDrinks-form');
+if ('{{ product.type|lower }}' === 'pizza') {
+  sideDrinksForm.style.display = 'none';
+} else {
+  pizzaForm.style.display = 'none';
+}
 </script>
+
 {% endblock %}
+

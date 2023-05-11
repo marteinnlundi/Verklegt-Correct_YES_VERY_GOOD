@@ -17,14 +17,9 @@ Including another URLconf
 from django.urls import path
 from . import views
 
-
 urlpatterns = [
     path('menu', views.menu_view, name='menu'),
     path('menuItem', views.menu_item_view, name='menuItem'),
     path('offers', views.offers_view, name='offers'),
     path('offerItem', views.offer_item_view, name='offerItem'),
 ]
-
-
-
-

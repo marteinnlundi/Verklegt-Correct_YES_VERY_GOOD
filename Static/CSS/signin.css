@@ -1,31 +1,15 @@
-body {
-    background-color: black;
-    overflow: auto;
-}
-
-.container {
-    height: 100vh; 
+/* heldur utan um All */
+.signup {
     display: flex;
     flex-direction: column;
-}
-
-.signup {
-    background-color:black;
-    padding: 20px;
-    margin: auto;
-    width: 50%;
-    height: 700px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    align-items: center;
+    margin-top: 60px;
     text-align: right;
     font-family: Arial, sans-serif;
     color:white;
-   
 }
 
-
+/* kassin utan um formin */
 form {
     display: flex;
     flex-direction: column;
@@ -33,27 +17,48 @@ form {
     border: solid;
     padding:40px;
     box-shadow: 10px 10px 5px 0px rgba(87, 85, 85, 0.75);
+    width: 600px;
+}
 
+h2 {
+    font-family: ink free;
+    font-size: 40px;
+    color: white;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 1),
+    0 0 20px rgba(255, 0, 0, 1),
+    0 0 30px rgba(255, 0, 0, 1),
+    0 0 40px rgba(255, 0, 0, 1),
+    0 0 70px rgba(255, 0, 0, 1),
+    0 0 80px rgba(255, 0, 0, 1),
+    0 0 100px rgba(255, 0, 0, 1);
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 label {
-    
-    
     font-family: ink free;
-    
+    font-size: 25px;
     color:green;
+    display: block;
+    cursor: pointer;
+    font-weight: 500;  
+    margin-bottom: 5px;
+    margin-top: 15px; 
+    text-align: left;
 }
 
+
+
 input, select {
-    width: 400px;
+    width: 300px;
     padding: 10px;
     margin-top: 5px;
     border: 1px solid #ccc;
     border-radius: 50px;
-    box-sizing: border-box;
     background-color: black;
     transition: background-color 0.3s ease;
     color:white;
+    margin-left: 20px;
 }
 
 input:focus, select:focus {
@@ -96,7 +101,9 @@ button[type="submit"] {
     font-family: "ink free";
     color: white;
     margin-top: 20px;
-    
+    margin-left: 1000px;
+    margin-bottom: 35px;
+    display: flow-root;
 }
 
 .helptext {
@@ -106,6 +113,7 @@ button[type="submit"] {
     margin-top: 20px;
     text-align: left;
 }
+
 .login-redirect-btn{
     background: none;
     border: solid;
@@ -116,7 +124,7 @@ button[type="submit"] {
     font-family: "ink free";
     opacity: 0.8;
     width: 200px;
-
+    
 }
 
 .login-redirect-btn:hover {

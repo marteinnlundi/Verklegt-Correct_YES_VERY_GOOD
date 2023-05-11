@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Products
 from. models import Offers
+from django.http import HttpResponseNotFound
 
 
 def menu_view(request):
@@ -55,8 +56,10 @@ def menu_item_view(request):
     """
     product_id = request.GET.get('id')
     product = Products.objects.get(id=product_id)
+    product.price = '{:,.0f}kr'.format(product.price).replace(',', '.')
     context = {'product': product}
     return render(request, 'menu-item.html', context)
+
 
 
 def offers_view(request):

@@ -1,19 +1,29 @@
-.pizza-container {
+.body-containor {
   display: grid;
-  grid-template-columns: 55% 45%;
+  grid-template-columns: 50% 45%;
   grid-gap: 20px;
   width: 100%;
   margin-top: 5px;
   margin-bottom: 10px;
 }
 
+/* First Div */
+.Left-side-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
 .title {
   color: rgb(23 189 49);
-  font-size: 5px;
+  font-size: 50px;
   font-family: Ink Free;
   font-weight: 500;
   text-align: center;
-  padding-top: 45px;
+  padding-top: 50px;
   margin: 0;
   padding-bottom: 40px;
 }
@@ -22,22 +32,12 @@
   font-size: 25px;
   color: white;
   font-family: Ink Free;
-  padding-left: 15px;
-  padding-right: 15px;
 }
 
-.pizza-description {
-  margin-bottom: 10px;
-}
-
-/* Left side */
-.pizza-details {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding-left: 15px;
-  padding-right: 15px;
+p {
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-bottom: 50px;
 }
 
 /* radio-form */
@@ -47,11 +47,7 @@
   box-sizing: border-box;
 }
 
-.pizza-size {
-  margin-bottom: 10px;
-}
-
-.radio-form {
+.pizza-form {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -73,84 +69,93 @@ label {
 label span{
   display: inline-flex;
   align-items: center;
-  padding: 10px 20px 10px 10px;
-  border-radius: 31px;
-  transition: .25 ease;
-}
-
-label span:hover{
-  background-color: rgba(23, 189, 49, 0.699999988079071);
+  justify-content: center;
 }
 
 label span::before{
   content: "";
-  background-color: black;
-  width: 32px;
-  height: 32px;
+  background-color: rgb(0, 0, 0);
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
-  margin-right: 10px;
+  margin-right: 20px;
+  margin-left: 20px;
   transition: .25s ease;
-  box-shadow: inset 0 0 0 3px rgb(23, 189, 48); 
+  box-shadow: inset 0 0 0 2.5px rgba(23, 189, 48, 0.339); 
 }
 
-input[type="radio"]:checked + span::before{
-  box-shadow: inset 0 0 0 10px #2c1e4d;
+input[type="radio"]:checked + span::before {
+  box-shadow: inset 0 0 0 2px rgba(255, 0, 0, 0.46), 0 0 10px rgba(255, 255, 255, 1),
+  0 0 20px rgba(255, 0, 0, 1), 0 0 30px rgba(255, 0, 0, 1),
+  0 0 40px rgba(255, 0, 0, 1), 0 0 70px rgba(255, 0, 0, 1),
+  0 0 80px rgba(255, 0, 0, 1), 0 0 100px rgba(255, 0, 0, 1);
 }
 
 
 /* Quantity container */
-.pizza-quantity {
+.quantity {
   border: 0.5px solid rgba(23, 189, 48, 0.587);
-  margin-right: 75px;
-  margin-bottom: 160;
+  border-radius: 10px;
+  margin-top: 50px;
 }
 
 .add-to-cart-btn {
   all: unset;
   font-family: Ink Free;
-  font-size: 20px;
+  font-size: 25px;
   color: white;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding-left: 10px;
-  padding-right: 10px;
-  object-fit: cover;
+  width: 190px;
+  padding: 5px;
+  display: absolute;
+  text-align: center;
 }
 
 .add-to-cart-btn:hover {
-  background-color: green;
+  border-radius: 0px 10px 10px 0px;
   color: rgba(255, 255, 255, 0.617);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 1),
+  0 0 20px rgba(255, 0, 0, 1),
+  0 0 30px rgba(255, 0, 0, 1),
+  0 0 40px rgba(255, 0, 0, 1),
+  0 0 70px rgba(255, 0, 0, 1),
+  0 0 80px rgba(255, 0, 0, 1),
+  0 0 100px rgba(255, 0, 0, 1);
   cursor: pointer;
 }
 
-input,
-select {
+input{
   all: unset;
   font-family: Ink Free;
-  font-size: 25px;
+  font-size: 30px;
+  font-weight: 600;
   color: white;
-  height: 30px;
-  width: 100px;
-  padding-left: 15px;
-  align-items: center;
-  margin: auto;
+  width: 70px;
+  text-align: center;
+  padding: 2px;
 }
-
 
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button {
   opacity: 1;
 }
 
-
-.pizza-image {
-  margin: 0 auto;
-  display: block;
-  overflow: hidden; /* hide any overflow from the image */
+.error-message {
+  color: rgb(255, 255, 255);
+  font-weight: 800px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 1),
+  0 0 20px rgba(255, 0, 0, 1),
+  0 0 30px rgba(255, 0, 0, 1),
+  0 0 40px rgba(255, 0, 0, 1),
+  0 0 70px rgba(255, 0, 0, 1),
+  0 0 80px rgba(255, 0, 0, 1),
+  0 0 100px rgba(255, 0, 0, 1);
 }
 
-.pizza-image img {
+/* Second Div */
+img{
+  display: block;
   object-fit: cover;
-  width: 700px;
-  height: 600px;
+  width: 930px;
+  height: 780px;
 }
 
