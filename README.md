@@ -17,8 +17,8 @@ _How to Install and Run the Project:_
 3. Set up the database:
    python manage.py migrate
 4. Run the server:
-   python manage.py runserver
-5. Open the application in your browser at: http://
+   python manage.py runserver --insecure
+5. Open the application in your browser at: [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
 
 _How to Use the Project:_
 Pizza Lair is a user-friendly web application that can be used like any other website. User navigates through the website by clicking the mouse on a desired route.
