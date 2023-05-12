@@ -40,7 +40,7 @@
           value="small"
           id="small-size"
           onclick="updateFormAction('small')"
-          cliked
+          checked
         />
         <span class="text">Small &nbsp 1.500kr</span>
       </label>
@@ -52,7 +52,7 @@
           id="medium-size"
           onclick="updateFormAction('medium')"
         />
-        <span class="text">Medium &nbsp (+500kr)</span>
+        <span class="text">Medium &nbsp 2.000kr</span>
       </label>
       <label class="form-controle">
         <input
@@ -62,7 +62,7 @@
           id="large-size"
           onclick="updateFormAction('large')"
         />
-        <span class="text">Large &nbsp (+1000kr)</span>
+        <span class="text">Large &nbsp 2.500kr</span>
       </label>
 
       {% if not request.user.is_authenticated %}

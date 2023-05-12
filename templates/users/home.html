@@ -1,6 +1,4 @@
-{% extends 'base.html' %}
-{% block content %}
-{% load static %}
+{% extends 'base.html' %} {% block content %} {% load static %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}" />
 <div class="background-image"></div>
@@ -9,22 +7,22 @@
   <!-- left Div -->
   <div class="best-offer-container">
     <a href="{% url 'offers' %}">
-    <div class="best-offers">
-      <h2 class="best-offer-title">Baning offers!</h2>
-      <div id="offer-rotator">
-        {% for offer in offers %}
-        <div class="offer-slide">
-          <p class="best-offer-text">{{ offer.name }}</p>
-          <div class="description-box">
-            <p class="description">{{ offer.description }}</p>
+      <div class="best-offers">
+        <h2 class="best-offer-title">Banging offers!</h2>
+        <div id="offer-rotator">
+          {% for offer in offers %}
+          <div class="offer-slide">
+            <p class="best-offer-text">{{ offer.name }}</p>
+            <div class="description-box">
+              <p class="description">{{ offer.description }}</p>
+            </div>
+            <div class="best-offer-price">
+              <span class="price">{{ offer.price }}kr</span>
+            </div>
           </div>
-          <div class="best-offer-price">
-            <span class="price">{{ offer.price }}</span>
-          </div>
+          {% endfor %}
         </div>
-        {% endfor %}
       </div>
-    </div>
     </a>
   </div>
 

@@ -8,8 +8,7 @@ from products.models import Products, Offers
 from decimal import Decimal
 from users.models import Profile
 from django.contrib.auth.decorators import login_required
-import datetime
-
+from datetime import datetime, timedelta
 
 size_prices = {'small': 0, 'medium': 500, 'large': 1000}
 
@@ -208,10 +207,13 @@ def confirmation_view(request):
         })
     
     cart_total_with_kr = f"{cart_total} kr"
+    current_time = datetime.now()
+    delivery_time = current_time + timedelta(minutes=30)
 
     context = {
         'cart_items': cart_items,
         'cart_total': cart_total_with_kr,
+        'delivery_time': delivery_time,
     }
 
     request.session['cart'] = {}
