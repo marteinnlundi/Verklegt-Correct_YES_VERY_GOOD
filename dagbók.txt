@@ -344,8 +344,16 @@ Ritari: Marteinn Lundi
 Mæting: Ágústa, Guðbjörg og Marteinn
 
 Fundurinn: 
+Í dag er tvennt á dagskrá, fá aðstoð við eina villu sem tengist my orders og laga allar útlitsbreytingar.
+Það þarf að laga menu-item síðuna, offer-item síðuna, cart síðuna, checkout síðan, review síðann og order summary síðann.
+
 To-Do dagsins:
+Laga CSS á síðunum sem þarf að fínpússa
+Laga og fá aðstoð með My orders birtinguna.
+
 Markmið morgundagsins:
+Vera búinn með allt CSS og HTML til þess að byrja yfirferð.
+
 ###############################################################################
 
 Fimmtudagurinn 11.maí 2023
@@ -354,8 +362,17 @@ Ritari: Marteinn Lundi
 Mæting: Ágústa, Guðbjörg og Marteinn
 
 Fundurinn: 
+Í gær var allt CSS og útlit lagað og klárað.
+Það var skrifað handrit, gert intro fyrir myndbandið.
+Fengið hjálp með My orders
+Í dag verður yfirferð á öllum notkunartilvikum og skráð niður hvað þarf að bæta við ef eitthvað.
+
 To-Do dagsins:
+Yfirferð á verkefni og lagað það sem þarf.
+
 Markmið morgundagsins:
+Taka upp myndband og klippa það.
+
 ###############################################################################
 
 Föstudagurinn 12.maí 2023
@@ -364,7 +381,17 @@ Ritari: Marteinn Lundi
 Mæting: Ágústa, Guðbjörg og Marteinn
 
 Fundurinn: 
+Tekið upp myndband óg hljóð
+Allir gera Peer Review
+Klippa myndbandið 
+Skila verkefninu
+
 To-Do dagsins:
+Allt sem tengist að taka upp og klippa myndbandið
+Peer Review
+Skila
+
 Markmið morgundagsins:
+Slaka á því önninn er búinn!!!!!
 
 ###############################################################################
