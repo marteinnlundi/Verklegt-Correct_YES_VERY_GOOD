@@ -17,12 +17,11 @@ _How to Install and Run the Project:_
 3. Set up the database:
    python manage.py migrate
 4. Run the server:
-   python manage.py runserver --insecure
+   python manage.py runserver
 5. Open the application in your browser at: [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
 
 _How to Use the Project:_
 Pizza Lair is a user-friendly web application that can be used like any other website. User navigates through the website by clicking the mouse on a desired route.
-
 
 _Project Structure:_
 The project directory has the following structure:
@@ -79,43 +78,50 @@ The project directory has the following structure:
     ├── dagbók.txt
     └── requirements.txt
 ```
-__Programming Rules__
+
+**Programming Rules**
 Below are listed a few rules that will be followed during the development phase of this
 project. These rules will help the project look cohesive, clean, and readable.
-**HTML:
+\*\*HTML:
 
-   1. Use semantic HTML tags to improve the accessibility and readability of the code.
-   2. Use lowercase letters for all HTML tags and attributes.
-   3. Do not use any inline styles or scripts.
+1.  Use semantic HTML tags to improve the accessibility and readability of the code.
+2.  Use lowercase letters for all HTML tags and attributes.
+3.  Do not use any inline styles or scripts.
 
-**CSS:
+\*\*CSS:
 
-   4. Use a consistent naming convention for CSS classes.
-   5. Use shorthand properties to simplify the code and reduce redundancy.
- 
-**Python:
+4.  Use a consistent naming convention for CSS classes.
+5.  Use shorthand properties to simplify the code and reduce redundancy.
 
-   7. All functions and classes will have a docstring that explains their purpose.
-   8. All names of variables should be unique and descriptive.
-   10. Use exceptions instead of returning error codes.
-   11. Avoid using global variables.
+\*\*Python:
 
-**JavaScript:
+7.  All functions and classes will have a docstring that explains their purpose.
+8.  All names of variables should be unique and descriptive.
+9.  Use exceptions instead of returning error codes.
+10. Avoid using global variables.
 
-   13. Use arrow functions to simplify code and avoid binding issues.
-   14. Use the === operator for strict equality comparisons
+\*\*JavaScript:
 
-**All programming languages:
+13. Use arrow functions to simplify code and avoid binding issues.
+14. Use the === operator for strict equality comparisons
 
-   15. A simple code is a readable code, shorter and simple functions are better.
-   16. There should be a minimum of two lines of whitespace between functions to
-   separate code.
-   17. If a line of code is to be complicated, a comment shall be added to explain it.
-   18. Git merge to master should be reviewed by another team member before the
-   merge.
-   19. All functions, classes and variables will have a good and descriptive name.
-   Team members should either work together on one computer, or on separate and
-   new branches, pulled from master to minimize mishaps
+\*\*All programming languages:
+
+15. A simple code is a readable code, shorter and simple functions are better.
+16. There should be a minimum of two lines of whitespace between functions to
+    separate code.
+17. If a line of code is to be complicated, a comment shall be added to explain it.
+18. Git merge to master should be reviewed by another team member before the
+    merge.
+19. All functions, classes and variables will have a good and descriptive name.
+    Team members should either work together on one computer, or on separate and
+    new branches, pulled from master to minimize mishaps
+
+**Things to know**
+We found out at the last minute that the MEDIA_URL or /media is not suitable for when the Debug mode is off and it would have been better to use static.
+We will learn from this mistake but for now the Debug mode is on.
+The functionality that was missing when the Debug mode was off is the display of the profile image in the view profile and it did not update the profile image when the user changed it.
+This only happened when the Debug mode was off.
 
 _Include Credits:_
 Pizza Lair was created by:
