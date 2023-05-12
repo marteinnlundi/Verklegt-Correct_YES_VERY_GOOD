@@ -8,8 +8,7 @@ from products.models import Products, Offers
 from decimal import Decimal
 from users.models import Profile
 from django.contrib.auth.decorators import login_required
-import datetime
-
+from datetime import datetime, timedelta
 
 size_prices = {'small': 0, 'medium': 500, 'large': 1000}
 
@@ -28,7 +27,7 @@ def cart_view(request):
     cart = request.session.get('cart', {})
     cart_items = []
     cart_total = 0
-
+    
     for item_id, item in cart.items():
         try:
             product = Products.objects.get(id=item_id)
@@ -37,8 +36,9 @@ def cart_view(request):
                 product = Offers.objects.get(id=item_id)
             except Offers.DoesNotExist:
                 return redirect('cart')
-        size = request.POST.get('size', 'small')
-        price = Decimal(item['price']) + size_prices[size]
+        
+        size = item.get('size', 'small')
+        price = Decimal(str(product.price)) + size_prices.get(size, 0)
         quantity = item['quantity']
         total_price = price * quantity
         cart_total += total_price
@@ -57,6 +57,7 @@ def cart_view(request):
     }
 
     return render(request, 'cart.html', context)
+
 
 def checkout(request):
     """
@@ -111,14 +112,21 @@ def add_to_cart(request, product_id):
         price = product.price + 1000
     else:
         price = product.price
+    
 
     if product_id in cart:
         cart[product_id]['quantity'] += quantity
     else:
-        cart[product_id] = {'name': product.name, 'price': str(price), 'quantity': quantity}
+        cart[product_id] = {
+            'name': product.name,
+            'price': str(price),
+            'quantity': quantity,
+            'size': size
+        }
 
     request.session['cart'] = cart
     return redirect('cart')
+
 
 
 def add_offer_to_cart(request, offer_id):
@@ -199,10 +207,13 @@ def confirmation_view(request):
         })
     
     cart_total_with_kr = f"{cart_total} kr"
+    current_time = datetime.now()
+    delivery_time = current_time + timedelta(minutes=30)
 
     context = {
         'cart_items': cart_items,
         'cart_total': cart_total_with_kr,
+        'delivery_time': delivery_time,
     }
 
     request.session['cart'] = {}
