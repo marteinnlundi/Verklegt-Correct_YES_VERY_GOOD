@@ -1,6 +1,6 @@
-<div class="fixed-header">
-  <script defer src="{% static 'js/banner.js' %}"></script>
+{% load static %}
 
+<div class="fixed-header">
   <div>
     <span class="pizza-lairtext">Pizza Lair</span>
   </div>
@@ -47,4 +47,5 @@
     <p>Please log in or register to access your cart.</p>
     <button id="closepopup" onclick="hidePopup()">Close</button>
   </div>
+  <script src="{% static 'js/banner.js' %}"></script>
 </div>

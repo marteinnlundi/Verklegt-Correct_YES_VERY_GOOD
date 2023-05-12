@@ -85,7 +85,6 @@ def checkout(request):
         elif payment_method == 'pay-at-pickup':
             return redirect('confirmation')
     return render(request, 'checkout.html', {'form': form})
-from django.utils.crypto import get_random_string
 
 
 
