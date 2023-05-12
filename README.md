@@ -82,22 +82,31 @@ The project directory has the following structure:
 __Programming Rules__
 Below are listed a few rules that will be followed during the development phase of this
 project. These rules will help the project look cohesive, clean, and readable.
-HTML:
+**HTML:
+
    1. Use semantic HTML tags to improve the accessibility and readability of the code.
    2. Use lowercase letters for all HTML tags and attributes.
    3. Do not use any inline styles or scripts.
-CSS:
+
+**CSS:
+
    4. Use a consistent naming convention for CSS classes.
    5. Use shorthand properties to simplify the code and reduce redundancy.
-Python:
+ 
+**Python:
+
    7. All functions and classes will have a docstring that explains their purpose.
    8. All names of variables should be unique and descriptive.
    10. Use exceptions instead of returning error codes.
    11. Avoid using global variables.
-JavaScript:
+
+**JavaScript:
+
    13. Use arrow functions to simplify code and avoid binding issues.
    14. Use the === operator for strict equality comparisons
-All programming languages:
+
+**All programming languages:
+
    15. A simple code is a readable code, shorter and simple functions are better.
    16. There should be a minimum of two lines of whitespace between functions to
    separate code.
